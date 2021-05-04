@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Mar 20 21:12:59 2020
-Pluralsight Pandas Fundamentals
-@author: me
+
 """
 
 import numpy as np
