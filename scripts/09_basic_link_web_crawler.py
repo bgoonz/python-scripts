@@ -31,4 +31,4 @@ def crawl(url):
         print(link)
 
 if __name__ == '__main__':
-    crawl('http://www.realpython.com')
+    crawl('https://lambda-w-1-notes.netlify.app/')
