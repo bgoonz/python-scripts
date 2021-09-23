@@ -22,7 +22,7 @@ class Scraper:
         # Attributes about scraping
         self.session = HTMLSession()
         self.webpage = self.session.get(self.url).content
-        self.parser = 'lxml'
+        self.parser = "lxml"
         self.soup = BeautifulSoup(self.webpage, self.parser)
 
     # Prints the object
@@ -31,23 +31,21 @@ class Scraper:
 
     # Stores the title of the product
     def get_title(self):
-        temp_title = self.soup.find('span', id='productTitle').text.strip()
+        temp_title = self.soup.find("span", id="productTitle").text.strip()
         temp_list_title = []
         for x in temp_title:
-            if x == '(':
+            if x == "(":
                 break
             temp_list_title.append(x)
-        self.product_title = ''.join(temp_list_title)
+        self.product_title = "".join(temp_list_title)
         return self.product_title
 
     # Stores the price of the product after filtering the string and
     # converting it to an integer
     def get_price(self):
-        price_raw = self.soup.find('span',
-                                   id='priceblock_ourprice').text.strip()
-        price_filtered = price_raw[2:len(price_raw) - 3]
-        self.product_price = int(''.join(
-            [x for x in price_filtered if x != ',']))
+        price_raw = self.soup.find("span", id="priceblock_ourprice").text.strip()
+        price_filtered = price_raw[2 : len(price_raw) - 3]
+        self.product_price = int("".join([x for x in price_filtered if x != ","]))
         return
 
     # Prints product title
@@ -83,17 +81,17 @@ class Scraper:
 
         # Attributes for email sending
         port = 587
-        smtp_server = 'smtp.gmail.com'
-        self.email = str(os.environ.get('DEVELOPER_MAIL'))
-        self.app_pw = str(os.environ.get('DEVELOPER_PASS'))
+        smtp_server = "smtp.gmail.com"
+        self.email = str(os.environ.get("DEVELOPER_MAIL"))
+        self.app_pw = str(os.environ.get("DEVELOPER_PASS"))
 
         # Message details
-        subject = f'The price of {self.get_title()} is within your budget!'
+        subject = f"The price of {self.get_title()} is within your budget!"
 
         body_start = """Hey there!\n
         The price is now within your budget. Here is the link, buy it now!\n"""
         body_mid = self.url
-        body_end = '\n\nRegards\nYour friendly neighbourhood programmer'
+        body_end = "\n\nRegards\nYour friendly neighbourhood programmer"
         body = str(body_start) + str(body_mid) + str(body_end)
 
         message = f"Subject: {subject}\n\n{body}"
@@ -119,9 +117,11 @@ def main():
     url = input("Paste the link of the Amazon product:")
     budget = int(input("Enter you budget price:"))
     u_email = input("Enter your email:")
-    inp_str = ("How frequuently would you like to check the price?"
-               "\n1.Every hour\n2.Every 3 hours\n3.Every 6 hours"
-               "\nEnter your choice(default is 6 hours):")
+    inp_str = (
+        "How frequuently would you like to check the price?"
+        "\n1.Every hour\n2.Every 3 hours\n3.Every 6 hours"
+        "\nEnter your choice(default is 6 hours):"
+    )
     time_choice = int(input(inp_str))
     if time_choice == 1:
         time_delay = 60 * 60
@@ -129,15 +129,17 @@ def main():
         time_delay = 3 * 60 * 60
     else:
         time_delay = 6 * 60 * 60
-    msg = ("Great! Now just sit back and relax."
-           "Minimize this program and be sure "
-           "that it is running.\nAdditionally, ensure that there"
-           "is stable internet connection "
-           "during the time this program runs.\nIf the price of the "
-           "product falls within your budget, "
-           "you will recieve an email regarding the same and this"
-           "program will auto-close.\nThank you for using "
-           "C3PO scraper! Beep-bop bop-beep.")
+    msg = (
+        "Great! Now just sit back and relax."
+        "Minimize this program and be sure "
+        "that it is running.\nAdditionally, ensure that there"
+        "is stable internet connection "
+        "during the time this program runs.\nIf the price of the "
+        "product falls within your budget, "
+        "you will recieve an email regarding the same and this"
+        "program will auto-close.\nThank you for using "
+        "C3PO scraper! Beep-bop bop-beep."
+    )
     print(msg)
     c3po = Scraper(url, budget, u_email)
     while True:
@@ -146,5 +148,5 @@ def main():
         time.sleep(time_delay)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

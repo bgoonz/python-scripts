@@ -1,15 +1,15 @@
 # Contact 'Leads' Distribution
+
 Distributes the contacts you receive sequentially to emails in a list.
 
-Use case
---------
+## Use case
+
 When you have a sales team and would like the contacts received on a form
 to be equally distributed between them.
 
-How to Use in cPanel
---------------------
+## How to Use in cPanel
 
-1. Create an email account that will receive the contacts ```Ex: sellers@domain.com```
+1. Create an email account that will receive the contacts `Ex: sellers@domain.com`
 2. Create the email accounts where the contacts will be distributed.
 3. Upload the script to the server. (note: DO NOT use a public folder)
 4. Change script privileges `$chmod 744 contact-distribution.py`
@@ -36,6 +36,5 @@ s.sendmail("sellers@domain.com", sellers[nextSeller][1],
 8. Forward it to the script.
 
 ![Imagem do cPanel](docs/images/cpanel_encaminhadores02.jpg)
-
 
 Done.

@@ -1,6 +1,7 @@
 # Installing required libraries
 import png
 import pyqrcode
+
 # pip install pyqrcode
 # pip install pypng
 

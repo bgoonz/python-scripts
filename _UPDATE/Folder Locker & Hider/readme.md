@@ -17,23 +17,23 @@ Download this project from here [Download Folder Locker & Hider](https://downgit
 
 ## Requirements
 
-	No external package is required
+    No external package is required
 
 ## Usage
 
 Double click the application.pyw script to open the GUI application, then
 
 to lock folder:
-	click the lock folder button, select the folder that you want to lock, enter a password and then click lock folder button to lock the folder, the folder will now be hidden automatically.
+click the lock folder button, select the folder that you want to lock, enter a password and then click lock folder button to lock the folder, the folder will now be hidden automatically.
 
-	password should be greater than 4 digits in length, the locked folder can only be unlocked by using this app, also the folder will not show wven when show hidden items is checked
+    password should be greater than 4 digits in length, the locked folder can only be unlocked by using this app, also the folder will not show wven when show hidden items is checked
 
 to unlock folder:
-	click the unlock folder button, select the locked folder name from the listbox on the right [double click it], then enter the correct password and unlock it by click the unlock folder button.
-	The folder will now be unhidden automatically
-
+click the unlock folder button, select the locked folder name from the listbox on the right [double click it], then enter the correct password and unlock it by click the unlock folder button.
+The folder will now be unhidden automatically
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.

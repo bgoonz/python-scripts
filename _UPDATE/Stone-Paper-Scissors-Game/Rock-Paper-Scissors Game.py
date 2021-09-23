@@ -7,8 +7,10 @@ def round(n):
     for i in range(n):
         ip = int(
             input(
-                str(i + 1) +
-                ". Enter a number(1-3) \n1. Stone\t2. Paper\t3. Scissors : "))
+                str(i + 1)
+                + ". Enter a number(1-3) \n1. Stone\t2. Paper\t3. Scissors : "
+            )
+        )
         cp = random.randint(1, 3)
         print(a[cp - 1])
         if ip == cp:
@@ -17,7 +19,7 @@ def round(n):
             pgm += 1
             print("Computer Scored a point")
 
-        elif (ip - 1 == cp or (cp == 3 and ip == 1)):
+        elif ip - 1 == cp or (cp == 3 and ip == 1):
             usr += 1
             print("You Scored a point")
         else:
@@ -29,9 +31,9 @@ def round(n):
 
 a = ["stone", "paper", "scissors"]
 n = int(input("how many turns you want in a round?"))
-while (True):
+while True:
     round(n)
     s = input("Do you want to play again?(Y/N) : ")
-    if s == 'N' or s == 'n':
+    if s == "N" or s == "n":
         break
 print("-----Thank you-----")

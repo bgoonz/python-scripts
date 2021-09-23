@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Jul  6 23:26:25 2020
-
-@author: Avinash Ranjan
-"""
 
 import re
 
@@ -23,12 +18,12 @@ def performMath():
     else:
         equation = input(str(previous))
 
-    if equation == 'quit':
+    if equation == "quit":
         print("GoodBye, Human..!")
         run = False
 
     else:
-        equation = re.sub('[a-zA-Z,:()"{}"]', '', equation)
+        equation = re.sub('[a-zA-Z,:()"{}"]', "", equation)
 
         if previous == 0:
             previous = eval(equation)

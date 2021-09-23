@@ -21,6 +21,6 @@ ench_img = clahe.apply(gray_img)
 
 # And save it into a file
 
-cv2.imwrite('enhanced.jpg', ench_img)
+cv2.imwrite("enhanced.jpg", ench_img)
 
 print("Done!!")

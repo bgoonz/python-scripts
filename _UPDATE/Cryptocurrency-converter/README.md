@@ -1,4 +1,5 @@
 # Cryptocurrency Converter
+
 A simple GUI of a cryptocurrency converter implemented in Python using PyQt. The UI was designed using Qt Creator.
 
 <p align="center">
@@ -12,11 +13,14 @@ PyQt5
 requests
 
 ## Usage
+
 To start converting your cryptocurrency to USD, EUR, or other cryptocurrencies type:
+
 ```bash
 $ virtualenv crypto-env
 $ source crypto-env/bin/activate
 $ pip3 install -r requirements.txt
 $ python CryptoConverter.py
 ```
+
 ENJOY 🤩

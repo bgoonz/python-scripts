@@ -7,7 +7,7 @@ def sql_connection():
     Establishes a connection to the SQL file database
     :return connection object:
     """
-    path = os.path.abspath('PlaystoreDatabase.db')
+    path = os.path.abspath("PlaystoreDatabase.db")
     con = sqlite3.connect(path)
     return con
 
@@ -21,20 +21,22 @@ def sql_fetcher(con):
     query = input("\nEnter query to search: r/")
     count = 0
     cur = con.cursor()
-    cur.execute('SELECT * FROM apps')  # SQL search query
+    cur.execute("SELECT * FROM apps")  # SQL search query
     rows = cur.fetchall()
 
     for r in rows:
         if query in r:
             count += 1
-            print(f'\nURL: {r[1]}\nNAME: {r[2]}\nRATING: {r[3]}\n'
-                  f'REVIEWS: {r[4]}\nINSTALLS: {r[5]}\nVERSION: {r[6]}'
-                  f'\nLASTUPDATE: {r[7]}\nCOMPANY: {r[8]}\nCONTACT: {r[9]}')
+            print(
+                f"\nURL: {r[1]}\nNAME: {r[2]}\nRATING: {r[3]}\n"
+                f"REVIEWS: {r[4]}\nINSTALLS: {r[5]}\nVERSION: {r[6]}"
+                f"\nLASTUPDATE: {r[7]}\nCOMPANY: {r[8]}\nCONTACT: {r[9]}"
+            )
 
     if count:
-        print(f'{count} posts fetched from database\n')
+        print(f"{count} posts fetched from database\n")
     else:
-        print('\nNo posts stored for this query\n')
+        print("\nNo posts stored for this query\n")
 
 
 con = sql_connection()
@@ -42,10 +44,9 @@ con = sql_connection()
 while 1:
     sql_fetcher(con)
 
-    ans = input('\nPress (y) to continue or any other key to exit: ').lower()
-    if ans == 'y':
+    ans = input("\nPress (y) to continue or any other key to exit: ").lower()
+    if ans == "y":
         continue
     else:
-        print('\nExiting..\n')
+        print("\nExiting..\n")
         break
-

@@ -17,8 +17,8 @@ starty = 400
 A = 65
 for i in range(26):
     x = startx + gap * 2 + ((radius * 2 + gap) * (i % 13))
-    y = starty + ((i//13) * (gap + radius * 2))
-    letters.append([x, y, chr(A+i), True])
+    y = starty + ((i // 13) * (gap + radius * 2))
+    letters.append([x, y, chr(A + i), True])
 
 # load images
 images = []
@@ -28,7 +28,7 @@ for i in range(7):
 
 # game variables
 hangman_status = 0
-with open("./Hangman-Game/words.txt", 'r') as f:
+with open("./Hangman-Game/words.txt", "r") as f:
     content = f.read()
 list_of_words = content.split(",")
 word = random.choice(list_of_words).upper()
@@ -41,16 +41,16 @@ BLUE = (180, 219, 251)
 PINK = (232, 90, 202)
 
 # fonts
-LETTER_FONTS = pygame.font.SysFont('comicsans', 40)
-WORD_FONTS = pygame.font.SysFont('comicsans', 60)
-TITLE_FONTS = pygame.font.SysFont('comicsans', 70)
+LETTER_FONTS = pygame.font.SysFont("comicsans", 40)
+WORD_FONTS = pygame.font.SysFont("comicsans", 60)
+TITLE_FONTS = pygame.font.SysFont("comicsans", 70)
 
 
 def draw():
     win.fill(BLUE)
     # draw title
     text = TITLE_FONTS.render("HANGMAN GAME", 1, BLACK)
-    win.blit(text, (WIDTH/2 - text.get_width()/2, 20))
+    win.blit(text, (WIDTH / 2 - text.get_width() / 2, 20))
     # draw word
     display_word = ""
     for i in word:
@@ -67,9 +67,10 @@ def draw():
         if visible:
             pygame.draw.circle(win, BLACK, (x, y), radius, 3)
             text = LETTER_FONTS.render(ltr, 1, BLACK)
-            win.blit(text, (x - text.get_width()/2, y - text.get_height()/2))
+            win.blit(text, (x - text.get_width() / 2, y - text.get_height() / 2))
     win.blit(images[hangman_status], (150, 100))
     pygame.display.update()
+
 
 # win/loose msg printing msg on screen
 
@@ -78,8 +79,9 @@ def display_message(message):
     pygame.time.delay(1000)
     win.fill(PINK)
     text = WORD_FONTS.render(message, 1, BLACK)
-    win.blit(text, (WIDTH/2 - text.get_width() /
-             2, HEIGHT/2 - text.get_height()/2))
+    win.blit(
+        text, (WIDTH / 2 - text.get_width() / 2, HEIGHT / 2 - text.get_height() / 2)
+    )
     pygame.display.update()
     pygame.time.delay(3000)
 
@@ -99,7 +101,7 @@ while run:
             for i in letters:
                 x, y, ltr, visible = i
                 if visible:
-                    dis = math.sqrt((x - m_x)**2 + (y - m_y)**2)
+                    dis = math.sqrt((x - m_x) ** 2 + (y - m_y) ** 2)
                     if dis < radius:
                         i[3] = False
                         guessed.append(ltr)

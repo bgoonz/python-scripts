@@ -5,16 +5,16 @@ def main():
     filepath = input("please input text's filepath->")
     with open(filepath) as f:
         sentences = f.readlines()
-    sentences = ' '.join(sentences)
+    sentences = " ".join(sentences)
 
     summary = summarize_sentences(sentences)
 
-    filepath_index = filepath.find('.txt')
-    outputpath = filepath[:filepath_index] + '_summary.txt'
+    filepath_index = filepath.find(".txt")
+    outputpath = filepath[:filepath_index] + "_summary.txt"
 
-    with open(outputpath, 'w') as w:
+    with open(outputpath, "w") as w:
         for sentence in summary:
-            w.write(str(sentence) + '\n')
+            w.write(str(sentence) + "\n")
 
 
 if __name__ == "__main__":

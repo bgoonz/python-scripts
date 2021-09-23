@@ -6,7 +6,7 @@
 
 - First upload the stocks dataset
 - Then enter the number of days for comparison and also the number of times the volume
-   should increase
+  should increase
 - Then the script will return the stocks of the choice entered by user
 
 ## Select Stocks by volume Increase Instructions: 👨🏻‍💻
@@ -33,8 +33,7 @@
     - yfinance
     - alpha_vantage.timeseries
     - time
-    
-## Author
-   
-   Amit Kumar Mishra
 
+## Author
+
+Amit Kumar Mishra

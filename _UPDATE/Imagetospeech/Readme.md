@@ -5,7 +5,7 @@
 ## Image To Speech Functionalities : 🚀
 
 - The script converts an image to text and speech files
-- At the end the script asks whether to save or delete files 
+- At the end the script asks whether to save or delete files
 
 ## Image To Speech Instructions: 👨🏻‍💻
 
@@ -31,8 +31,7 @@
     - PIL
     - gTTS
     - os
-    
-## Author
-   
-   Amit Kumar Mishra
 
+## Author
+
+Amit Kumar Mishra

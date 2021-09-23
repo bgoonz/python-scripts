@@ -5,6 +5,7 @@ It's a script built with the help of Selenium and Pandas to scrap LinkedIn conne
 # Installation
 
 Make sure you have the following Python libraries:
+
 > pip3 install selenium pandas
 
 The rest should be present as core Python modules.
@@ -14,9 +15,11 @@ Next thing is to place ChromeDriver.exe in the same directory of the script. You
 # Usage
 
 For basic use:
+
 > python scrapper.py -e \<email\> -p \<password\>
 
 For scrapping skills:
+
 > python scrapper.py -e \<email\> -p \<password\> -s
 
 # Furthur Notes
@@ -37,4 +40,3 @@ Using the skills scrapper mode will add the skills of each profile to that colum
 Written by [XZANATOL](https://www.github.com/XZANATOL).
 
 The project was built as a contribution during [GSSOC'21](https://gssoc.girlscript.tech/).
-

@@ -19,9 +19,9 @@ def send_message(receiver, message):
     :param message: Message to be Sent
     :return: Sends the Message
     """
-    message = client.messages.create(from_='whatsapp:+14155238886',
-                                     body=message,
-                                     to=f'whatsapp:{receiver}')
+    message = client.messages.create(
+        from_="whatsapp:+14155238886", body=message, to=f"whatsapp:{receiver}"
+    )
     return message
 
 
@@ -38,13 +38,15 @@ for row in range(len(data_json["regionData"])):
     df.append(data_json["regionData"][row])
 df = pd.DataFrame(df)
 # Sorted top 3 states according to New-Infections
-data = df.sort_values(['newInfected'], ascending=False)[:3]
+data = df.sort_values(["newInfected"], ascending=False)[:3]
 
 # Final Message to be sent
 region_name = data["region"].tolist()
 current_timestamp = str(datetime.now().date())
-messages = f"Last Updated on: {current_timestamp}\n" \
-           f"Top 3 Indian States sorted by Newly registered cases of COVID-19."
+messages = (
+    f"Last Updated on: {current_timestamp}\n"
+    f"Top 3 Indian States sorted by Newly registered cases of COVID-19."
+)
 for regions in region_name:
     each_row = data[data["region"] == regions]
 

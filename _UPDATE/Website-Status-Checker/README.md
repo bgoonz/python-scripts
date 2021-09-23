@@ -1,4 +1,4 @@
-## Website Status Checker 
+## Website Status Checker
 
 This script will check the status of the web address which you will input
 
@@ -12,9 +12,10 @@ This script will check the status of the web address which you will input
 
 - Open the **website_status_checker.py** file i.e run it.
 - To run it, you can open command prompt/shell/terminal in the containing folder and type the following command:
-    ```
-    python website_status_checker.py
-    ```
+  ```
+  python website_status_checker.py
+  ```
+
 ## Output:
 
 The Status Code of the Website

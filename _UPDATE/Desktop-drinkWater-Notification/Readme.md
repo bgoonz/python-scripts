@@ -12,7 +12,9 @@ This python script helps user to drink more water in a day as per her body neede
 6. If you want to run this script in background just type this command `Pythonw main.py`
 
 ## Screenshots
+
 ![Output](output.jpg)
 
 ## Author
+
 Prathamesh Borse [viraldevpb](https://github.com/viraldevpb)

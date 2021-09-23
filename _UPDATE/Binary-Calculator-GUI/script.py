@@ -1,4 +1,5 @@
 from tkinter import *
+
 window = Tk()
 window.title("Standard Binary Calculator")
 window.resizable(0, 0)
@@ -23,16 +24,16 @@ def f4():
     x = 0
     s = e1_val.get()
     for i in range(0, len(s)):
-        if s[i] == '/' or s[i] == 'X' or s[i] == '+' or s[i] == '-':
+        if s[i] == "/" or s[i] == "X" or s[i] == "+" or s[i] == "-":
             a = s[0:i]
-            b = s[i + 1:len(s)]
-            if s[i] == '-':
+            b = s[i + 1 : len(s)]
+            if s[i] == "-":
                 x = sub(int(a), int(b))
-            elif s[i] == '/':
+            elif s[i] == "/":
                 x = int(int(a) / int(b))
-            elif s[i] == 'X':
+            elif s[i] == "X":
                 x = int(int(a) * int(b))
-            elif s[i] == '+':
+            elif s[i] == "+":
                 x = int(add(int(a), int(b)))
 
     e1.delete(first=0, last=len(s))
@@ -45,7 +46,7 @@ def bin_to_dec(n):
     dec_value = 0
     base = 1
     temp = num
-    while (temp):
+    while temp:
         last_digit = temp % 10
         temp = int(temp / 10)
 
@@ -75,17 +76,17 @@ def f5():
     s = e1_val.get()
     flag = 1
     for i in range(0, len(s)):
-        if s[i] == '/' or s[i] == 'X' or s[i] == '+' or s[i] == '-':
+        if s[i] == "/" or s[i] == "X" or s[i] == "+" or s[i] == "-":
             flag = 0
             a = s[0:i]
-            b = s[i + 1:len(s)]
-            if s[i] == '-':
+            b = s[i + 1 : len(s)]
+            if s[i] == "-":
                 x = sub(int(a), int(b))
-            elif s[i] == '/':
+            elif s[i] == "/":
                 x = int(int(a) / int(b))
-            elif s[i] == 'X':
+            elif s[i] == "X":
                 x = int(int(a) * int(b))
-            elif s[i] == '+':
+            elif s[i] == "+":
                 x = int(add(int(a), int(b)))
     if flag == 0:
         e1.delete(first=0, last=len(s))
@@ -98,17 +99,17 @@ def f6():
     s = e1_val.get()
     flag = 1
     for i in range(0, len(s)):
-        if s[i] == '/' or s[i] == 'X' or s[i] == '+' or s[i] == '-':
+        if s[i] == "/" or s[i] == "X" or s[i] == "+" or s[i] == "-":
             flag = 0
             a = s[0:i]
-            b = s[i + 1:len(s)]
-            if s[i] == '-':
+            b = s[i + 1 : len(s)]
+            if s[i] == "-":
                 x = sub(int(a), int(b))
-            elif s[i] == '/':
+            elif s[i] == "/":
                 x = int(int(a) / int(b))
-            elif s[i] == 'X':
+            elif s[i] == "X":
                 x = int(int(a) * int(b))
-            elif s[i] == '+':
+            elif s[i] == "+":
                 x = int(add(int(a), int(b)))
     if flag == 0:
         e1.delete(first=0, last=len(s))
@@ -121,17 +122,17 @@ def f7():
     s = e1_val.get()
     flag = 1
     for i in range(0, len(s)):
-        if s[i] == '/' or s[i] == 'X' or s[i] == '+' or s[i] == '-':
+        if s[i] == "/" or s[i] == "X" or s[i] == "+" or s[i] == "-":
             flag = 0
             a = s[0:i]
-            b = s[i + 1:len(s)]
-            if s[i] == '-':
+            b = s[i + 1 : len(s)]
+            if s[i] == "-":
                 x = sub(int(a), int(b))
-            elif s[i] == '/':
+            elif s[i] == "/":
                 x = int(int(a) / int(b))
-            elif s[i] == 'X':
+            elif s[i] == "X":
                 x = int(int(a) * int(b))
-            elif s[i] == '+':
+            elif s[i] == "+":
                 x = int(add(int(a), int(b)))
     if flag == 0:
         e1.delete(first=0, last=len(s))
@@ -144,17 +145,17 @@ def f8():
     s = e1_val.get()
     flag = 1
     for i in range(0, len(s)):
-        if s[i] == '/' or s[i] == 'X' or s[i] == '+' or s[i] == '-':
+        if s[i] == "/" or s[i] == "X" or s[i] == "+" or s[i] == "-":
             flag = 0
             a = s[0:i]
-            b = s[i + 1:len(s)]
-            if s[i] == '-':
+            b = s[i + 1 : len(s)]
+            if s[i] == "-":
                 x = sub(int(a), int(b))
-            elif s[i] == '/':
+            elif s[i] == "/":
                 x = int(int(a) / int(b))
-            elif s[i] == 'X':
+            elif s[i] == "X":
                 x = int(int(a) * int(b))
-            elif s[i] == '+':
+            elif s[i] == "+":
                 x = int(add(int(a), int(b)))
     if flag == 0:
         e1.delete(first=0, last=len(s))

@@ -2,6 +2,7 @@ import os
 import time
 from os import listdir
 from os.path import isfile, join
+
 print("ENTER THE PATH TO FOLDER")
 path = input()
 files_list = [f for f in listdir(path) if isfile(join(path, f))]

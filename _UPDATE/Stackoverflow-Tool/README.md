@@ -8,4 +8,3 @@ Stack Overflow Error Search Auto Tool
 ## Author(s)
 
 [Muskan Kalra](https://github.com/Muskan0)
-

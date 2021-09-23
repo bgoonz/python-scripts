@@ -7,6 +7,7 @@ The present repo contains a Python script to process signature images, it return
 The Python PIL ([Python Image Library](http://pillow.readthedocs.io/en/latest/)) package with [Python 3](https://www.python.org/downloads/) is used in this repo.
 
 To install PIL via pip:
+
 ```bash
 pip install pillow
 ```
@@ -17,14 +18,14 @@ The main script is [`signature.py`](https://github.com/RodolfoFerro/Signature/bl
 
 ### Done so far
 
-* Binarize your signature
-* Remove background and make it transparent
+- Binarize your signature
+- Remove background and make it transparent
 
 ### TODO
 
-* Smooth image
-* Image orientation
-* Crop to get only signature
+- Smooth image
+- Image orientation
+- Crop to get only signature
 
 ## Usage
 
@@ -53,7 +54,8 @@ $ python signature.py -i imgs/example.jpg -o imgs/result.png -th 190
 
 <img src="https://raw.githubusercontent.com/RodolfoFerro/Signature/master/imgs/RudolfoAnaya.jpg" width="50%"><img src="https://raw.githubusercontent.com/RodolfoFerro/Signature/master/imgs/resultado.png" width="50%">
 
-***
+---
 
 #### Reference to:
+
 <https://github.com/RodolfoFerro/Signature>

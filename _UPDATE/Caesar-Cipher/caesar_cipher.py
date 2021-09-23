@@ -1,12 +1,12 @@
 import string as st
 
 letter_list = st.ascii_lowercase
-alphabet = [letter for letter in letter_list]*2
+alphabet = [letter for letter in letter_list] * 2
 
 
 def caesar(text1, shift1, direction1):
-    end_text = ''
-    if direction == 'decode':
+    end_text = ""
+    if direction == "decode":
         shift1 *= -1
 
     for char in text1:
@@ -16,7 +16,7 @@ def caesar(text1, shift1, direction1):
             end_text += alphabet[new_position]
         else:
             end_text += char
-    print(f'The {direction1}d text is: {end_text}.')
+    print(f"The {direction1}d text is: {end_text}.")
 
 
 should_continue = True
@@ -28,5 +28,5 @@ while should_continue:
 
     caesar(text, shift, direction)
     choice = input("Type 'yes' to continue otherwise type 'no'.\n")
-    if choice == 'no':
+    if choice == "no":
         should_continue = False

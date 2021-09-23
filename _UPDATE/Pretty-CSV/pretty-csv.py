@@ -6,7 +6,7 @@ from typing import Iterable, List
 
 def main():
     content_lines = sys.stdin.buffer.readlines()
-    reader = csv.reader(line.decode('utf-8') for line in content_lines)
+    reader = csv.reader(line.decode("utf-8") for line in content_lines)
     headers = next(reader)
     print(create_table(reader, headers))
 
@@ -28,14 +28,14 @@ def create_table(rows: Iterable[List[str]], headers: List[str]) -> str:
         for i, text in enumerate(row):
             column_length = column_lengths[i]
             row_text.append(space_pad(text, column_length))
-        result.append('    '.join(row_text))
-    return '\n'.join(result)
+        result.append("    ".join(row_text))
+    return "\n".join(result)
 
 
 def space_pad(text: str, length: int) -> str:
-    temp = text + ''.join(' ' for _ in range(length))
+    temp = text + "".join(" " for _ in range(length))
     return temp[:length]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

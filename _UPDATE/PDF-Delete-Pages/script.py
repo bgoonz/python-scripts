@@ -24,9 +24,7 @@ def delete(path, del_page):
     writer = PdfWriter()
 
     # Adding only those pages that we need to this list excluding del_page
-    page_list = [
-        page for page in range(1, total_pages + 1) if page not in del_page
-    ]
+    page_list = [page for page in range(1, total_pages + 1) if page not in del_page]
 
     # Index of pdf_obj.pages starts from 0.
     for page in page_list:
@@ -39,8 +37,9 @@ def delete(path, del_page):
 
 
 path = input("enter the path(full or relative) of the pdf file:")
-del_page = input(
-    "Enter the pages to be deleted seperated by comma(,):").strip().split(",")
+del_page = (
+    input("Enter the pages to be deleted seperated by comma(,):").strip().split(",")
+)
 del_page = [int(i) for i in del_page]
 delete(path, del_page)
 print("\n\t pages", *del_page, "have been deleted successfully!!!")

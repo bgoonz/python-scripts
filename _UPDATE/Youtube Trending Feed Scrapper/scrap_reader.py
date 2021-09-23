@@ -17,10 +17,20 @@ usage = """
 
 # Load args
 parser = OptionParser()
-parser.add_option("-c", "--csv", action="store_true", dest="csv",
-                  help="Saves extracted contents to a CSV file.")
-parser.add_option("-m", "--mongo", action="store_true",
-                  dest="mongo", help="Saves extracted contents to a MongoDB.")
+parser.add_option(
+    "-c",
+    "--csv",
+    action="store_true",
+    dest="csv",
+    help="Saves extracted contents to a CSV file.",
+)
+parser.add_option(
+    "-m",
+    "--mongo",
+    action="store_true",
+    dest="mongo",
+    help="Saves extracted contents to a MongoDB.",
+)
 
 
 def read_mongo():
@@ -54,7 +64,7 @@ def display(data):
                 sys.exit()  # If had enough of reading
         i += 1  # Increament
         print("Title:", card["title"])
-        print("Link:",  card["link"])
+        print("Link:", card["link"])
         print("Channel:", card["channel"])
         print("Views:", card["views"])
         print("Time:", card["date"])

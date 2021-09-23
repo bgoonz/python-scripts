@@ -1,5 +1,6 @@
 # import datetime library in python
 from datetime import datetime
+
 # Saves a .txt file with file name
 # as 2020-01-11-10-20-23.txt  at current time indicated by now function of datetime library
 with open(datetime.now().strftime("%Y-%m-%d-%H-%M-%S"), "w") as myfile:

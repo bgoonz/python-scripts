@@ -78,7 +78,10 @@ class Spot:
     def update_neighbour(self, grid):
         self.neighbours = []
         # down
-        if self.row < self.total_rows - 1 and not grid[self.row + 1][self.col].is_barrier():
+        if (
+            self.row < self.total_rows - 1
+            and not grid[self.row + 1][self.col].is_barrier()
+        ):
             self.neighbours.append(grid[self.row + 1][self.col])
 
         # up
@@ -86,7 +89,10 @@ class Spot:
             self.neighbours.append(grid[self.row - 1][self.col])
 
         # right
-        if self.col < self.total_rows - 1 and not grid[self.row][self.col + 1].is_barrier():
+        if (
+            self.col < self.total_rows - 1
+            and not grid[self.row][self.col + 1].is_barrier()
+        ):
             self.neighbours.append(grid[self.row][self.col + 1])
 
         # left
@@ -141,8 +147,9 @@ def algorithm(draw, grid, start, end):
             if temp_g_score < g_score[neighbour]:
                 came_from[neighbour] = current
                 g_score[neighbour] = temp_g_score
-                f_score[neighbour] = temp_g_score + \
-                    h(neighbour.get_pos(), end.get_pos())
+                f_score[neighbour] = temp_g_score + h(
+                    neighbour.get_pos(), end.get_pos()
+                )
                 if neighbour not in open_set_hash:
                     count += 1
                     open_set.put((f_score[neighbour], count, neighbour))
@@ -171,9 +178,9 @@ def make_grid(rows, width):
 def draw_grid(win, rows, width):
     gap = width // rows
     for i in range(rows):
-        pg.draw.line(win, GREY, (0, i*gap), (width, i*gap))
+        pg.draw.line(win, GREY, (0, i * gap), (width, i * gap))
         for j in range(rows):
-            pg.draw.line(win, GREY, (j*gap, 0), (j*gap, width))
+            pg.draw.line(win, GREY, (j * gap, 0), (j * gap, width))
 
 
 def draw(win, grid, rows, width):
@@ -212,7 +219,7 @@ def main(win, width):
             if event.type == pg.QUIT:
                 run = False
 
-            if pg.mouse.get_pressed()[0]:       # left mouse button
+            if pg.mouse.get_pressed()[0]:  # left mouse button
                 pos = pg.mouse.get_pos()
                 row, col = get_clicked_pos(pos, ROWS, width)
                 spot = grid[row][col]
@@ -227,7 +234,7 @@ def main(win, width):
                 elif spot != end and spot != start:
                     spot.make_barrier()
 
-            elif pg.mouse.get_pressed()[2]:     # right mouse button
+            elif pg.mouse.get_pressed()[2]:  # right mouse button
                 pos = pg.mouse.get_pos()
                 row, col = get_clicked_pos(pos, ROWS, width)
                 spot = grid[row][col]
@@ -243,8 +250,7 @@ def main(win, width):
                         for spot in row:
                             spot.update_neighbour(grid)
 
-                    algorithm(lambda: draw(win, grid, ROWS, width),
-                              grid, start, end)
+                    algorithm(lambda: draw(win, grid, ROWS, width), grid, start, end)
 
                 if event.key == pg.K_c:
                     start = None

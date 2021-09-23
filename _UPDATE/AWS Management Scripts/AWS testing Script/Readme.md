@@ -5,6 +5,7 @@ This python script automatically generates a set of EC2 machine's with any demo 
 ## Installation
 
 First of all install [python]("https://www.python.org/downloads/") on your system.
+
 ```bash
 pip install moto
 pip install boto3
@@ -25,5 +26,3 @@ You can find me at:-
 [Linkedin](https://www.linkedin.com/in/shantam-sultania-737084175/) or [Github](https://github.com/shantamsultania) .
 
 Happy coding ❤️ .
-
-

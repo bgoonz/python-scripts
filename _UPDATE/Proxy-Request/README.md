@@ -1,6 +1,5 @@
 # Web proxy request application using Python
 
-
 A quick, reliable and random Web Proxy request application using Python.
 
 ## 3rd party libraries used

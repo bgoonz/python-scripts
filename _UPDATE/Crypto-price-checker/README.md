@@ -32,7 +32,6 @@ The top-100 cryptocurrencies are displayed along with some data about their perf
 
 ![Screenshot of the GUI](https://i.postimg.cc/25TbtvJL/crypto.png)
 
-
 ## Author
 
 [Ayush Jain](https://github.com/Ayushjain2205)

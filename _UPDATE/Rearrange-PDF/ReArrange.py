@@ -26,8 +26,8 @@ def input_and_parse(n):
     # store the input in a list and then convert the input string into
     # using map function to convert the data in lists into int values
     lst = list(
-        map(lambda x: [int(x[0]), int(x[1])],
-            [input().split(',') for _ in range(n)]))
+        map(lambda x: [int(x[0]), int(x[1])], [input().split(",") for _ in range(n)])
+    )
     # Swapping the position of the lst values to better parse it in dictionary
     lst = [[x[1], x[0]] for x in lst]
     lst.sort(key=lambda x: x[0])

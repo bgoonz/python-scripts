@@ -20,8 +20,9 @@ import numpy as np
 import cv2 as cv
 import csv
 import random
-PATH = '/content/Dataset'
-TESTING_PATH = '/content/Dataset/Test'
+
+PATH = "/content/Dataset"
+TESTING_PATH = "/content/Dataset/Test"
 
 # Minimal number of samples for each class for data augmentation
 MIN_IMGS_IN_CLASS = 500
@@ -39,26 +40,26 @@ images = []
 labels = []
 
 # loop over all 43 classes
-gtFile = open(PATH + '/Train.csv')
-gtReader = csv.reader(gtFile, delimiter=',')  # csv parser for annotations file
+gtFile = open(PATH + "/Train.csv")
+gtReader = csv.reader(gtFile, delimiter=",")  # csv parser for annotations file
 next(gtReader)
 
 # loop over all images in current annotations file
 for row in gtReader:
-    img = cv.imread(PATH + '/' + row[7])
+    img = cv.imread(PATH + "/" + row[7])
     images.append(cv.resize(img, (28, 28)))
     labels.append(row[6])  # the 6th column is the label
 gtFile.close()
 
-print('Number of loaded images: ' + str(len(images)))
-print('Number of loaded labels: ' + str(len(labels)))
+print("Number of loaded images: " + str(len(images)))
+print("Number of loaded labels: " + str(len(labels)))
 
 train_X = np.asarray(images)
 train_X = train_X / 255
 train_X = np.asarray(train_X, dtype="float32")
 train_Y = np.asarray(labels, dtype="float32")
 
-print('Shape of training array: ' + str(train_X.shape))
+print("Shape of training array: " + str(train_X.shape))
 
 
 def count_images_in_classes(lbls):
@@ -86,7 +87,7 @@ def distribution_diagram(dct):
     :param dct: Dictionary of labels and count
     :return: Histogram
     """
-    plt.bar(range(len(dct)), list(dct.values()), align='center')
+    plt.bar(range(len(dct)), list(dct.values()), align="center")
     plt.xticks(range(len(dct)), list(dct.keys()), rotation=90, fontsize=7)
     plt.show()
 
@@ -104,8 +105,8 @@ def preview(images, labels):
     for c in range(len(np.unique(labels))):
         i = random.choice(np.where(labels == c)[0])
         plt.subplot(10, 10, c + 1)
-        plt.axis('off')
-        plt.title('class: {}'.format(c))
+        plt.axis("off")
+        plt.title("class: {}".format(c))
         plt.imshow(images[i])
 
 
@@ -119,24 +120,20 @@ def augment_imgs(imgs, p, imgaug=None):
     :param p: Probability for augmentation
     """
     from imgaug import augmenters as iaa
+
     augs = iaa.SomeOf(
         (2, 4),
         [
             # crop images from each side by 0 to 4px (randomly chosen)
             iaa.Crop(px=(0, 4)),
-            iaa.Affine(scale={
-                "x": (0.8, 1.2),
-                "y": (0.8, 1.2)
-            }),
-            iaa.Affine(translate_percent={
-                "x": (-0.2, 0.2),
-                "y": (-0.2, 0.2)
-            }),
+            iaa.Affine(scale={"x": (0.8, 1.2), "y": (0.8, 1.2)}),
+            iaa.Affine(translate_percent={"x": (-0.2, 0.2), "y": (-0.2, 0.2)}),
             # rotate by -45 to +45 degrees)
             iaa.Affine(rotate=(-45, 45)),
             # shear by -10 to +10 degrees
-            iaa.Affine(shear=(-10, 10))
-        ])
+            iaa.Affine(shear=(-10, 10)),
+        ],
+    )
 
     seq = iaa.Sequential([iaa.Sometimes(p, augs)])
     res = seq.augment_images(imgs)
@@ -243,21 +240,21 @@ if SET_DECAY:
     opt = Adam(lr=INIT_LR, decay=INIT_LR / (EPOCHS * 0.5))
 else:
     opt = Adam(lr=INIT_LR)
-model.compile(loss="sparse_categorical_crossentropy",
-              optimizer=opt,
-              metrics=["accuracy"])
+model.compile(
+    loss="sparse_categorical_crossentropy", optimizer=opt, metrics=["accuracy"]
+)
 
 test_images = []
 test_labels = []
-test = '/content/Dataset'
+test = "/content/Dataset"
 # loop over all 43 classes
-gtFile = open('/content/Dataset/Test.csv')  # annotations file
-gtReader = csv.reader(gtFile, delimiter=',')  # csv parser for annotations file
+gtFile = open("/content/Dataset/Test.csv")  # annotations file
+gtReader = csv.reader(gtFile, delimiter=",")  # csv parser for annotations file
 next(gtReader)
 
 # loop over all images in current annotations file
 for row in gtReader:
-    img = cv.imread(PATH + '/' + row[7])
+    img = cv.imread(PATH + "/" + row[7])
     test_images.append(cv.resize(img, (28, 28)))
     test_labels.append(row[6])
 gtFile.close()
@@ -277,7 +274,7 @@ print(train_Y.shape)
 train_Y_ext = np.expand_dims(train_Y, axis=1)
 print(train_Y_ext.shape)
 
-with tf.device('/device:GPU:0'):
+with tf.device("/device:GPU:0"):
     os.mkdir("models_Xception")
     for i in range(EPOCHS):
         model.save("models_Xception/model_" + str(i) + ".h5")
@@ -285,4 +282,4 @@ with tf.device('/device:GPU:0'):
 
 print(model.summary())
 
-model.save_weights('model_final.h5')
+model.save_weights("model_final.h5")

@@ -35,8 +35,7 @@
 ### Requirements
 
     - twilio
-    
-## Author
-   
-   Amit Kumar Mishra
 
+## Author
+
+Amit Kumar Mishra

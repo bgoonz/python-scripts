@@ -32,5 +32,5 @@
     - PIL
 
 ## Author
-   
-   Amit Kumar Mishra
+
+Amit Kumar Mishra

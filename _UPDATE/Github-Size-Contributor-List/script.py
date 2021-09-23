@@ -15,9 +15,12 @@ def main(args):
         list_of_contributors.append(x.get("login"))
 
     with open("output.txt", "w") as text:
-        text.write(response_text + "\n" +
-                   "List of contributors is as follows: " +
-                   str(list_of_contributors))
+        text.write(
+            response_text
+            + "\n"
+            + "List of contributors is as follows: "
+            + str(list_of_contributors)
+        )
 
 
 parser = argparse.ArgumentParser(

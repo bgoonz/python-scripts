@@ -8,27 +8,27 @@ from sklearn.ensemble import RandomForestClassifier
 import pickle
 import warnings
 import re
+
 warnings.filterwarnings("ignore")
 
 # reading the dataset
-msg = pd.read_csv(
-    "./Message_Spam_Detection/Cleaned_Dataset.csv", encoding='latin-1')
-msg.drop(['Unnamed: 0'], axis=1, inplace=True)
+msg = pd.read_csv("./Message_Spam_Detection/Cleaned_Dataset.csv", encoding="latin-1")
+msg.drop(["Unnamed: 0"], axis=1, inplace=True)
 
 # seperating target and features
 y = pd.DataFrame(msg.label)
-x = msg.drop(['label'], axis=1)
+x = msg.drop(["label"], axis=1)
 
 # countvectorization
 cv = CountVectorizer(max_features=5000)
-temp1 = cv.fit_transform(x['final_text'].values.astype('U')).toarray()
+temp1 = cv.fit_transform(x["final_text"].values.astype("U")).toarray()
 tf = TfidfTransformer()
 temp1 = tf.fit_transform(temp1)
 temp1 = pd.DataFrame(temp1.toarray(), index=x.index)
 x = pd.concat([x, temp1], axis=1, sort=False)
 
 # drop final_text col
-x.drop(['final_text'], axis=1, inplace=True)
+x.drop(["final_text"], axis=1, inplace=True)
 
 # converting to int datatype
 y = y.astype(int)
@@ -41,11 +41,11 @@ model.fit(x, y)
 text = input("Enter text: ")
 
 # data cleaning/preprocessing - removing punctuation and digits
-updated_text = ''
+updated_text = ""
 for i in range(len(text)):
     if text[i] not in string.punctuation:
         if text[i].isdigit() == False:
-            updated_text = updated_text+text[i]
+            updated_text = updated_text + text[i]
 text = updated_text
 
 # data clearning/preprocessing - tokenization and convert to lower case
@@ -53,7 +53,7 @@ text = re.split("\W+", text.lower())
 
 # data cleaning/preprocessing - stopwords
 updated_list = []
-stopwords = nltk.corpus.stopwords.words('english')
+stopwords = nltk.corpus.stopwords.words("english")
 for i in range(len(text)):
     if text[i] not in stopwords:
         updated_list.append(text[i])

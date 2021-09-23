@@ -7,26 +7,27 @@ import re
 
 
 def check_syntax(email):
-    regex = r'^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
-    if(re.search(regex, email)):
+    regex = r"^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$"
+    if re.search(regex, email):
         print("Check 1 (Syntax) Passed")
     else:
         print("Check 1 FAILED! Bad Syntax, Invalid Email!")
         exit()
+
 
 # SECOND CHECK
 
 
 def check_dns(email, domain):
     try:
-        records = resolver.resolve(domain, 'MX')
+        records = resolver.resolve(domain, "MX")
         mxRecord = str(records[0].exchange)
-        print("Check 2 (DNS -", mxRecord+") Passed")
+        print("Check 2 (DNS -", mxRecord + ") Passed")
         return mxRecord
     except:
-        print("Check 2 FAILED! The domain", domain,
-              "does not exist, Invalid Email!")
+        print("Check 2 FAILED! The domain", domain, "does not exist, Invalid Email!")
         exit()
+
 
 # THIRD CHECK
 
@@ -52,11 +53,17 @@ def check_response(email, domain, mxRecord):
             print("Check 3 (SMTP response) Passed")
             print(email, "is a VALID email address!")
         else:
-            print("Check 3 FAILED! The user", email.split(
-                "@")[0], "does not exist, Invalid Email!")
+            print(
+                "Check 3 FAILED! The user",
+                email.split("@")[0],
+                "does not exist, Invalid Email!",
+            )
     except socket.error as socketerror:
-        print("Check 3 HALTED! The domain", domain,
-              ", either does not have an SMTP or have restricted access through external scripts")
+        print(
+            "Check 3 HALTED! The domain",
+            domain,
+            ", either does not have an SMTP or have restricted access through external scripts",
+        )
 
 
 email = input("Enter your Email id :")

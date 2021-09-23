@@ -5,6 +5,7 @@ We will first look into hand tracking and then we will use the hand landmarks to
 A system which detects a human hand, segments the hand, counts the number of fingers being held up and displays the finger count, from a live video input.
 
 ## Dependencies
+
 - OpenCV
 - Mediapipe
 
@@ -66,7 +67,7 @@ Now the first thing, we will turn on our webcam so here we will write `cap = cv2
 
 <br>
 
-Then we have to write our while loop, inside that at the end we have to give it a delay so `cv2.waitKey(1)` this will give it a one millisecond delay so that we can see our images. 
+Then we have to write our while loop, inside that at the end we have to give it a delay so `cv2.waitKey(1)` this will give it a one millisecond delay so that we can see our images.
 
 <br>
 

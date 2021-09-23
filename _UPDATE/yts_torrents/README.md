@@ -4,25 +4,25 @@ Download all torrents from yts.am (yify movies). Uses yify api.
 
 ## Usage
 
--   Create a virtualenv:
+- Create a virtualenv:
 
 ```
 python3 -m venv venv
 ```
 
--   Activate it on Linux:
+- Activate it on Linux:
 
 ```
 . venv/bin/activate
 ```
 
--   Or on Windows cmd:
+- Or on Windows cmd:
 
 ```
 venv\Scripts\activate.bat
 ```
 
--   Install requirements
+- Install requirements
 
 ```
 pip install -r requirements

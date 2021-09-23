@@ -8,5 +8,5 @@ for i in range(n):
     st = ""
     st += page.getPage(i).extractText()
 
-    with open(f'./PDF2Text/text{i}.txt', 'w') as f:
+    with open(f"./PDF2Text/text{i}.txt", "w") as f:
         f.write(st)

@@ -2,6 +2,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 import nltk
 import pandas as pd  # pandas is a library where your data can be stored, analyzed and processed in row and column representation
 from openpyxl import Workbook
+
 sentences = input("Enter your sentences: ")
 # eg. My name is sanya. I am caring and loving. I am generous.
 # converting to lower case (normalization)
@@ -32,4 +33,4 @@ print("BOW ", bow)
 cv_dataframe = pd.DataFrame(bow, columns=countVectorizer.get_feature_names())
 
 print("cv_dataframe is below\n", cv_dataframe)
-cv_dataframe.to_excel('./Bag of words model/bowp.xlsx', sheet_name='data')
+cv_dataframe.to_excel("./Bag of words model/bowp.xlsx", sheet_name="data")

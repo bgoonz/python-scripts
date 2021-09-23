@@ -9,14 +9,14 @@ class InstaBot:
 
     # Initializes bot
     def __init__(self):
-        self.username = input('Enter your username:')
-        self.pw = getpass('Enter your password(will NOT appear as you type):')
+        self.username = input("Enter your username:")
+        self.pw = getpass("Enter your password(will NOT appear as you type):")
         self.PATH = r"C:\Program Files (x86)\chromedriver.exe"
         self.driver = webdriver.Chrome(self.PATH)
 
     # Starts Instagram
     def start(self):
-        self.driver.get('https://www.instagram.com/')
+        self.driver.get("https://www.instagram.com/")
         time.sleep(2)
         return
 
@@ -25,21 +25,26 @@ class InstaBot:
     def login(self):
 
         user_field = self.driver.find_element_by_xpath(
-            '//*[@id="loginForm"]/div/div[1]/div/label/input')
+            '//*[@id="loginForm"]/div/div[1]/div/label/input'
+        )
         pw_field = self.driver.find_element_by_xpath(
-            '//*[@id="loginForm"]/div/div[2]/div/label/input')
+            '//*[@id="loginForm"]/div/div[2]/div/label/input'
+        )
         login_button = self.driver.find_element_by_xpath(
-            '//*[@id="loginForm"]/div/div[3]/button/div')
+            '//*[@id="loginForm"]/div/div[3]/button/div'
+        )
         user_field.send_keys(self.username)
         pw_field.send_keys(self.pw)
         login_button.click()
         time.sleep(2.5)
         not_now1 = self.driver.find_element_by_xpath(
-            '//*[@id="react-root"]/section/main/div/div/div/div/button')
+            '//*[@id="react-root"]/section/main/div/div/div/div/button'
+        )
         not_now1.click()
         time.sleep(2)
         not_now2 = self.driver.find_element_by_xpath(
-            '/html/body/div[4]/div/div/div/div[3]/button[2]')
+            "/html/body/div[4]/div/div/div/div[3]/button[2]"
+        )
         not_now2.click()
         time.sleep(1)
         return
@@ -48,7 +53,8 @@ class InstaBot:
     def open_profile(self):
         profile_link = self.driver.find_element_by_xpath(
             '//*[@id="react-root"]/section/main/section/div[3]'
-            '/div[1]/div/div[2]/div[1]/a')
+            "/div[1]/div/div[2]/div[1]/a"
+        )
         profile_link.click()
         time.sleep(2)
         return
@@ -56,26 +62,28 @@ class InstaBot:
     # Opens the list of the people you follow
     def open_following(self):
         following_link = self.driver.find_element_by_xpath(
-            '/html/body/div[1]/section/main/div/header/section/ul/li[3]/a')
+            "/html/body/div[1]/section/main/div/header/section/ul/li[3]/a"
+        )
         following_link.click()
         return
 
     # Gets the list of the people you follow
     def get_following(self):
-        xpath = '/html/body/div[4]/div/div/div[2]'
+        xpath = "/html/body/div[4]/div/div/div[2]"
         self.following = self.scroll_list(xpath)
         return
 
     # Opens the link to 'Followers'
     def open_followers(self):
         followers_link = self.driver.find_element_by_xpath(
-            '//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a')
+            '//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a'
+        )
         followers_link.click()
         return
 
     # Gets the list of followers
     def get_followers(self):
-        xpath = '/html/body/div[4]/div/div/div[2]'
+        xpath = "/html/body/div[4]/div/div/div[2]"
         self.followers = self.scroll_list(xpath)
         return
 
@@ -94,15 +102,18 @@ class InstaBot:
                 """
                 arguments[0].scrollTo(0, arguments[0].scrollHeight);
                 return arguments[0].scrollHeight;
-                """, scroll_box)
+                """,
+                scroll_box,
+            )
 
         # Gets the list of accounts
-        links = scroll_box.find_elements_by_tag_name('a')
-        names = [name.text for name in links if name.text != '']
+        links = scroll_box.find_elements_by_tag_name("a")
+        names = [name.text for name in links if name.text != ""]
 
         # Closes the box
         close_btn = self.driver.find_element_by_xpath(
-            '/html/body/div[4]/div/div/div[1]/div/div[2]/button/div')
+            "/html/body/div[4]/div/div/div[1]/div/div[2]/button/div"
+        )
         close_btn.click()
 
         return names
@@ -111,9 +122,7 @@ class InstaBot:
     # terminal
     def get_unfollowers(self):
 
-        self.unfollowers = [
-            x for x in self.following if x not in self.followers
-        ]
+        self.unfollowers = [x for x in self.following if x not in self.followers]
         for name in self.unfollowers:
             print(name)
         return
@@ -145,5 +154,5 @@ def main():
     bb8.close()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

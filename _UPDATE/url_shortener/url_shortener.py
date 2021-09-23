@@ -22,6 +22,7 @@ API_URL = "https://www.shorturl.at/shortener.php"
 API_PARAM = "u"
 # Creadit => www.shorturl.at
 
+
 class API:
     """A class for managing the API results."""
 
@@ -43,7 +44,7 @@ class API:
         prarams = {API_PARAM: self.__long_url}
 
         try:
-            result = requests.post(API_URL, data = prarams)
+            result = requests.post(API_URL, data=prarams)
         except ConnectionError as err:
             return -1, err
 
@@ -58,7 +59,7 @@ class API:
         # Response sample =>
         # <input id="shortenurl" onclick="this.select();" type="text" value="shorturl.at/SOME_CODE"/>
 
-        soup = BeautifulSoup(html_page, 'html.parser')
+        soup = BeautifulSoup(html_page, "html.parser")
         input_tag = soup.find("input", attrs={"id": "shortenurl"})
 
         try:
@@ -67,23 +68,28 @@ class API:
         except:
             return -1
 
+
 def main():
     """The main function of the program."""
 
-    if args.url == '' or args.url is None:
+    if args.url == "" or args.url is None:
         args.url = input("Enter the url> ")
 
     api_manager = API()
 
     api_manager.set_url(args.url)
-    response_stauts, result = api_manager.request_short_url() # Sends the request to the API
+    response_stauts, result = (
+        api_manager.request_short_url()
+    )  # Sends the request to the API
 
     if response_stauts == -1:
         # Can't connect to the API
 
         print(f"[{RED_COLOR}-{NO_COLOR}] Error in connecting to the API server...")
-        ans = input("Do you want to know the error? [Y/n] ") # For more information about thr error
-        if ans.lower() != 'n':
+        ans = input(
+            "Do you want to know the error? [Y/n] "
+        )  # For more information about thr error
+        if ans.lower() != "n":
             print(result)
 
         sys.exit(1)
@@ -103,19 +109,15 @@ def main():
     sys.exit(0)
     return
 
-if __name__ == '__main__':
-    global args # The program arguments
+
+if __name__ == "__main__":
+    global args  # The program arguments
 
     parser = argparse.ArgumentParser(description="URL Shortener")
 
     # -u | --url URL
     parser.add_argument(
-        '-u',
-        '--url',
-        metavar='url',
-        type=str,
-        default='',
-        help='the URL'
+        "-u", "--url", metavar="url", type=str, default="", help="the URL"
     )
 
     args = parser.parse_args()

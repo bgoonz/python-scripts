@@ -41,10 +41,10 @@ print("\n\n")
 # assigning a variable named current Path of current working directory just for simplicity.
 # could have used input_path too
 current = Path(os.getcwd())
-'''
+"""
 When this script would run the structure of the current directory would change.Hence,
 we are assigning list_dir variable the files and dirs in current working directory which the script would modify
-'''
+"""
 list_dir = os.listdir(current)
 
 # keys of dic are extensions of the file
@@ -53,9 +53,7 @@ for key in dic:
     try:
         os.mkdir(key)
     except:
-        print(
-            f"directory named {key} already exists so it won't be overwrited \n"
-        )
+        print(f"directory named {key} already exists so it won't be overwrited \n")
 
     # goes through the files in list_dir
     # we are not using os.listdir() as the directory structure will change during the execution
@@ -64,8 +62,9 @@ for key in dic:
             # prints absolute path of the file
             print(os.path.abspath(file))
             # Renames the path of the file or moves the file in to the newly created directory
-            Path.rename(Path(os.path.abspath(file)),
-                        current / Path("./{}/".format(key) + file))
+            Path.rename(
+                Path(os.path.abspath(file)), current / Path("./{}/".format(key) + file)
+            )
 
 # This block just prints a note and the current structure of the directory
 

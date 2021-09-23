@@ -20,6 +20,5 @@ data_total = data_read_2.merge(data_read_1, on=reference)
 # print​(df_total)
 criteria_1 = input("Enter criteria 1")
 criteria_2 = input("Enter criteria 2")
-fig = px.pie(data_total[[criteria_1, criteria_2]],
-             values=criteria_2, names=criteria_1)
+fig = px.pie(data_total[[criteria_1, criteria_2]], values=criteria_2, names=criteria_1)
 fig.show()

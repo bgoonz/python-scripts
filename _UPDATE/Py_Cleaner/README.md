@@ -2,7 +2,6 @@
 
 Tool to organize Directories
 
-
 ### Installations and Dependencies
 
 -> [Python](https://python.org) Installed

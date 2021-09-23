@@ -15,8 +15,6 @@ Just follow some instructions for directions, and you can end up with a new art.
 
 ![img](sketch.png)
 
-
 ## Author(s)
 
 [Anushka Pathak](https://github.com/anumshka)
-

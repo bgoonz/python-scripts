@@ -4,8 +4,7 @@ api = input("Enter your ACCOUNT SID: ")
 auth = input("Enter your AUTH TOKEN: ")
 from_number = input("Enter number from which you want to send the SMS: ")
 message = input("Enter the massage: ")
-to_number = input(
-    "Enter comma separated numbers to which you want to send the SMS: ")
+to_number = input("Enter comma separated numbers to which you want to send the SMS: ")
 lists = to_number.split(",")
 groupnum = []
 for i in lists:

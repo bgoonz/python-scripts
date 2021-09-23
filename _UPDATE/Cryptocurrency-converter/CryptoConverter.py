@@ -12,13 +12,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.show()
         # Vars
-        self.new_label = '0'
-        self.cur1 = 'BTC'
-        self.cur2 = 'USD'
-        self.result = ''
+        self.new_label = "0"
+        self.cur1 = "BTC"
+        self.cur2 = "USD"
+        self.result = ""
         # Connect buttons
         for n in range(0, 10):
-            getattr(self, 'pushButton_n%s' % n).clicked.connect(self.digit_pressed)
+            getattr(self, "pushButton_n%s" % n).clicked.connect(self.digit_pressed)
         self.pushButton_n10.clicked.connect(self.decimal_point)
         self.pushButton_del.clicked.connect(self.del_digit)
         self.pushButton_convert.clicked.connect(self.convert_fun)
@@ -28,16 +28,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def digit_pressed(self):
         button = self.sender()
         self.new_label = self.label_1.text() + button.text()
-        if '.' in self.new_label:
+        if "." in self.new_label:
             self.label_1.setText(str(self.new_label))
         else:
             self.label_1.setText(str(int(self.new_label)))
 
     def decimal_point(self):
-        if '.' in self.label_1.text():
+        if "." in self.label_1.text():
             pass
         else:
-            self.label_1.setText(self.label_1.text() + '.')
+            self.label_1.setText(self.label_1.text() + ".")
 
     def del_digit(self):
         self.new_label = self.new_label[:-1]
@@ -50,10 +50,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def currencies2(self, item2):
         self.cur2 = item2
         # print(self.cur2)
-        
+
     # Live data from API
     def api(self, cur1, cur2):
-        api_link = "https://min-api.cryptocompare.com/data/pricemulti?fsyms={}&tsyms={}".format(cur1, cur2)
+        api_link = "https://min-api.cryptocompare.com/data/pricemulti?fsyms={}&tsyms={}".format(
+            cur1, cur2
+        )
         resp = requests.get(api_link)
         # print(r.status_code)
         data = json.loads(resp.content)
@@ -64,9 +66,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def convert_fun(self):
         try:
             if len(self.new_label) == 0:
-                self.label_1.setText('0')
-                self.label_2.setText('0')
-            if '.' in self.new_label:
+                self.label_1.setText("0")
+                self.label_2.setText("0")
+            if "." in self.new_label:
                 self.result = float(self.new_label) * self.api(self.cur1, self.cur2)
                 self.result = round(self.result, 2)
                 self.label_2.setText(str(self.result))
@@ -77,10 +79,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         except (KeyError, ValueError):
             pass
         except requests.exceptions.ConnectionError:
-            print('Please verify your internet connection!')
+            print("Please verify your internet connection!")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = QApplication([])
     app.setApplicationName("CryptoConverter")
     window = MainWindow()

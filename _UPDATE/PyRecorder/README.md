@@ -8,4 +8,4 @@
 
 ![image](https://github.com/jainrocky/screen_recorder/blob/master/stop_preview.PNG)
 
-* [Download](https://github.com/jainrocky/screen_recorder/blob/master/dist/PyRecorder.exe) Executable File
+- [Download](https://github.com/jainrocky/screen_recorder/blob/master/dist/PyRecorder.exe) Executable File

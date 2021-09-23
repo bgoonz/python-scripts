@@ -5,6 +5,7 @@ This python script automatically generates certificate by using a certificate te
 ## Installation
 
 First of all install [python]("https://www.python.org/downloads/") on your system.
+
 ```bash
 pip install PI
 pip install Pandas
@@ -12,6 +13,7 @@ pip install pillow
 ```
 
 ## Procedure
+
 Go to this [Reference]("https://youtu.be/Arrni3wgb0I") and follow it.
 
 ## Template
@@ -24,5 +26,4 @@ Go to this [Reference]("https://youtu.be/Arrni3wgb0I") and follow it.
 
 ![](https://i.postimg.cc/5tQpywXk/John-Doe.png)
 
-![](
-https://i.postimg.cc/sXFmhvSf/Ramesh-Kumar.png)
+![](https://i.postimg.cc/sXFmhvSf/Ramesh-Kumar.png)

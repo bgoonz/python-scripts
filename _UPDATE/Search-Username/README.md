@@ -1,6 +1,6 @@
 # Search_Username
 
-This script of code, using `request` module, will  help to determine weather, a username exists on a platform or not.
+This script of code, using `request` module, will help to determine weather, a username exists on a platform or not.
 
 ## Setup
 
@@ -29,7 +29,7 @@ optional arguments:
 
 ## Sample Usage and Output
 
-On the command line interface, use the following command 
+On the command line interface, use the following command
 
 ```bash
 $ python search_user.py -u vybhav_72954 -t instagram

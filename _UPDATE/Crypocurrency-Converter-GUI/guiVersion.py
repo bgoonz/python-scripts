@@ -34,8 +34,7 @@ class Ui_guiVersion(object):
         font.setPointSize(13)
         font.setItalic(True)
         self.pushButton_convert.setFont(font)
-        self.pushButton_convert.setStyleSheet(
-            "background-color: rgb(27, 226, 52);")
+        self.pushButton_convert.setStyleSheet("background-color: rgb(27, 226, 52);")
         self.pushButton_convert.setObjectName("pushButton_convert")
         self.pushButton_del = QtWidgets.QPushButton(guiVersion)
         self.pushButton_del.setGeometry(QtCore.QRect(230, 270, 60, 50))
@@ -44,8 +43,7 @@ class Ui_guiVersion(object):
         font = QtGui.QFont()
         font.setPointSize(13)
         self.pushButton_del.setFont(font)
-        self.pushButton_del.setStyleSheet(
-            "background-color: rgb(110, 202, 222);")
+        self.pushButton_del.setStyleSheet("background-color: rgb(110, 202, 222);")
         self.pushButton_del.setObjectName("pushButton_del")
         self.pushButton_n3 = QtWidgets.QPushButton(guiVersion)
         self.pushButton_n3.setEnabled(True)
@@ -277,12 +275,12 @@ class Ui_guiVersion(object):
 
     def retranslateUi(self, guiVersion):
         _translate = QtCore.QCoreApplication.translate
-        guiVersion.setWindowTitle(
-            _translate("guiVersion", "Cryptocurrency Converter"))
+        guiVersion.setWindowTitle(_translate("guiVersion", "Cryptocurrency Converter"))
         self.label.setText(
             _translate(
-                "guiVersion",
-                "<html><head/><body><p><span >To</span></p></body></html>"))
+                "guiVersion", "<html><head/><body><p><span >To</span></p></body></html>"
+            )
+        )
         self.pushButton_n1.setText(_translate("guiVersion", "1"))
         self.pushButton_convert.setText(_translate("guiVersion", "Convert"))
         self.pushButton_del.setText(_translate("guiVersion", "del"))
@@ -296,7 +294,8 @@ class Ui_guiVersion(object):
         self.pushButton_n4.setText(_translate("guiVersion", "4"))
         self.pushButton_n0.setText(_translate("guiVersion", "0"))
         self.label_1.setToolTip(
-            _translate("guiVersion", "Enter a value to Convert it."))
+            _translate("guiVersion", "Enter a value to Convert it.")
+        )
         self.label_1.setText(_translate("guiVersion", "0"))
         self.label_2.setToolTip(_translate("guiVersion", "Converted value"))
         self.label_2.setText(_translate("guiVersion", "0"))

@@ -2,9 +2,9 @@ import random
 
 
 def Mywordlist():
-    '''
+    """
     This function will fetch random words from my custom word list by opening file in read mode
-    '''
+    """
     with open("./Terminal Hangman/data.txt", "r") as file:
         alldata = file.read()
         words = list(map(str, alldata.split()))
@@ -13,14 +13,14 @@ def Mywordlist():
 
 
 def hangman():
-    '''
+    """
     This is the main fuction behind the logic.
-    '''
+    """
 
     # Fetching Word list we would like to play with.
     word = random.choice(Mywordlist())
     turns = 10  # Total number of chance given to the user
-    guessmade = ''
+    guessmade = ""
 
     while len(word) > 0:
         main = ""

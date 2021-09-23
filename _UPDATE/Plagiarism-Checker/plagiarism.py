@@ -1,17 +1,19 @@
-
 # OS Module for loading paths of textfiles. TfidfVectorizer to perform word embedding on the textual data and cosine similarity to compute the plagiarism.
 import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-student_files = [doc for doc in os.listdir() if doc.endswith('.txt')]
+
+student_files = [doc for doc in os.listdir() if doc.endswith(".txt")]
 student_notes = [open(File).read() for File in student_files]
 # Two lambda functions, one to convert the text to arrays of numbers and the other one to compute the similarity between them.
 
 
-def vectorize(Text): return TfidfVectorizer().fit_transform(Text).toarray()
+def vectorize(Text):
+    return TfidfVectorizer().fit_transform(Text).toarray()
 
 
-def similarity(doc1, doc2): return cosine_similarity([doc1, doc2])
+def similarity(doc1, doc2):
+    return cosine_similarity([doc1, doc2])
 
 
 # Vectorize the Textual Data

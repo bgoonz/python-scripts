@@ -2,22 +2,22 @@
 
 ## Utility
 
-* To convert folders into ZIP format
+- To convert folders into ZIP format
 
 ## How to use
 
-* ### Step 1
+- ### Step 1
 
-    > Put the folder you want to convert in the same directory
+  > Put the folder you want to convert in the same directory
 
-* ### Step 2 -> Run the script
+- ### Step 2 -> Run the script
 
-    Windows:
+  Windows:
 
-    > py folder-to-zip.py
+  > py folder-to-zip.py
 
-    Linux:
+  Linux:
 
-    > python3 folder-to-zip.py
+  > python3 folder-to-zip.py
 
 ## You're all set! The Zip file for the selected folder will be created

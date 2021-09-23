@@ -26,14 +26,27 @@ Notes:
 
 # load args
 parser = OptionParser()
-parser.add_option("-a", "--audio-only", action="store_true", dest="only_audio",
-                  help="Flag to download only the audio source (True/Flase).")
-parser.add_option("-p", "--playlist",   action="store_true", dest="playlist",
-                  help="Playlist flag is the provided link is a playlist not a single video.")
-parser.add_option("-u", "--url", dest="url",
-                  help="Parameter used to add Youtube link.")
-parser.add_option("-f", "--file", dest="file",
-                  help="Parameter used to add file that contains some Youtube links.")
+parser.add_option(
+    "-a",
+    "--audio-only",
+    action="store_true",
+    dest="only_audio",
+    help="Flag to download only the audio source (True/Flase).",
+)
+parser.add_option(
+    "-p",
+    "--playlist",
+    action="store_true",
+    dest="playlist",
+    help="Playlist flag is the provided link is a playlist not a single video.",
+)
+parser.add_option("-u", "--url", dest="url", help="Parameter used to add Youtube link.")
+parser.add_option(
+    "-f",
+    "--file",
+    dest="file",
+    help="Parameter used to add file that contains some Youtube links.",
+)
 
 pattern = r'res="([0-9]+)p"'  # used for checking available resolutions
 
@@ -108,7 +121,7 @@ def is_vid(lst):
     ext, res = input("[extension] [resolution] > ").split(" ")
 
     # check input
-    if not res in resolutions_mp4+resolutions_webm or not ext in ["mp4", "webm"]:
+    if not res in resolutions_mp4 + resolutions_webm or not ext in ["mp4", "webm"]:
         raise "Invalid Input..."
 
     return video_download(lst, ext, res)
@@ -121,8 +134,7 @@ def audio_download(objct):  # objct is a list of urls
         print("Downloading: " + aud.title)
         aud.register_on_progress_callback(on_progress)  # show progress bar
         try:
-            aud.streams.filter(type="audio").order_by(
-                "abr").desc().first().download()
+            aud.streams.filter(type="audio").order_by("abr").desc().first().download()
             i += 1
         except:
             pass
@@ -138,14 +150,32 @@ def video_download(objct, ext, res):  # objct is a list of urls
         print("Downloading: " + vid.title)
         vid.register_on_progress_callback(on_progress)  # show progress bar
         try:
-            stream = vid.streams.filter(
-                progressive=True, type="video", resolution=res+"p", file_extension=ext).order_by("abr").desc()
+            stream = (
+                vid.streams.filter(
+                    progressive=True,
+                    type="video",
+                    resolution=res + "p",
+                    file_extension=ext,
+                )
+                .order_by("abr")
+                .desc()
+            )
 
-            if len(stream) == 0:  # That if condition is for in case any videos in the playlist doesn't offer the same stream resolution (common in Mix playlists)
+            if (
+                len(stream) == 0
+            ):  # That if condition is for in case any videos in the playlist doesn't offer the same stream resolution (common in Mix playlists)
                 print(
-                    "Couldn't find available resolution for the video, Downloading with the best available one")
-                stream = vid.streams.filter(progressive=True, type="video", file_extension=ext).order_by(
-                    "resolution").desc().order_by("abr").desc()
+                    "Couldn't find available resolution for the video, Downloading with the best available one"
+                )
+                stream = (
+                    vid.streams.filter(
+                        progressive=True, type="video", file_extension=ext
+                    )
+                    .order_by("resolution")
+                    .desc()
+                    .order_by("abr")
+                    .desc()
+                )
 
             stream.first().download()
             i += 1

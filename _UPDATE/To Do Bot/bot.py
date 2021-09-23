@@ -8,7 +8,7 @@ import os
 
 db = DBHelper()
 
-TOKEN = os.environ['TOKEN']
+TOKEN = os.environ["TOKEN"]
 URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 
 
@@ -79,16 +79,24 @@ def handle_updates(updates):
                 send_message("Nothing to show.", chat)
             today = datetime.datetime.today().strftime("%d-%m-%Y")
             for i in range(0, len(items)):
-                due[i] = (datetime.datetime.strptime(items[i][1], "%d-%m-%Y") -
-                          datetime.datetime.strptime(today, "%d-%m-%Y")).days
+                due[i] = (
+                    datetime.datetime.strptime(items[i][1], "%d-%m-%Y")
+                    - datetime.datetime.strptime(today, "%d-%m-%Y")
+                ).days
                 message = items[i][0] + " " + str(due[i]) + " days Remaining"
                 send_message(message, chat)
         elif text.startswith("/add"):
             t = text.split(" ")
             if len(t) < 3:
-                send_message("Insert Item Properly.\nSend /add item_name due_date to add an item.", chat)
+                send_message(
+                    "Insert Item Properly.\nSend /add item_name due_date to add an item.",
+                    chat,
+                )
             elif len(t[1]) < 1 or len(t[2]) < 1:
-                send_message("Insert Item Properly.\nSend /add item_name due_date to add an item.", chat)
+                send_message(
+                    "Insert Item Properly.\nSend /add item_name due_date to add an item.",
+                    chat,
+                )
             else:
                 db.add_item(t[1], t[2], chat)
                 send_message("Item " + t[1] + " Inserted Successfully.", chat)
@@ -106,7 +114,9 @@ def get_last_chat_id_and_text(updates):
 
 def send_message(text, chat_id, reply_markup=None):
     text = urllib.parse.quote_plus(text)
-    url = URL + "sendMessage?text={}&chat_id={}&parse_mode=Markdown".format(text, chat_id)
+    url = URL + "sendMessage?text={}&chat_id={}&parse_mode=Markdown".format(
+        text, chat_id
+    )
     if reply_markup:
         url += "&reply_markup={}".format(reply_markup)
     get_url(url)
@@ -123,6 +133,5 @@ def main():
         time.sleep(0.5)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-

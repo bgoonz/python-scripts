@@ -16,8 +16,8 @@ This python script bombs specified number of issues on a Github Repository.
 
 2. Go to the directory.
 
-3. Run ``` python bomb-issues.py ```.
+3. Run `python bomb-issues.py`.
 
-***A demo:***
+**_A demo:_**
 
 [![Output.jpg](https://i.postimg.cc/wBWPZ4cw/Output.jpg)](https://postimg.cc/947Jqpk9)

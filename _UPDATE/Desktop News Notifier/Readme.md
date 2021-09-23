@@ -29,8 +29,7 @@
     - plyer
     - requests
     - json
-    
-## Author
-   
-   Amit Kumar Mishra
 
+## Author
+
+Amit Kumar Mishra

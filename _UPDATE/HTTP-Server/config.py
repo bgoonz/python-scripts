@@ -1,62 +1,63 @@
 # RUN CONFIG.PY TO CONFIGURE
 
 import os
-'''Max buffer size to accept from a client'''
+
+"""Max buffer size to accept from a client"""
 SIZE = 8192  # 8*1024 = 8MB
-'''Gets the Current Working directory (.)'''
+"""Gets the Current Working directory (.)"""
 ROOT = os.getcwd()
 
 # dictionary to convert month to its decimal
 MONTH = {
-    'Jan': 1,
-    'Feb': 2,
-    'Mar': 3,
-    'Apr': 4,
-    'May': 5,
-    'Jun': 6,
-    'Jul': 7,
-    'Aug': 8,
-    'Sep': 9,
-    'Oct': 10,
-    'Nov': 11,
-    'Dec': 12
+    "Jan": 1,
+    "Feb": 2,
+    "Mar": 3,
+    "Apr": 4,
+    "May": 5,
+    "Jun": 6,
+    "Jul": 7,
+    "Aug": 8,
+    "Sep": 9,
+    "Oct": 10,
+    "Nov": 11,
+    "Dec": 12,
 }
-''' 
+""" 
 fav icon which is displayed in title bar of the browser is requested by client
 so we define the path of favicon.ico here
-'''
-favicon = '/images/favicon.ico'
+"""
+favicon = "/images/favicon.ico"
 FAVICON = ROOT + favicon  # to get absolute path
-'''
+"""
 only HTTP version no. 1.1 is supported for this server.
 It depends on the implementation of the dev but I am only supporting 1.1
-'''
-RUNNING_VERSION = '1.1'
-'''
+"""
+RUNNING_VERSION = "1.1"
+"""
 Number of Thread Requests handled by the server at one time
-'''
+"""
 MAX_REQUEST = 20
-'''
+"""
 Maximum URL length supported by the server at the time of establishing new connection
-'''
+"""
 MAX_URL = 250
-'''
+"""
 log file path so that we can write into it
-'''
-LOG = ROOT + '/server.log'
+"""
+LOG = ROOT + "/server.log"
 # using a mode so we can only append and not overrite etc bad stuff
 w = open(LOG, "a")
 w.close()
-'''
+"""
 workfile.html has the response saved msg.
 It is not part of the Server program I am using it show client that it's response is saved
-'''
-WORKFILE = ROOT + '/workfile.html'  # path
-'''
+"""
+WORKFILE = ROOT + "/workfile.html"  # path
+"""
 this creates a basic html workfile
-'''
+"""
 w = open(WORKFILE, "w")
-d = '''<html lang="en">
+d = """<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,38 +67,38 @@ d = '''<html lang="en">
     </br>
     <h1>Your Response was Saved Succesfully!</h1>
 </body>
-</html>'''
+</html>"""
 w.write(d)
 w.close()
-'''
+"""
 All data entered by the client is stored here for checking Purpose.
-'''
-CSVFILE = ROOT + '/output.csv'
+"""
+CSVFILE = ROOT + "/output.csv"
 w = open(CSVFILE, "a")  # only appending not writing
 w.close()
-'''
+"""
 all the files which are deleted using DELETE are getting moved here.
-'''
-DELETE = ROOT + '/deleted'
-'''
+"""
+DELETE = ROOT + "/deleted"
+"""
 the /deleted folder mentioned above is created here.
 For the DELETE req purpose
-'''
+"""
 try:
     os.mkdir(DELETE)
 except:
     pass
-'''
+"""
 username and password for approval of delete request method
-'''
-USERNAME = 'http'  # delete can only be done after checking Auth
-PASSWORD = 'sudo'  # Keep this secret folks
-'''
+"""
+USERNAME = "http"  # delete can only be done after checking Auth
+PASSWORD = "sudo"  # Keep this secret folks
+"""
 cookie details
-'''
-COOKIE = 'Set-Cookie: id='  # id will be given in the program
-MAXAGE = '; max-age=3600'  # 3600 sec is 60min
-'''Following is the file formats supported by the server'''
+"""
+COOKIE = "Set-Cookie: id="  # id will be given in the program
+MAXAGE = "; max-age=3600"  # 3600 sec is 60min
+"""Following is the file formats supported by the server"""
 FORMAT = {
     ".aac": "audio/aac",
     ".abw": "application/x-abiword",
@@ -112,8 +113,7 @@ FORMAT = {
     ".css": "text/css",
     ".csv": "text/csv",
     ".doc": "application/msword",
-    ".docx":
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     ".eot": "application/vnd.ms-fontobject",
     ".epub": "application/epub+zip",
     ".gz": "application/gzip",
@@ -144,8 +144,7 @@ FORMAT = {
     ".pdf": "application/pdf",
     ".php": "appliction/php",
     ".ppt": "application/vnd.ms-powerpoint",
-    ".pptx":
-    "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
     ".rar": "application/x-rar-compressed",
     ".rtf": "application/rtf",
     ".sh": "application/x-sh",
@@ -166,8 +165,7 @@ FORMAT = {
     ".woff2": "font/woff2",
     ".xhtml": "application/xhtml+xml",
     ".xls": "application/vnd.ms-excel",
-    ".xlsx":
-    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     ".xml": "application/xml",
     ".xul": "application/vnd.mozilla.xul+xml",
     ".zip": "application/zip",
@@ -175,7 +173,7 @@ FORMAT = {
     ".3g2": "video/3gpp2",
     ".7z": "application/x-7z-compressed",
 }
-'''Following is the file formats supported by the server'''
+"""Following is the file formats supported by the server"""
 FORMAT2 = {
     "audio/aac": ".aac",
     "application/x-abiword": ".abw",
@@ -190,8 +188,7 @@ FORMAT2 = {
     "text/css": ".css",
     "text/csv": ".csv",
     "application/msword": ".doc",
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-    ".docx",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ".docx",
     "application/vnd.ms-fontobject": ".eot",
     "application/epub+zip": ".epub",
     "application/gzip": ".gz",
@@ -218,8 +215,7 @@ FORMAT2 = {
     "application/pdf": ".pdf",
     "appliction/php": ".php",
     "application/vnd.ms-powerpoint": ".ppt",
-    "application/vnd.openxmlformats-officedocument.presentationml.presentation":
-    ".pptx",
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation": ".pptx",
     "application/x-rar-compressed": ".rar",
     "application/rtf": ".rtf",
     "application/x-sh": ".sh",
@@ -238,8 +234,7 @@ FORMAT2 = {
     "font/woff2": ".woff2",
     "application/xhtml+xml": ".xhtml",
     "application/vnd.ms-excel": ".xls",
-    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
-    ".xlsx",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": ".xlsx",
     "application/xml": ".xml",
     "application/vnd.mozilla.xul+xml": ".xul",
     "application/zip": ".zip",
@@ -247,7 +242,7 @@ FORMAT2 = {
     "video/3gpp2": ".3g2",
     "application/x-7z-compressed": ".7z",
 }
-'''Response status codes'''
+"""Response status codes"""
 status_codes = {
     200: "Ok",
     201: "Created",
@@ -267,5 +262,5 @@ status_codes = {
     503: "Server Unavailable",
     505: "HTTP version not supported",
 }
-'''Methods supported by the server'''
+"""Methods supported by the server"""
 methods = ["GET", "POST", "HEAD", "PUT", "DELETE", "TRACE", "OPTIONS"]

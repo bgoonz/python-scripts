@@ -5,6 +5,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -280,7 +281,11 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Cryptocurrency Converter"))
-        self.label.setText(_translate("MainWindow", "<html><head/><body><p><span >To</span></p></body></html>"))
+        self.label.setText(
+            _translate(
+                "MainWindow", "<html><head/><body><p><span >To</span></p></body></html>"
+            )
+        )
         self.pushButton_n1.setText(_translate("MainWindow", "1"))
         self.pushButton_convert.setText(_translate("MainWindow", "Convert"))
         self.pushButton_del.setText(_translate("MainWindow", "del"))
@@ -293,7 +298,9 @@ class Ui_MainWindow(object):
         self.pushButton_n5.setText(_translate("MainWindow", "5"))
         self.pushButton_n4.setText(_translate("MainWindow", "4"))
         self.pushButton_n0.setText(_translate("MainWindow", "0"))
-        self.label_1.setToolTip(_translate("MainWindow", "Enter a value to convert it."))
+        self.label_1.setToolTip(
+            _translate("MainWindow", "Enter a value to convert it.")
+        )
         self.label_1.setText(_translate("MainWindow", "0"))
         self.label_2.setToolTip(_translate("MainWindow", "Converted value"))
         self.label_2.setText(_translate("MainWindow", "0"))
@@ -380,4 +387,3 @@ class Ui_MainWindow(object):
         self.comboBox.setItemText(38, _translate("MainWindow", "ZIL"))
         self.comboBox.setItemText(39, _translate("MainWindow", "ICX"))
         self.comboBox.setItemText(40, _translate("MainWindow", "STEEM"))
-

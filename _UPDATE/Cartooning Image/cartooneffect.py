@@ -1,4 +1,3 @@
-
 import cv2
 import numpy as np
 from tkinter.filedialog import *
@@ -9,7 +8,8 @@ img = cv2.imread(photo)
 grey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 grey = cv2.medianBlur(grey, 5)
 edges = cv2.adaptiveThreshold(
-    grey, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 9, 9)
+    grey, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 9, 9
+)
 
 # cartoonize
 color = cv2.bilateralFilter(img, 9, 250, 250)

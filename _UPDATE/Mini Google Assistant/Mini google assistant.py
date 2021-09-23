@@ -26,7 +26,7 @@ def take_command():
             command = listener.recognize_google(voice)
             command = command.lower()
             if "google" in command:
-                command = command.replace("google", '')
+                command = command.replace("google", "")
                 print(command)
     except:
         print("Ooops something went wrong!")
@@ -53,33 +53,33 @@ def run_mini_google_assistant():
         talk("Here is the joke")
         talk(pyjokes.get_joke())
         talk("   heeheehehe quite funny!  ")
-    elif 'date' in command:
+    elif "date" in command:
         date = datetime.date.today()
         print(date)
         talk("Today is")
         talk(date)
-    elif 'how are you' in command:
-        talk('I am good. Nice to see you here!')
+    elif "how are you" in command:
+        talk("I am good. Nice to see you here!")
     elif "capture" or "camera" in command:
         talk("Ok I'll do it for you!")
         talk("Remenber, You can use s button to quit")
         vid = cv2.VideoCapture(0)
 
-        while (True):
+        while True:
 
             # Capture the photo/video frame by frame
             ret, frame = vid.read()
 
             # Display the resulting frame
-            cv2.imshow('frame', frame)
+            cv2.imshow("frame", frame)
 
             if "photo" in command:
-                if cv2.waitKey(0) & 0xFF == ord('s'):  # used 's' as quitting button
-                    #talk("You can use s button to quit")
+                if cv2.waitKey(0) & 0xFF == ord("s"):  # used 's' as quitting button
+                    # talk("You can use s button to quit")
                     break
             elif "video" in command:
-                if cv2.waitKey(1) & 0xFF == ord('s'):  # used 's' as quitting button
-                    #talk("You can use s button to quit")
+                if cv2.waitKey(1) & 0xFF == ord("s"):  # used 's' as quitting button
+                    # talk("You can use s button to quit")
 
                     break
 
@@ -93,8 +93,10 @@ def run_mini_google_assistant():
 
 
 talk("Hello my friend, i am your personal mini google assistant.")
-talk("And i can help you to play song, tell time, tell date, tell joke and i can also capture photo and video for you")
+talk(
+    "And i can help you to play song, tell time, tell date, tell joke and i can also capture photo and video for you"
+)
 talk("Now please tell me how can i help you!")
 while True:
     run_mini_google_assistant()
-    #talk("Nice to see you here, I belive that you enjoyed!")
+    # talk("Nice to see you here, I belive that you enjoyed!")

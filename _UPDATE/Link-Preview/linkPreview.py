@@ -20,11 +20,12 @@ def getTitle(soup):
     res = ogTitle or twitterTitle or documentTitle or h1Title or h2Title or pTitle
     res = res.get_text() or res.get("content", None)
 
-    if (len(res) > 60):
+    if len(res) > 60:
         res = res[0:60]
-    if (res == None or len(res.split()) == 0):
+    if res == None or len(res.split()) == 0:
         res = "Not available"
     return res.strip()
+
 
 # to scrape page description
 
@@ -40,11 +41,12 @@ def getDesc(soup):
 
     res = ogDesc or twitterDesc or metaDesc or pDesc
     res = res.get_text() or res.get("content", None)
-    if (len(res) > 60):
+    if len(res) > 60:
         res = res[0:60]
-    if (res == None or len(res.split()) == 0):
+    if res == None or len(res.split()) == 0:
         res = "Not available"
     return res.strip()
+
 
 # to scrape image link
 
@@ -63,24 +65,25 @@ def getImage(soup, url):
 
     count = 0
     for i in range(0, len(res)):
-        if (res[i] == "." or res[i] == "/"):
+        if res[i] == "." or res[i] == "/":
             count += 1
         else:
             break
     res = res[count::]
-    if ((not res == None) and ((not "https://" in res) or (not "https://" in res))):
+    if (not res == None) and ((not "https://" in res) or (not "https://" in res)):
         res = url + "/" + res
-    if (res == None or len(res.split()) == 0):
+    if res == None or len(res.split()) == 0:
         res = "Not available"
 
     return res
+
 
 # print dictionary
 
 
 def printData(data):
     for item in data.items():
-        print(f'{item[0].capitalize()}: {item[1]}')
+        print(f"{item[0].capitalize()}: {item[1]}")
 
 
 # start
@@ -92,9 +95,9 @@ print("======================\n")
 url = input("Enter URL to preview : ")
 
 # parsing and checking the url
-if (url == ""):
-    url = 'www.girlscript.tech'
-if ((not "http://" in url) or (not "https://" in url)):
+if url == "":
+    url = "www.girlscript.tech"
+if (not "http://" in url) or (not "https://" in url):
     url = "https://" + url
 
 # printing values
@@ -102,21 +105,21 @@ if ((not "http://" in url) or (not "https://" in url)):
 # first check in the DB
 db = {}
 # create file if it doesn't exist
-if not os.path.exists('Link-Preview/db.json'):
-    f = open('Link-Preview/db.json', "w")
+if not os.path.exists("Link-Preview/db.json"):
+    f = open("Link-Preview/db.json", "w")
     f.write("{}")
     f.close()
 
 # read db
-with open('Link-Preview/db.json', 'r+') as file:
+with open("Link-Preview/db.json", "r+") as file:
     data = file.read()
-    if (len(data) == 0):
+    if len(data) == 0:
         data = "{}"
         file.write(data)
     db = json.loads(data)
 
 # check if it exists
-if (url in db and db[url]["time"] < round(time.time())):
+if url in db and db[url]["time"] < round(time.time()):
     printData(db[url])
 else:
     # if not in db get via request
@@ -125,19 +128,19 @@ else:
     r = requests.get(url)
     soup = BeautifulSoup(r.text, "html.parser")
 
-    sevenDaysInSec = 7*24*60*60
+    sevenDaysInSec = 7 * 24 * 60 * 60
     # printing data
     newData = {
         "title": getTitle(soup),
         "description": getDesc(soup),
         "url": url,
         "image": getImage(soup, url),
-        "time": round(time.time() * 1000) + sevenDaysInSec
+        "time": round(time.time() * 1000) + sevenDaysInSec,
     }
     printData(newData)
     # parse file
     db[url] = newData
-    with open('Link-Preview/db.json', 'w') as file:
+    with open("Link-Preview/db.json", "w") as file:
         json.dump(db, file)
 
 print("\n--END--\n")

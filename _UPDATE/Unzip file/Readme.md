@@ -28,8 +28,7 @@
 ### Requirements
 
     - zipfile
-    
-## Author
-   
-   Amit Kumar Mishra
 
+## Author
+
+Amit Kumar Mishra

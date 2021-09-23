@@ -15,7 +15,7 @@ dis_width = 600
 dis_height = 400
 
 dis = pygame.display.set_mode((dis_width, dis_height))
-pygame.display.set_caption('Snake Game In Python')
+pygame.display.set_caption("Snake Game In Python")
 
 clock = pygame.time.Clock()
 
@@ -61,9 +61,7 @@ def gameLoop():
 
         while game_close == True:
             dis.fill(blue)
-            message(
-                "You Lost! Press 'C' to Play Again or 'Q' To Quit The Game",
-                red)
+            message("You Lost! Press 'C' to Play Again or 'Q' To Quit The Game", red)
             Your_score(Length_of_snake - 1)
             pygame.display.update()
 
@@ -115,10 +113,8 @@ def gameLoop():
         pygame.display.update()
 
         if x1 == foodx and y1 == foody:
-            foodx = round(
-                random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
-            foody = round(
-                random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+            foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+            foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
             Length_of_snake += 1
 
         clock.tick(snake_speed)

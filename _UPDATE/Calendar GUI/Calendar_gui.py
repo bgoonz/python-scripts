@@ -13,8 +13,9 @@ def showCal():
 
     find_year = int(year_field.get())
 
-    first_label = Label(box, text='CALENDAR', bg='dark grey',
-                        font=("times", 28, 'bold'))
+    first_label = Label(
+        box, text="CALENDAR", bg="dark grey", font=("times", 28, "bold")
+    )
     first_label.grid(row=1, column=1)
 
     box.config(background="white")
@@ -22,7 +23,7 @@ def showCal():
     cal_data = calendar.calendar(find_year)
     cal_year = Label(box, text=cal_data, font="consolas 10 bold", justify=LEFT)
 
-    cal_year.grid(row=2, column=1, padx=20,)
+    cal_year.grid(row=2, column=1, padx=20)
 
     box.mainloop()
 
@@ -37,15 +38,15 @@ if __name__ == "__main__":
 
     gui.geometry("250x250")
 
-    cal = Label(gui, text="CALENDAR", bg="lavender",
-                font=("Helvetica", 28, 'bold', 'underline'))
+    cal = Label(
+        gui, text="CALENDAR", bg="lavender", font=("Helvetica", 28, "bold", "underline")
+    )
 
     year = Label(gui, text="Enter Year", bg="peach puff", padx=10, pady=10)
 
     year_field = Entry(gui)
 
-    Show = Button(gui, text="Show Calendar", fg="Black",
-                  bg="lavender", command=showCal)
+    Show = Button(gui, text="Show Calendar", fg="Black", bg="lavender", command=showCal)
 
     Exit = Button(gui, text="CLOSE", bg="peach puff", command=exit)
 

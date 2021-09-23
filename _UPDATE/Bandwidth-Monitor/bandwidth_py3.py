@@ -30,8 +30,7 @@ def monitor(limit, unit):
         top = tkinter.Tk()
 
         def hello():
-            tkinter.messagebox.showinfo("Warning!",
-                                        "Network usage limit exceeded!!!!")
+            tkinter.messagebox.showinfo("Warning!", "Network usage limit exceeded!!!!")
 
         B1 = tkinter.Button(top, text="Warning", command=hello)
         B1.pack()
@@ -42,16 +41,14 @@ def monitor(limit, unit):
 
 def main():
     if len(sys.argv) > 3 or len(sys.argv) < 3:
-        print(
-            'command usage: python3 bandwidth_py3.py <data usage in MiB or GiB>'
-        )
-        print('example: python3 bandwidth_py3.py 500 MiB')
-        print('or python3 bandwidth_py3.py 2 GiB')
+        print("command usage: python3 bandwidth_py3.py <data usage in MiB or GiB>")
+        print("example: python3 bandwidth_py3.py 500 MiB")
+        print("or python3 bandwidth_py3.py 2 GiB")
         exit(1)
     else:
         limit = float(sys.argv[1])
         unit = str(sys.argv[2])
-        #callMonitor(limit, unit)
+        # callMonitor(limit, unit)
         monitor(limit, unit)
 
 

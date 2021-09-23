@@ -17,6 +17,6 @@ service_provider = phonenumbers.parse("Enter phone number with country code")
 # USA phone number example: +177**********
 
 # this will print the country's name
-print(geocoder.description_for_number(phone_number, 'en'))
+print(geocoder.description_for_number(phone_number, "en"))
 # this will print the service provider's name
-print(carrier.name_for_number(service_provider, 'en'))
+print(carrier.name_for_number(service_provider, "en"))

@@ -10,6 +10,6 @@ try:
 except IOError:
     print("Error in loading image!!")
     sys.exit(1)
-    
-bw_image = image.convert('L')
-bw_image.save("bw_"+image_name+".png")
+
+bw_image = image.convert("L")
+bw_image.save("bw_" + image_name + ".png")

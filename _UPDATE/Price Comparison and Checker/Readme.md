@@ -16,10 +16,9 @@
 - Next, You will be prompted to enter the item to be searched for and upon doing so, the program will list 5 products from all available websites (currently Amazon, Flipkart and Snapdeal) and give you the best price from all those available.
 
 ## Output
+
 ![screenshot](https://user-images.githubusercontent.com/49470807/111500289-d6344e00-8769-11eb-99ea-bf24db4e1b41.PNG)
 
 ## Author(s)
 
 ## [Aashi Shah](https://github.com/aashishah)
-
-

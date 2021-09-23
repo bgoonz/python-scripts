@@ -13,7 +13,7 @@ subject = "We're Back!, Walk With World KITCOEK"  # EMAIL SUBJECT
 htmlfile_loc = "camp1.html"  # YOUR HTML FILE
 
 # Reading File
-file = pd.ExcelFile(excelFile, engine='openpyxl')
+file = pd.ExcelFile(excelFile, engine="openpyxl")
 
 # Email Setup
 s = smtplib.SMTP("smtp.gmail.com", 587)
@@ -24,19 +24,19 @@ count = 0
 for sheet in file.sheet_names:
     print("\n\n<-- New Sheet -->\n")
     df1 = file.parse(sheet)
-    for i in range(len(df1['EMAIL'])):
+    for i in range(len(df1["EMAIL"])):
 
-        with open(htmlfile_loc, 'r', encoding='utf8') as file:
+        with open(htmlfile_loc, "r", encoding="utf8") as file:
             html_Content = str(file.read())
         msg = EmailMessage()
-        msg['Subject'] = subject
-        msg['From'] = emailID
-        msg['To'] = df1['EMAIL'][i]
+        msg["Subject"] = subject
+        msg["From"] = emailID
+        msg["To"] = df1["EMAIL"][i]
         msg.add_alternative(html_Content, subtype="html")
         s.send_message(msg)
         count += 1
-        print(">>> ", df1['SRNO'][i], ": ", df1['EMAIL'][i], " : Sent")
-        if (count % 60 == 0):
+        print(">>> ", df1["SRNO"][i], ": ", df1["EMAIL"][i], " : Sent")
+        if count % 60 == 0:
             print("\n\n <<>> Server CoolDown for 60 seconds <<>>\n\n")
             time.sleep(10)
 

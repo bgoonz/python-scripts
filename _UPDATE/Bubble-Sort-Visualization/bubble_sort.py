@@ -29,13 +29,11 @@ def draw_data(data, colors):
         x_initial = i * x_width + offset + spacing
         y_initial = canvas_height - rec_height * 460
 
-        x_final = (i+1) * x_width + offset
+        x_final = (i + 1) * x_width + offset
         y_final = canvas_height
 
-        canvas.create_rectangle(x_initial, y_initial,
-                                x_final, y_final, fill=colors[i])
-        canvas.create_text(x_initial + 2, y_initial,
-                           anchor=SW, text=str(data[i]))
+        canvas.create_rectangle(x_initial, y_initial, x_final, y_final, fill=colors[i])
+        canvas.create_text(x_initial + 2, y_initial, anchor=SW, text=str(data[i]))
 
     # Updating the canvas after sleep
     main_prog.update_idletasks()
@@ -53,9 +51,8 @@ def generate_array():
     size_val = int(size_value.get())
     max_val = int(max_value.get())
 
-    if(min_val > max_val):
-        messagebox.showwarning(
-            message="Max. value should not be less than Min. value")
+    if min_val > max_val:
+        messagebox.showwarning(message="Max. value should not be less than Min. value")
         min_val, max_val = max_val, min_val
 
     data = []
@@ -85,12 +82,14 @@ def bubble_sort(data, speed):
     data => array to be sorted
     speed => speed of the simulation
     """
-    for i in range(len(data)-1):
+    for i in range(len(data) - 1):
         for j in range(len(data) - i - 1):
-            if data[j] > data[j+1]:
-                data[j], data[j+1] = data[j+1], data[j]
-            draw_data(data, ["yellow" if x == j or x == j +
-                      1 else "red" for x in range(len(data))])
+            if data[j] > data[j + 1]:
+                data[j], data[j + 1] = data[j + 1], data[j]
+            draw_data(
+                data,
+                ["yellow" if x == j or x == j + 1 else "red" for x in range(len(data))],
+            )
             time.sleep(speed)
 
     draw_data(data, ["green" for x in range(len(data))])
@@ -116,36 +115,70 @@ main_prog.config(bg="grey")
 UI_frame = Frame(main_prog, width=800, height=300, bg="grey")
 UI_frame.grid(row=0, column=0)
 Label(UI_frame, text="Let's learn Bubble Sort", bg="grey").grid(
-    row=0, column=0, padx=5, pady=5, sticky=W)
-Button(UI_frame, text="Start", command=run_sort,
-       bg="green").grid(row=0, column=1, padx=5, pady=5)
+    row=0, column=0, padx=5, pady=5, sticky=W
+)
+Button(UI_frame, text="Start", command=run_sort, bg="green").grid(
+    row=0, column=1, padx=5, pady=5
+)
 
-speed_scale = Scale(UI_frame, from_=0.1, to=2.0, length=200, digits=2,
-                    resolution=0.2, orient=HORIZONTAL, label="Select Speed", bg="ivory")
+speed_scale = Scale(
+    UI_frame,
+    from_=0.1,
+    to=2.0,
+    length=200,
+    digits=2,
+    resolution=0.2,
+    orient=HORIZONTAL,
+    label="Select Speed",
+    bg="ivory",
+)
 speed_scale.grid(row=0, column=2, padx=5, pady=5)
 
 # Creating scale for array size
-size_value = Scale(UI_frame, from_=0, to=30, resolution=1,
-                   orient=HORIZONTAL, label="Select Size", bg="ivory")
+size_value = Scale(
+    UI_frame,
+    from_=0,
+    to=30,
+    resolution=1,
+    orient=HORIZONTAL,
+    label="Select Size",
+    bg="ivory",
+)
 size_value.grid(row=1, column=0, padx=5, pady=5, sticky=W)
 
 # Creating scale for min. value of generated values
-min_value = Scale(UI_frame, from_=0, to=100, resolution=10,
-                  orient=HORIZONTAL, label="Select Min. value", bg="ivory")
+min_value = Scale(
+    UI_frame,
+    from_=0,
+    to=100,
+    resolution=10,
+    orient=HORIZONTAL,
+    label="Select Min. value",
+    bg="ivory",
+)
 min_value.grid(row=1, column=1, padx=5, pady=5, sticky=W)
 
 # Creating scale for max. value of generated values
-max_value = Scale(UI_frame, from_=0, to=500, resolution=10,
-                  orient=HORIZONTAL, label="Select Max. value", bg="ivory")
+max_value = Scale(
+    UI_frame,
+    from_=0,
+    to=500,
+    resolution=10,
+    orient=HORIZONTAL,
+    label="Select Max. value",
+    bg="ivory",
+)
 max_value.grid(row=1, column=2, padx=5, pady=5, sticky=W)
 
 # Generate random array button
-Button(UI_frame, text="Generate", command=generate_array,
-       bg="blue").grid(row=2, column=2, padx=5, pady=5)
+Button(UI_frame, text="Generate", command=generate_array, bg="blue").grid(
+    row=2, column=2, padx=5, pady=5
+)
 
 # Reset the current array button
-Button(UI_frame, text="Reset", command=reset_array,
-       bg="blue").grid(row=2, column=1, padx=5, pady=5)
+Button(UI_frame, text="Reset", command=reset_array, bg="blue").grid(
+    row=2, column=1, padx=5, pady=5
+)
 
 
 # Creating canvas for visualization

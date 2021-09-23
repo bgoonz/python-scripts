@@ -16,9 +16,9 @@
 ```
 
 ## Working:
+
 ![GIF](https://media.giphy.com/media/rFugmcue93IERozmWw/giphy.gif)
 
-
 ## Author:
-[Rohini Rao](https://github.com/RohiniRG)
 
+[Rohini Rao](https://github.com/RohiniRG)

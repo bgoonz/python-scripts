@@ -17,7 +17,7 @@ The method is called strftime(), and takes one parameter, format, to specify the
 
 ## Setup instructions
 
-actually we have used datetime library of python so if its not installed previously please run command pip install DateTime in terminal 
+actually we have used datetime library of python so if its not installed previously please run command pip install DateTime in terminal
 Now simply run the code and set the output in the newly formed file with the name as current date .
 
 ## Output

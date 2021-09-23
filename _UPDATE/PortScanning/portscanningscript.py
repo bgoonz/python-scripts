@@ -3,7 +3,7 @@ import subprocess
 import sys
 from datetime import datetime
 
-subprocess.call('cls', shell=True)
+subprocess.call("cls", shell=True)
 
 # Ask for input
 remoteServer = input("Enter a remote host to scan: ")
@@ -32,7 +32,7 @@ except KeyboardInterrupt:
     sys.exit()
 
 except socket.gaierror:
-    print('Hostname could not be resolved. Exiting')
+    print("Hostname could not be resolved. Exiting")
     sys.exit()
 
 except socket.error:
@@ -45,4 +45,4 @@ t2 = datetime.now()
 # Calculates the difference of time, to see how long it took to run the script
 total = t2 - t1
 
-print('Scanning Completed in: ', total)
+print("Scanning Completed in: ", total)

@@ -18,7 +18,6 @@
 
 ![Image](https://i.imgur.com/jsPXeJH.png)
 
-
 ## Author
-[Akhil Bhalerao](www.github.com/iamakkkhil)
 
+[Akhil Bhalerao](www.github.com/iamakkkhil)

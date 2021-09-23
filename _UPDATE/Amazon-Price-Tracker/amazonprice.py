@@ -11,7 +11,7 @@ import smtplib
 
 # get your browser information by searching "my user agent"
 user_agent = input("Enter your User-Agent string here\n")
-headers = {"User-Agent": f'{user_agent}'}
+headers = {"User-Agent": f"{user_agent}"}
 Url = input("Drop the Url of product you wish to buy...!\n")
 
 page = requests.get(Url, headers=headers)
@@ -28,8 +28,11 @@ def mail_sending(mail_id, title, password):
     server.starttls()
     server.login(mail_id, password)
     subject = "GO BUY FAST!"
-    body = f"Price of {title} is fallen below the threshold amount. Click on the link below to buy the product!!!\n\n" + Url
-    message = f'Subject:{subject}\n\n {body}'
+    body = (
+        f"Price of {title} is fallen below the threshold amount. Click on the link below to buy the product!!!\n\n"
+        + Url
+    )
+    message = f"Subject:{subject}\n\n {body}"
     server.sendmail(mail_id, mail_id, message)
     server.quit()
 
@@ -37,45 +40,68 @@ def mail_sending(mail_id, title, password):
 def check_price():
     title = soup.find(id="productTitle").get_text().strip()
     try:
-        price = soup.find(
-            id="priceblock_ourprice_row").get_text().strip()[:20].replace(
-                '₹', '').replace(' ', '').replace('Price:', '').replace(
-                    '\n', '').replace('\xa0',
-                                      '').replace(',', '').replace('Fu', '')
+        price = (
+            soup.find(id="priceblock_ourprice_row")
+            .get_text()
+            .strip()[:20]
+            .replace("₹", "")
+            .replace(" ", "")
+            .replace("Price:", "")
+            .replace("\n", "")
+            .replace("\xa0", "")
+            .replace(",", "")
+            .replace("Fu", "")
+        )
 
     except:
         try:
-            price = soup.find(
-                id="priceblock_dealprice").get_text().strip()[:20].replace(
-                    '₹', '').replace(' ', '').replace('Price:', '').replace(
-                        '\n', '').replace('\xa0',
-                                          '').replace(',',
-                                                      '').replace('Fu', '')
+            price = (
+                soup.find(id="priceblock_dealprice")
+                .get_text()
+                .strip()[:20]
+                .replace("₹", "")
+                .replace(" ", "")
+                .replace("Price:", "")
+                .replace("\n", "")
+                .replace("\xa0", "")
+                .replace(",", "")
+                .replace("Fu", "")
+            )
 
         except:
             try:
-                price = soup.find(
-                    id="priceblock_ourprice").get_text().strip()[:20].replace(
-                        '₹',
-                        '').replace(' ', '').replace('Price:', '').replace(
-                            '\n',
-                            '').replace('\xa0',
-                                        '').replace(',', '').replace('Fu', '')
+                price = (
+                    soup.find(id="priceblock_ourprice")
+                    .get_text()
+                    .strip()[:20]
+                    .replace("₹", "")
+                    .replace(" ", "")
+                    .replace("Price:", "")
+                    .replace("\n", "")
+                    .replace("\xa0", "")
+                    .replace(",", "")
+                    .replace("Fu", "")
+                )
 
             except:
-                price = soup.find(id="priceblock_ourprice_lbl").get_text(
-                ).strip()[:20].replace('₹', '').replace(' ', '').replace(
-                    'Price:',
-                    '').replace('\n',
-                                '').replace('\xa0',
-                                            '').replace(',',
-                                                        '').replace('Fu', '')
+                price = (
+                    soup.find(id="priceblock_ourprice_lbl")
+                    .get_text()
+                    .strip()[:20]
+                    .replace("₹", "")
+                    .replace(" ", "")
+                    .replace("Price:", "")
+                    .replace("\n", "")
+                    .replace("\xa0", "")
+                    .replace(",", "")
+                    .replace("Fu", "")
+                )
 
     fixed_price = float(price)
     print(title)
-    print(f'The current price is {fixed_price}')
-    y_price = (input('Enter the price you wish to get the product at:'))
-    your_price = y_price.replace(',', '')
+    print(f"The current price is {fixed_price}")
+    y_price = input("Enter the price you wish to get the product at:")
+    your_price = y_price.replace(",", "")
     mail_id = input("Please enter your email id: ")
     password = input("Enter your app password here: ")
     print(

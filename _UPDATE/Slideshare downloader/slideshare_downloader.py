@@ -14,10 +14,10 @@ process = "getting the slides "
 
 
 def animate():
-    for i in itertools.cycle(['|', '/', '-', '\\']):
+    for i in itertools.cycle(["|", "/", "-", "\\"]):
         if task:
             break
-        sys.stdout.write('\r' + process + i)
+        sys.stdout.write("\r" + process + i)
         sys.stdout.flush()
         time.sleep(0.1)
 
@@ -45,16 +45,17 @@ def slides_capture(links):
     for link in links:
         print(f"fetching (slide{pg_no})")
         file = f"slide{pg_no}.jpg"
-        urllib.request.urlretrieve(link, ".cache/"+file)
-        all_slides.append(".cache/"+file)
-        pg_no = pg_no+1
+        urllib.request.urlretrieve(link, ".cache/" + file)
+        all_slides.append(".cache/" + file)
+        pg_no = pg_no + 1
     return all_slides
 
 
 def combine(all_slides):
     output_name = input(
-        "\n\n Enter the name for pdf file of slides (without extension):")
-    with open(output_name+".pdf", "wb") as f:
+        "\n\n Enter the name for pdf file of slides (without extension):"
+    )
+    with open(output_name + ".pdf", "wb") as f:
         f.write(img2pdf.convert(all_slides))
     for i in all_slides:
         os.remove(i)

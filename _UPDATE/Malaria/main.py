@@ -5,8 +5,8 @@ import tensorflow as tf
 import numpy as np
 
 # Configuring user's pc so that tensorflow model built on other's pc can run
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-os.environ['TF_XLA_FLAGS'] = '--tf_xla_enable_xla_devices'
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
+os.environ["TF_XLA_FLAGS"] = "--tf_xla_enable_xla_devices"
 
 # reading image
 val_path = input("Enter image path name eg.Images/cell1.jpg: ")

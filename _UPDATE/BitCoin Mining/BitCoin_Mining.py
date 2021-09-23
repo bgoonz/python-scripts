@@ -1,4 +1,3 @@
-
 # INPUT : Transactions = '''Neeraj->Zara->50,Nandu->Allu->5''' , difficulty=2 ,
 #         Previous_hash = a7sdxa036944e29568d0cff17edbe038f81208fecf9a66be9a2b8321c6ec7
 
@@ -21,7 +20,7 @@ def SHA256(text):
 def mine(block_number, transactions, previous_hash, prefix_zeros):
 
     # string with difficulty zeroes
-    prefix_str = '0'*prefix_zeros
+    prefix_str = "0" * prefix_zeros
 
     # nonce is the value we want
     for nonce in range(MAX_NONCE):
@@ -36,25 +35,25 @@ def mine(block_number, transactions, previous_hash, prefix_zeros):
             return new_hash
 
     # might raise exception due to hardware issues etc
-    raise BaseException(
-        f"Couldn't find correct has after trying {MAX_NONCE} times")
+    raise BaseException(f"Couldn't find correct has after trying {MAX_NONCE} times")
 
 
 # Driver Code
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     # Transactions string
-    transactions = input('Enter Transactions : ')
+    transactions = input("Enter Transactions : ")
 
     # Number of prefix zeroes
-    difficulty = int(input('Enter Difficulty level : '))
+    difficulty = int(input("Enter Difficulty level : "))
 
     # For knowing time taken for mining
     import time
+
     start = time.time()
     print("start mining")
 
-    previous_hash = input('Enter Previous has value : ')
+    previous_hash = input("Enter Previous has value : ")
 
     # Calling mine function with all required parameters
     new_hash = mine(5, transactions, previous_hash, difficulty)

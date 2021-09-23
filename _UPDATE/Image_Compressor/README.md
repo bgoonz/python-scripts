@@ -7,5 +7,4 @@ It automates the task of compressing the image in day to day lives.
 
 # Dependencies:
 
-   pip install image
-
+pip install image

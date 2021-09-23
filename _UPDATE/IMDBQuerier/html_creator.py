@@ -3,14 +3,18 @@ Create a new html file from selected films.
 Save the file under lists directory.
 """
 import os
-HTML_DIRS = 'list_htmls'
+
+HTML_DIRS = "list_htmls"
+
 
 def crete_directory():
     if not os.path.exists(HTML_DIRS):
         os.mkdir(HTML_DIRS)
 
+
 def start_html(list_name):
-    return """
+    return (
+        """
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
       <head>
@@ -21,7 +25,10 @@ def start_html(list_name):
       <body>
       <span class="list_title"><h2> %s </h2></span>
         <ul>
-    """ % list_name
+    """
+        % list_name
+    )
+
 
 def close_html():
     return """
@@ -29,6 +36,7 @@ def close_html():
       </body>
     </html>
     """
+
 
 def create_table_from_object(film_object):
     return """
@@ -53,8 +61,16 @@ def create_table_from_object(film_object):
             </table>
             </li>
             <br>
-    """ % (film_object.get_image_html(), film_object.get_title(), film_object.year, film_object.runtime,
-            film_object.get_genres_string(), film_object.get_rating(), film_object.storyline)
+    """ % (
+        film_object.get_image_html(),
+        film_object.get_title(),
+        film_object.year,
+        film_object.runtime,
+        film_object.get_genres_string(),
+        film_object.get_rating(),
+        film_object.storyline,
+    )
+
 
 def create_html_file(film_objects_list, list_name):
     film_html_str = ""
@@ -64,5 +80,7 @@ def create_html_file(film_objects_list, list_name):
 
     crete_directory()
 
-    html_file = open(os.path.join(HTML_DIRS, list_name + '.html'), "w", encoding='utf-8')
-    html_file.write(start_html(list_name) + film_html_str + close_html() )
+    html_file = open(
+        os.path.join(HTML_DIRS, list_name + ".html"), "w", encoding="utf-8"
+    )
+    html_file.write(start_html(list_name) + film_html_str + close_html())

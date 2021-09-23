@@ -17,7 +17,7 @@ def gen():
     s.extend(list(s4))
 
     random.shuffle(s)
-    pas = ("".join(s[0:passlen]))
+    pas = "".join(s[0:passlen])
     print(pas)
 
 

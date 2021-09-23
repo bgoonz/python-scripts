@@ -13,7 +13,6 @@ from scipy.io import wavfile
 
 
 class Encrypt:
-
     def __init__(self, message_audio_file_path: str, secret_message: str):
         self.message_audio_file_path = message_audio_file_path
         self.secret_message = secret_message
@@ -25,8 +24,7 @@ class Encrypt:
         self.message_audio = wave.open(message_audio_file_path)
 
         # Getting the numpy array from the secret string.
-        self.secret_as_nparr = self.get_bin_npapp_from_path(
-            secret_message)
+        self.secret_as_nparr = self.get_bin_npapp_from_path(secret_message)
 
         self.mess_as_nparr = None
 
@@ -36,8 +34,7 @@ class Encrypt:
 
     def get_bin_npapp_from_path(self, secret: str) -> np.ndarray:
 
-        strings = ' '.join('{0:08b}'.format(ord(word), 'b')
-                           for word in secret)
+        strings = " ".join("{0:08b}".format(ord(word), "b") for word in secret)
         lst = []
         for word in strings.split(" "):
             # arr = np.fromstring(word, dtype="u1")-ord('0')
@@ -75,31 +72,34 @@ class Encrypt:
         except:
             pass
 
-        print(f"This might take some while if either your audio file or your secret message is big")
+        print(
+            f"This might take some while if either your audio file or your secret message is big"
+        )
 
         # Reading shape of secret message and reshaping
         m1, n1 = self.secret_as_nparr.shape
-        secret_reshape = self.secret_as_nparr.reshape(m1*n1, 1)
+        secret_reshape = self.secret_as_nparr.reshape(m1 * n1, 1)
 
         # Reading the .wav file
-        samplerate, self.mess_as_nparr = wavfile.read(
-            self.message_audio_file_path)
+        samplerate, self.mess_as_nparr = wavfile.read(self.message_audio_file_path)
 
         # Reading the shape of .wav file and reshaping
         m2, n2 = self.mess_as_nparr.shape
-        message_reshape = self.mess_as_nparr.reshape(m2*n2, 1)
+        message_reshape = self.mess_as_nparr.reshape(m2 * n2, 1)
 
         # Edge case
-        if m1*n1 > m2*n2:
+        if m1 * n1 > m2 * n2:
             print("Coudn't be done")
             quit()
 
         # Encryption part
         k = 0
-        for i in range(m2*n2):
-            if k < m1*n1:
+        for i in range(m2 * n2):
+            if k < m1 * n1:
                 # This line is for copying the bit off the secret message to the LSB of the audio
-                message_reshape[i][0] = message_reshape[i][0] & 0xFE | secret_reshape[k][0]
+                message_reshape[i][0] = (
+                    message_reshape[i][0] & 0xFE | secret_reshape[k][0]
+                )
                 k += 1
             else:
                 message_reshape[i][0] = 0
@@ -110,8 +110,11 @@ class Encrypt:
 
         try:
             # Writing into ouput file
-            p = wavfile.write(os.path.join(output_dir_path, file_name),
-                              samplerate, message_reshape.astype(message_reshape.dtype))
+            p = wavfile.write(
+                os.path.join(output_dir_path, file_name),
+                samplerate,
+                message_reshape.astype(message_reshape.dtype),
+            )
             print("Success !!!")
             return message_reshape, True
         except:

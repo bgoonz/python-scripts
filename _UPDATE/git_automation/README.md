@@ -1,4 +1,5 @@
-### Install: 
+### Install:
+
 ```bash
 pip install -r requirements.txt
 touch .env
@@ -7,6 +8,7 @@ source ~/.my_commands.sh
 ```
 
 ### Usage:
+
 ```bash
 To run the script type in 'create <name of your folder>'
 ```

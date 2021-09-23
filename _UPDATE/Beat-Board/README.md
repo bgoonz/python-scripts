@@ -6,22 +6,20 @@ button or key pressed.
 
 The following keys correspond to the positions of the pads
 
-|Left Column		|Middle Column		   	|	Right Column	|
-|--     			|----------				|--------			|
-|q      			|w         				|e       			|
-|a					|s						|d					|
-|z					|x						|c					|
-
+| Left Column | Middle Column | Right Column |
+| ----------- | ------------- | ------------ |
+| q           | w             | e            |
+| a           | s             | d            |
+| z           | x             | c            |
 
 ## Setup instructions
 
 This script uses the following modules:
 
-* tkinter
-* playsound
-    * To install module run the following command: `pip install playsound`
-* Thread from threading
-
+- tkinter
+- playsound
+  - To install module run the following command: `pip install playsound`
+- Thread from threading
 
 To run the script follow the following steps:
 

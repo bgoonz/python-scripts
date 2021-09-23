@@ -3,9 +3,9 @@ from tkinter import *
 
 # initialized window
 root = Tk()
-root.geometry('480x350')
+root.geometry("480x350")
 root.resizable(0, 0)
-root.title('Weight Converter')
+root.title("Weight Converter")
 
 # defining the function for converting weights
 
@@ -13,22 +13,22 @@ root.title('Weight Converter')
 def WeightConv():
 
     # making textbox user-friendly that is editable
-    t1.configure(state='normal')
+    t1.configure(state="normal")
     t1.delete("1.0", END)
 
-    t2.configure(state='normal')
+    t2.configure(state="normal")
     t2.delete("1.0", END)
 
-    t3.configure(state='normal')
+    t3.configure(state="normal")
     t3.delete("1.0", END)
 
-    t4.configure(state='normal')
+    t4.configure(state="normal")
     t4.delete("1.0", END)
 
-    t5.configure(state='normal')
+    t5.configure(state="normal")
     t5.delete("1.0", END)
 
-    t6.configure(state='normal')
+    t6.configure(state="normal")
     t6.delete("1.0", END)
 
     # exception handling
@@ -53,12 +53,12 @@ def WeightConv():
         t6.insert(END, "  ~ Invalid input ~  ")
 
     # making textbox uneditable
-    t1.configure(state='disabled')
-    t2.configure(state='disabled')
-    t3.configure(state='disabled')
-    t4.configure(state='disabled')
-    t5.configure(state='disabled')
-    t6.configure(state='disabled')
+    t1.configure(state="disabled")
+    t2.configure(state="disabled")
+    t3.configure(state="disabled")
+    t4.configure(state="disabled")
+    t5.configure(state="disabled")
+    t6.configure(state="disabled")
 
 
 # creating a label to display

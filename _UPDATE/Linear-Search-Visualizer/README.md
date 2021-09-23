@@ -1,15 +1,18 @@
 # LINEAR SEARCH VISUALIZER
 
 ## Description
+
 This application visualizes the linear search algorithm on a given array of numbers.
 It could be helpful in understanding how the algorithm actually works.
 
 ## Modules used
+
 - Tkinter
 - Random
 - Time
 
 ## Output
+
 <p align="center">
   <img src="https://imgur.com/behB8rV.png">
   <br>
@@ -26,4 +29,5 @@ It could be helpful in understanding how the algorithm actually works.
 </p>
 
 ## Author
+
 [Tanvi Bugdani](https://github.com/tanvi355)

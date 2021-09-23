@@ -8,15 +8,14 @@ cap.set(3, frameWidth)
 cap.set(4, frameHeight)
 cap.set(10, 150)
 
-myColors = [[5, 107, 0, 19, 255, 255],  # orange
-            [133, 56, 0, 159, 156, 255],  # purple
-            [57, 76, 0, 100, 255, 255],  # green
-            [90, 48, 0, 118, 255, 255]]  # blue
+myColors = [
+    [5, 107, 0, 19, 255, 255],  # orange
+    [133, 56, 0, 159, 156, 255],  # purple
+    [57, 76, 0, 100, 255, 255],  # green
+    [90, 48, 0, 118, 255, 255],
+]  # blue
 
-myColorValues = [[51, 153, 255],  # BGR
-                 [255, 0, 255],
-                 [0, 255, 0],
-                 [255, 0, 0]]
+myColorValues = [[51, 153, 255], [255, 0, 255], [0, 255, 0], [255, 0, 0]]  # BGR
 
 myPoints = []  # [x , y , colorId ]
 
@@ -40,7 +39,8 @@ def findColor(img, myColors, myColorValues):
 
 def getContours(img):
     contours, hierarchy = cv2.findContours(
-        img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE
+    )
     x, y, w, h = 0, 0, 0, 0
     for cnt in contours:
         area = cv2.contourArea(cnt)
@@ -54,8 +54,9 @@ def getContours(img):
 
 def drawOnCanvas(myPoints, myColorValues):
     for point in myPoints:
-        cv2.circle(imgResult, (point[0], point[1]),
-                   10, myColorValues[point[2]], cv2.FILLED)
+        cv2.circle(
+            imgResult, (point[0], point[1]), 10, myColorValues[point[2]], cv2.FILLED
+        )
 
 
 while True:
@@ -69,7 +70,7 @@ while True:
         drawOnCanvas(myPoints, myColorValues)
 
     cv2.imshow("Result", imgResult)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord("q"):
         break
 
 cap.release()

@@ -14,10 +14,13 @@ This python script is used to get cpu temperature
 - Clone the repo to your machine
 - Head over to the required folder (Cpu Temperature folder)
 - Install psutil using
+
 ```bash
 pip install psutil
 ```
+
 - Run the script
+
 ```bash
 python temp.py
 ```

@@ -36,8 +36,6 @@
 
 After clicking on submit it goes to official IRCTC website and draws the PNR status.
 
-    
 ## Author
-   
-[Amit Kumar Mishra](https://github.com/Amit366)
 
+[Amit Kumar Mishra](https://github.com/Amit366)

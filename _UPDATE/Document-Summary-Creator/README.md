@@ -1,13 +1,16 @@
 # Document-Summary-Creater
+
 A python script to create a sentence summary
 
 ## Prerequisites
-##### This script needs Python 3.*
+
+##### This script needs Python 3.\*
 
 pip install these libraries from requirements.txt
-* sumy
-* spacy
-* neologdn
+
+- sumy
+- spacy
+- neologdn
 
 and run the command to download some libraries
 
@@ -17,5 +20,6 @@ $ python -c "import nltk; nltk.download('punkt')"
 ```
 
 ## Usage:
-* Run main.py and enter the path of the text file
-* After that, a text file that summarizes the read text file into two tenths is created
+
+- Run main.py and enter the path of the text file
+- After that, a text file that summarizes the read text file into two tenths is created

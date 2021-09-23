@@ -15,23 +15,21 @@ def onKeyUp():
 
 # Creating tkinter window
 window = Tk()
-window.title('Markdown viewer')
-window.geometry('1200x1000')
-window.configure(bg='white')
+window.title("Markdown viewer")
+window.geometry("1200x1000")
+window.configure(bg="white")
 
 # Styling font and button
 myfont = font.Font(family="Helvetica", size=14)
 style = Style()
-style.configure('TButton', font=('calibri', 20, 'bold'),
-                foreground='Blue')
+style.configure("TButton", font=("calibri", 20, "bold"), foreground="Blue")
 
 # Placing widgets into Tkinter window
-submit_btn = Button(text="View Markdown", command=onKeyUp, style='TButton')
+submit_btn = Button(text="View Markdown", command=onKeyUp, style="TButton")
 submit_btn.pack(ipadx=30, ipady=6)
 
-markdown_editor = Text(width="1", insertborderwidth=2,
-                       selectborderwidth=2)
-markdown_editor.insert(END, '# Add Markdown here')
+markdown_editor = Text(width="1", insertborderwidth=2, selectborderwidth=2)
+markdown_editor.insert(END, "# Add Markdown here")
 markdown_editor.pack(fill=BOTH, expand=1, side=LEFT, padx=10, pady=10)
 markdown_editor.configure(font=myfont)
 

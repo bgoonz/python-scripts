@@ -19,42 +19,43 @@ class InstaBot:
         self.username = username
         self.driver.get("https://instagram.com")
         sleep(2)
-        self.driver.find_element_by_xpath(
-            "//input[@name=\"username\"]").send_keys(username)
-        self.driver.find_element_by_xpath(
-            "//input[@name=\"password\"]").send_keys(pw)
-        self.driver.find_element_by_xpath("//button[@type=\"submit\"]").click()
+        self.driver.find_element_by_xpath('//input[@name="username"]').send_keys(
+            username
+        )
+        self.driver.find_element_by_xpath('//input[@name="password"]').send_keys(pw)
+        self.driver.find_element_by_xpath('//button[@type="submit"]').click()
         sleep(4)
         self.url = self.driver.current_url
         if self.url == "https://www.instagram.com/accounts/onetap/?next=%2F":
             self.driver.find_element_by_xpath(
-                "//button[contains(text(), 'Not Now')]").click()
+                "//button[contains(text(), 'Not Now')]"
+            ).click()
             sleep(4)
             self.driver.find_element_by_xpath(
-                "//button[contains(text(), 'Not Now')]").click()
+                "//button[contains(text(), 'Not Now')]"
+            ).click()
         else:
             sleep(2)
             self.driver.find_element_by_xpath(
-                "//button[contains(text(), 'Not Now')]").click()
+                "//button[contains(text(), 'Not Now')]"
+            ).click()
             sleep(1)
 
     def get_unfollowers(self):
         """ names of unfollowers
         """
         self.driver.find_element_by_xpath(
-            "//a[contains(@href,'/{}')]".format(self.username)).click()
+            "//a[contains(@href,'/{}')]".format(self.username)
+        ).click()
         sleep(2)
-        self.driver.find_element_by_xpath(
-            "//a[contains(@href,'/following')]").click()
+        self.driver.find_element_by_xpath("//a[contains(@href,'/following')]").click()
         following = self._get_names()
         sleep(2)
-        self.driver.find_element_by_xpath(
-            "//a[contains(@href,'/followers')]").click()
+        self.driver.find_element_by_xpath("//a[contains(@href,'/followers')]").click()
         sleep(2)
         followers = self._get_names()
 
-        notfollowingback = [
-            user for user in following if user not in followers]
+        notfollowingback = [user for user in following if user not in followers]
 
         table.add_column(column_names[0], notfollowingback)
 
@@ -66,7 +67,8 @@ class InstaBot:
 
         sleep(2)
         scroll_box = self.driver.find_element_by_xpath(
-            '/html/body/div[5]/div/div/div[2]')
+            "/html/body/div[5]/div/div/div[2]"
+        )
         last_ht, ht = 0, 1
 
         # Keep scrolling till you can't go down any further
@@ -77,17 +79,20 @@ class InstaBot:
                 """
                 arguments[0].scrollTo(0, arguments[0].scrollHeight);
                 return arguments[0].scrollHeight;
-                """, scroll_box)
+                """,
+                scroll_box,
+            )
 
         # Gets the list of accounts
-        links = scroll_box.find_elements_by_tag_name('a')
-        names = [name.text for name in links if name.text != '']
+        links = scroll_box.find_elements_by_tag_name("a")
+        names = [name.text for name in links if name.text != ""]
 
         sleep(1)
 
         # Closes the box
         close_btn = self.driver.find_element_by_xpath(
-            '/html/body/div[5]/div/div/div[1]/div/div[2]')
+            "/html/body/div[5]/div/div/div[1]/div/div[2]"
+        )
         close_btn.click()
 
         return names

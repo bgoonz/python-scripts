@@ -2,7 +2,7 @@
 
 - The given python script uses beautifulSoup to scrape Wikipedia pages according to the given user query and obtain data from its wikipedia infobox.
 
-## Requirements: 
+## Requirements:
 
 ```
 $ pip install -r requirements.txt
@@ -17,4 +17,5 @@ $ pip install -r requirements.txt
 ![Image](https://i.imgur.com/afWQSW9.png)
 
 ## Author:
+
 [Rohini Rao](www.github.com/RohiniRG)

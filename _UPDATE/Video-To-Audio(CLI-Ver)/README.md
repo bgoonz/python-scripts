@@ -13,4 +13,3 @@ pip install moviepy==1.0.3
 ```python
 python3 video_to_audio.py -v "Video filename with complete path" -p "audio filename with complete path"
 ```
-

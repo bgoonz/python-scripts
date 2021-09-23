@@ -15,7 +15,6 @@ import binascii
 
 
 class Decrypt:
-
     def __init__(self, audio_path):
         self.audio_path = audio_path
         self.audio_wave_obj = wave.open(audio_path)
@@ -38,7 +37,9 @@ class Decrypt:
       The decryption is done here.
     """
 
-    def decrypt_audio(self, output_dir: str, file_name: str, gen_file_status: bool) -> (str, bool):
+    def decrypt_audio(
+        self, output_dir: str, file_name: str, gen_file_status: bool
+    ) -> (str, bool):
         if gen_file_status:
             curr_dir_path = os.getcwd()
             output_dir_path = os.path.join(curr_dir_path, output_dir)
@@ -48,31 +49,33 @@ class Decrypt:
             except:
                 pass
 
-        print(f"This might take some while if your secret message is big and might contain some rubbish data.")
+        print(
+            f"This might take some while if your secret message is big and might contain some rubbish data."
+        )
 
         # Reading the data from the wav file
         samplerate, data = wavfile.read(self.audio_path)
         m, n = data.shape
         # Reshaping it to make the data easier to handle
-        data_reshaped = data.reshape(m*n, 1)
+        data_reshaped = data.reshape(m * n, 1)
 
         s = ""
         zeros = 0
 
         # Getting the LSB from each number
-        for i in range(m*n):
+        for i in range(m * n):
             t = str(data_reshaped[i][0] & 1)
             if zeros < 9:
                 s += t
             else:
                 break
-            if t == '0':
+            if t == "0":
                 zeros += 1
-            if t == '1':
+            if t == "1":
                 zeros = 0
 
         # Making sure the bit-string is of length divisible by 8 as we have stored the input-secret as 8-bits only
-        s = s[:((len(s)//8)*8)]
+        s = s[: ((len(s) // 8) * 8)]
 
         # Converting bbinary string to utf-8
         in_bin = int(s, 2)
@@ -83,7 +86,9 @@ class Decrypt:
         # Writing to output file if status was given true
         if gen_file_status:
             try:
-                with open(os.path.join(output_dir_path, file_name), "w", encoding="utf-8") as f:
+                with open(
+                    os.path.join(output_dir_path, file_name), "w", encoding="utf-8"
+                ) as f:
                     f.write(result)
                 print("Success !!!")
                 return result, True

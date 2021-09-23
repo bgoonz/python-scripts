@@ -3,9 +3,9 @@ from PyPDF2 import PdfFileReader, PdfFileWriter
 
 
 def merge_pdfs():
-    ''' Merge multiple PDF's into one combined PDF '''
+    """ Merge multiple PDF's into one combined PDF """
     input_paths = input(r"Enter comma separated list of paths to the PDFs ")
-    paths = input_paths.split(',')
+    paths = input_paths.split(",")
     pdf_file_writer = PdfFileWriter()
 
     # Pick each pdf one by one and combined to one single pdf
@@ -15,12 +15,12 @@ def merge_pdfs():
             pdf_file_writer.addPage(pdf_file_reader.getPage(page))
 
     # Output the merged pdf
-    with open('merged.pdf', 'wb') as out:
+    with open("merged.pdf", "wb") as out:
         pdf_file_writer.write(out)
 
 
 def split_pdfs():
-    '''Split PDF to multiple PDF's of 1 Page each'''
+    """Split PDF to multiple PDF's of 1 Page each"""
     input_pdf = input(r"Enter I/P PDF path ")
     pdf = PdfFileReader(input_pdf)
     for page in range(pdf.getNumPages()):
@@ -28,14 +28,14 @@ def split_pdfs():
         pdf_file_writer.addPage(pdf.getPage(page))
 
         # Append page num to each new pdf
-        output = 'split{page}.pdf'.format(page=page)
-        with open(output, 'wb') as output_pdf:
+        output = "split{page}.pdf".format(page=page)
+        with open(output, "wb") as output_pdf:
             pdf_file_writer.write(output_pdf)
 
 
 def add_watermark():
-    ''' Adds watermark to given PDF. 
-    Note: The watermark PDF should be a image with transparent background '''
+    """ Adds watermark to given PDF. 
+    Note: The watermark PDF should be a image with transparent background """
     input_pdf = input(r"Enter I/P PDF path ")
     watermark = input(r"Enter watermark PDF path ")
     watermark_obj = PdfFileReader(watermark)
@@ -50,12 +50,12 @@ def add_watermark():
         page.mergePage(watermark_page)
         pdf_file_writer.addPage(page)
 
-    with open('watermarked-pdf.pdf', 'wb') as out:
+    with open("watermarked-pdf.pdf", "wb") as out:
         pdf_file_writer.write(out)
 
 
 def add_encryption():
-    ''' Encrypts the given PDF with the provided password '''
+    """ Encrypts the given PDF with the provided password """
     input_pdf = input(r"Enter I/P PDF path ")
     password = input(r"Enter password ")
     pdf_file_writer = PdfFileWriter()
@@ -66,29 +66,28 @@ def add_encryption():
     # Encrypt using the password
     pdf_file_writer.encrypt(user_pwd=password, owner_pwd=None, use_128bit=True)
 
-    with open('encrypted.pdf', 'wb') as fh:
+    with open("encrypted.pdf", "wb") as fh:
         pdf_file_writer.write(fh)
 
 
 def rotate_pages():
-    '''Rotate the given PDF left or right by 90 degrees.'''
+    """Rotate the given PDF left or right by 90 degrees."""
     input_pdf = input(r"Enter I/P PDF path ")
     pdf_file_writer = PdfFileWriter()
     pdf_file_reader = PdfFileReader(input_pdf)
     orient = input("Specify orientation: clockwise or counterclockwise ")
 
     # Rotate each page one by one accordingly
-    if (orient == "clockwise"):
+    if orient == "clockwise":
         for page_num in range(pdf_file_reader.getNumPages()):
             rot_page = pdf_file_reader.getPage(page_num).rotateClockwise(90)
             pdf_file_writer.addPage(rot_page)
-    elif (orient == "counterclockwise"):
+    elif orient == "counterclockwise":
         for page_num in range(pdf_file_reader.getNumPages()):
-            rot_page = pdf_file_reader.getPage(
-                page_num).rotateCounterClockwise(90)
+            rot_page = pdf_file_reader.getPage(page_num).rotateCounterClockwise(90)
             pdf_file_writer.addPage(rot_page)
 
-    with open('rotated.pdf', 'wb') as fh:
+    with open("rotated.pdf", "wb") as fh:
         pdf_file_writer.write(fh)
 
 
@@ -117,7 +116,9 @@ def reorder_pages():
     n = int(input("Enter the Total Number of pages which you want to reorder:"))
 
     # Taking user INPUT of page no and location you want to move that page
-    print("\nNow enter the Page no which you want to reorder with the expected location")
+    print(
+        "\nNow enter the Page no which you want to reorder with the expected location"
+    )
 
     # Running a loop to take input
     for i in range(n):
@@ -131,8 +132,7 @@ def reorder_pages():
 
         ans_2 = True
         while ans_2:
-            expected_location = int(
-                input("Enter the location you want to reorder: "))
+            expected_location = int(input("Enter the location you want to reorder: "))
             ans_2 = ifPageExists(total_pages, expected_location)
             if ans_2:  # if location is in invalid
                 print("Invalid Page No. ")
@@ -154,16 +154,18 @@ def reorder_pages():
         pdf_writer.addPage(pdf_reader.getPage(page - 1))
 
     # Saving the PDF with the specified name
-    output_file = input(
-        "Enter the filename in which you want to save (without .pdf extension): ") + '.pdf'
-    with open(output_file, 'wb') as fh:
+    output_file = (
+        input("Enter the filename in which you want to save (without .pdf extension): ")
+        + ".pdf"
+    )
+    with open(output_file, "wb") as fh:
         pdf_writer.write(fh)
 
     print(f"Great Success!!! Check your directory for {output_file} file!")
 
 
 def menu():
-    '''Menu for the various functionalities offered'''
+    """Menu for the various functionalities offered"""
     abspath = os.path.abspath(__file__)
     dname = os.path.dirname(abspath)
     os.chdir(dname)
@@ -176,22 +178,22 @@ def menu():
     )
     # Call the necessary function according to the choice provided by the user
     z = int(input())
-    if (z == 1):
+    if z == 1:
         merge_pdfs()
-    elif (z == 2):
+    elif z == 2:
         split_pdfs()
-    elif (z == 3):
+    elif z == 3:
         rotate_pages()
-    elif (z == 4):
+    elif z == 4:
         add_watermark()
-    elif (z == 5):
+    elif z == 5:
         add_encryption()
-    elif (z == 6):
+    elif z == 6:
         reorder_pages()
     else:
         print("Please select valid choice\n")
         menu()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     menu()

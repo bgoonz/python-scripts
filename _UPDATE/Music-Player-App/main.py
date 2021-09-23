@@ -11,10 +11,10 @@ from pygame import mixer
 
 
 def show_Details(play_it):
-    Main_text['text'] = 'Playing.....' + ' ' + os.path.basename(play_it)
-    Main_text['anchor'] = 'e'
+    Main_text["text"] = "Playing....." + " " + os.path.basename(play_it)
+    Main_text["anchor"] = "e"
     file_ext = os.path.splitext(play_it)
-    if file_ext[1] == '.mp3':  # To handle mp3 files using mutagen
+    if file_ext[1] == ".mp3":  # To handle mp3 files using mutagen
         audio_lenth = MP3(play_it)
         total_lenth = audio_lenth.info.length
     else:  # to handle .wav,.ogg music file extensions
@@ -25,8 +25,8 @@ def show_Details(play_it):
     m = round(m)
     s = round(s)
 
-    time_format = '{:02d}:{:02d}'.format(m, s)
-    Main_lenth['text'] = 'Duration : '+' '+time_format
+    time_format = "{:02d}:{:02d}".format(m, s)
+    Main_lenth["text"] = "Duration : " + " " + time_format
     thread1 = threading.Thread(target=rem_count, args=(total_lenth,))
     thread1.start()
 
@@ -45,9 +45,9 @@ def rem_count(total_lenth):
             m1 = round(m1)
             s1 = round(s1)
 
-            time_format = '{:02d}:{:02d}'.format(m, s)
-            time_format1 = '{:02d}:{:02d}'.format(m1, s1)
-            current_lenth['text'] = 'Cuurent Duration : ' + ' ' + time_format
+            time_format = "{:02d}:{:02d}".format(m, s)
+            time_format1 = "{:02d}:{:02d}".format(m1, s1)
+            current_lenth["text"] = "Cuurent Duration : " + " " + time_format
             time.sleep(1)
             curr_secs += 1
             total_lenth -= 1
@@ -58,9 +58,8 @@ def Play_music():
     if paused:
         mixer.music.unpause()
         # global paused = FALSE
-        status_bar['text'] = 'Playing Music.....' + \
-            ' ' + os.path.basename(music_file)
-        status_bar['anchor'] = 'w'
+        status_bar["text"] = "Playing Music....." + " " + os.path.basename(music_file)
+        status_bar["anchor"] = "w"
         paused = FALSE
     else:
         try:
@@ -72,9 +71,8 @@ def Play_music():
 
             mixer.music.load(play_it)
             mixer.music.play()
-            status_bar['text'] = 'Playing Music.....' + \
-                ' ' + os.path.basename(play_it)
-            status_bar['anchor'] = 'w'
+            status_bar["text"] = "Playing Music....." + " " + os.path.basename(play_it)
+            status_bar["anchor"] = "w"
             show_Details(play_it)
         except:
             tkinter.messagebox.showerror("Error", "File Not Selected")
@@ -82,8 +80,8 @@ def Play_music():
 
 def Stop_music():
     mixer.music.stop()
-    status_bar['text'] = 'Music Stopped'
-    status_bar['anchor'] = 'e'
+    status_bar["text"] = "Music Stopped"
+    status_bar["anchor"] = "e"
 
 
 paused = FALSE
@@ -93,14 +91,14 @@ def pause_music():
     global paused
     paused = TRUE
     mixer.music.pause()
-    status_bar['text'] = 'Music Paused...'
-    status_bar['anchor'] = 'e'
+    status_bar["text"] = "Music Paused..."
+    status_bar["anchor"] = "e"
 
 
 def rewind_music():
     Play_music()
-    status_bar['text'] = 'Music Rewinded...'+' '+os.path.basename(music_file)
-    status_bar['anchor'] = 'e'
+    status_bar["text"] = "Music Rewinded..." + " " + os.path.basename(music_file)
+    status_bar["anchor"] = "e"
 
 
 def close_window_fully():
@@ -109,13 +107,15 @@ def close_window_fully():
 
 
 def set_vol(val):
-    vol = float(val)/100
+    vol = float(val) / 100
     mixer.music.set_volume(vol)
 
 
 def about_us():
     tkinter.messagebox.showinfo(
-        'About Rockerz', 'This Is A Music Player Devloped With Python Tkinter And Pygame By Robin Singh')
+        "About Rockerz",
+        "This Is A Music Player Devloped With Python Tkinter And Pygame By Robin Singh",
+    )
 
 
 def browse_files():
@@ -146,7 +146,7 @@ def delete_btn():
 def mute_music():
     global muted
     if muted:
-        mixer.music.set_volume(.7)
+        mixer.music.set_volume(0.7)
         vol_button1.configure(image=pic5)
         scale1.set(70)
         muted = FALSE
@@ -174,18 +174,23 @@ main_window.set_theme("breeze")
 tool_bar = Menu(main_window)
 main_window.config(menu=tool_bar)
 
-status_bar = ttk.Label(main_window, text="Welcome To Rockerzz",
-                       relief=SUNKEN, anchor=W, font='verdana 10 italic')
+status_bar = ttk.Label(
+    main_window,
+    text="Welcome To Rockerzz",
+    relief=SUNKEN,
+    anchor=W,
+    font="verdana 10 italic",
+)
 status_bar.pack(side=BOTTOM, fill=X)
 
 # creating sub menus
 sub_menu = Menu(tool_bar, tearoff=0)  # to remove dashed line from menu
-tool_bar.add_cascade(label='File', menu=sub_menu)
+tool_bar.add_cascade(label="File", menu=sub_menu)
 sub_menu.add_command(label="Open", command=browse_files)
 sub_menu.add_command(label="Exit", command=close_window_fully1)
 
 sub_menu = Menu(tool_bar, tearoff=0)  # to remove dashed line from menu
-tool_bar.add_cascade(label='Help', menu=sub_menu)
+tool_bar.add_cascade(label="Help", menu=sub_menu)
 sub_menu.add_command(label="About Us ", command=about_us)
 
 
@@ -201,10 +206,10 @@ play_list = Listbox(left_frame)
 play_list.pack()
 
 
-add_btn = ttk.Button(left_frame, text='ADD', command=browse_files)
+add_btn = ttk.Button(left_frame, text="ADD", command=browse_files)
 add_btn.pack(side=LEFT, padx=3)
 
-del_btn = ttk.Button(left_frame, text='DELETE', command=delete_btn)
+del_btn = ttk.Button(left_frame, text="DELETE", command=delete_btn)
 del_btn.pack(side=LEFT)
 
 right_frame = Frame(main_window)
@@ -214,14 +219,14 @@ r_top_frame = Frame(right_frame)
 r_top_frame.pack()
 
 Main_text = ttk.Label(
-    r_top_frame, text="Devloped By Robin Singh", font='arial 10 italic')
+    r_top_frame, text="Devloped By Robin Singh", font="arial 10 italic"
+)
 Main_text.pack()
 
 Main_lenth = ttk.Label(r_top_frame, text="Length : --:--", relief=GROOVE)
 Main_lenth.pack(pady=5)
 
-current_lenth = ttk.Label(
-    r_top_frame, text="Current Duration : --:--", relief=GROOVE)
+current_lenth = ttk.Label(r_top_frame, text="Current Duration : --:--", relief=GROOVE)
 current_lenth.pack()
 
 playlist_box = Listbox(main_window)
@@ -252,10 +257,9 @@ vol_button1 = ttk.Button(bottom_canvas, image=pic5, command=mute_music)
 vol_button1.grid(row=0, column=1)
 
 
-scale1 = ttk.Scale(bottom_canvas, from_=0, to=100,
-                   orient=HORIZONTAL, command=set_vol)
+scale1 = ttk.Scale(bottom_canvas, from_=0, to=100, orient=HORIZONTAL, command=set_vol)
 scale1.set(50)
-mixer.music.set_volume(.5)
+mixer.music.set_volume(0.5)
 scale1.grid(row=0, column=3, padx=5, pady=10)
 
 # For overriding close button

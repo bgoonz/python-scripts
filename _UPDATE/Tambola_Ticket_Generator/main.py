@@ -24,7 +24,7 @@ def generate_ticket():
         num = np.arange(1, 10) if i < 8 else np.arange(1, 11)
         np.random.shuffle(num)
         num = np.sort(num[:3])
-        ticket[i, :] *= (num + i * 10)
+        ticket[i, :] *= num + i * 10
     return ticket.T
 
 
@@ -37,8 +37,13 @@ def get_tickets(args):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-c', '--count', help="Generates and returns tambola tickets given by count", type=int,
-                        default=1)
+    parser.add_argument(
+        "-c",
+        "--count",
+        help="Generates and returns tambola tickets given by count",
+        type=int,
+        default=1,
+    )
     args = parser.parse_args()
     return get_tickets(args)
 
@@ -48,4 +53,4 @@ if __name__ == "__main__":
     print("Generated {0} tickets".format(len(generated_tickets)))
 
     for t in generated_tickets:
-        print(tabulate(t, tablefmt='fancy_grid'))
+        print(tabulate(t, tablefmt="fancy_grid"))

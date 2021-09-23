@@ -7,21 +7,34 @@ playing = True
 
 # CLASSES
 
-class Card:  # Creates all the cards
 
+class Card:  # Creates all the cards
     def __init__(self, suit, rank):
         self.suit = suit
         self.rank = rank
 
     def __str__(self):
-        return self.rank + ' of ' + self.suit
+        return self.rank + " of " + self.suit
 
 
 class Deck:  # creates a deck of cards
 
-    suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
-    ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven',
-             'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
+    suits = ("Hearts", "Diamonds", "Spades", "Clubs")
+    ranks = (
+        "Two",
+        "Three",
+        "Four",
+        "Five",
+        "Six",
+        "Seven",
+        "Eight",
+        "Nine",
+        "Ten",
+        "Jack",
+        "Queen",
+        "King",
+        "Ace",
+    )
 
     def __init__(self):
         self.deck = []  # haven't created a deck yet
@@ -30,10 +43,10 @@ class Deck:  # creates a deck of cards
                 self.deck.append(Card(suit, rank))
 
     def __str__(self):
-        deck_comp = ''
+        deck_comp = ""
         for card in self.deck:
-            deck_comp += '\n ' + card.__str__()
-        return 'The deck has: ' + deck_comp
+            deck_comp += "\n " + card.__str__()
+        return "The deck has: " + deck_comp
 
     def shuffle(self):  # shuffle all the cards in the deck
         random.shuffle(self.deck)
@@ -43,10 +56,23 @@ class Deck:  # creates a deck of cards
         return single_card
 
 
-class Hand:   # show all the cards that the dealer and player have
+class Hand:  # show all the cards that the dealer and player have
 
-    values = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eight': 8,
-              'Nine': 9, 'Ten': 10, 'Jack': 10, 'Queen': 10, 'King': 10, 'Ace': 11}
+    values = {
+        "Two": 2,
+        "Three": 3,
+        "Four": 4,
+        "Five": 5,
+        "Six": 6,
+        "Seven": 7,
+        "Eight": 8,
+        "Nine": 9,
+        "Ten": 10,
+        "Jack": 10,
+        "Queen": 10,
+        "King": 10,
+        "Ace": 11,
+    }
 
     def __init__(self):
         self.cards = []
@@ -56,7 +82,7 @@ class Hand:   # show all the cards that the dealer and player have
     def add_card(self, card):  # add a card to the player's or dealer's hand
         self.cards.append(card)
         self.value += Hand.values[card.rank]
-        if card.rank == 'Ace':
+        if card.rank == "Ace":
             self.aces += 1
 
     def adjust_for_ace(self):
@@ -65,8 +91,7 @@ class Hand:   # show all the cards that the dealer and player have
             self.aces -= 1
 
 
-class Chips:   # keep track of chips
-
+class Chips:  # keep track of chips
     def __init__(self):
         self.total = 100
         self.bet = 0
@@ -79,6 +104,7 @@ class Chips:   # keep track of chips
 
 
 # FUNCTIONS
+
 
 def take_bet(chips):  # ask for user's bet
 
@@ -99,16 +125,15 @@ def hit(deck, hand):
     hand.adjust_for_ace()
 
 
-def hit_or_stand(deck, hand):   # hit or stand
+def hit_or_stand(deck, hand):  # hit or stand
     global playing
 
     while True:
-        ask = input(
-            "\nWould you like to hit or stand? Please enter 'h' or 's': ")
+        ask = input("\nWould you like to hit or stand? Please enter 'h' or 's': ")
 
-        if ask[0].lower() == 'h':
+        if ask[0].lower() == "h":
             hit(deck, hand)
-        elif ask[0].lower() == 's':
+        elif ask[0].lower() == "s":
             print("Player stands, Dealer is playing.")
             playing = False
         else:
@@ -121,17 +146,18 @@ def show_some(player, dealer):
     print("\nDealer's Hand: ")
     print(" <card hidden>")
     print("", dealer.cards[1])
-    print("\nPlayer's Hand: ", *player.cards, sep='\n ')
+    print("\nPlayer's Hand: ", *player.cards, sep="\n ")
 
 
 def show_all(player, dealer):
-    print("\nDealer's Hand: ", *dealer.cards, sep='\n ')
+    print("\nDealer's Hand: ", *dealer.cards, sep="\n ")
     print("Dealer's Hand =", dealer.value)
-    print("\nPlayer's Hand: ", *player.cards, sep='\n ')
+    print("\nPlayer's Hand: ", *player.cards, sep="\n ")
     print("Player's Hand =", player.value)
 
 
 # Game endings
+
 
 def player_busts(player, dealer, chips):
     print("PLAYER BUSTS!")
@@ -214,7 +240,7 @@ while True:
     print("\nPlayer's winnings stand at", player_chips.total)
 
     new_game = input("\nWould you like to play again? Enter 'y' or 'n': ")
-    if new_game[0].lower() == 'y':
+    if new_game[0].lower() == "y":
         playing = True
         continue
     else:

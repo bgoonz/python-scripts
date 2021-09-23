@@ -1,4 +1,4 @@
-## Text Sentimental Analysis 
+## Text Sentimental Analysis
 
 This python script can be used to perform Sentimental Analysis on various textual comments.
 
@@ -9,6 +9,7 @@ First of all install [python]("https://www.python.org/downloads/") on your syste
 ```
 pip install tkinter
 ```
+
 Other then this no other Lib is necessary.
 
 ## Text based Sentimental Analysis
@@ -20,7 +21,6 @@ Other then this no other Lib is necessary.
 ![](https://i.postimg.cc/y6SMs0Q3/image.png)
 
 ![](https://i.postimg.cc/wjVKnHWW/image.png)
-
 
 ### Made with ❤️ by Shantam Sultania
 

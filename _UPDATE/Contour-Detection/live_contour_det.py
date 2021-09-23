@@ -39,27 +39,36 @@ def stackImages(scale, imgArray):
             for y in range(0, cols):
                 if imgArray[x][y].shape[:2] == imgArray[0][0].shape[:2]:
                     imgArray[x][y] = cv2.resize(
-                        imgArray[x][y], (0, 0), None, scale, scale)
+                        imgArray[x][y], (0, 0), None, scale, scale
+                    )
                 else:
                     imgArray[x][y] = cv2.resize(
-                        imgArray[x][y], (imgArray[0][0].shape[1], imgArray[0][0].shape[0]), None, scale, scale)
+                        imgArray[x][y],
+                        (imgArray[0][0].shape[1], imgArray[0][0].shape[0]),
+                        None,
+                        scale,
+                        scale,
+                    )
                 if len(imgArray[x][y].shape) == 2:
-                    imgArray[x][y] = cv2.cvtColor(
-                        imgArray[x][y], cv2.COLOR_GRAY2BGR)
+                    imgArray[x][y] = cv2.cvtColor(imgArray[x][y], cv2.COLOR_GRAY2BGR)
         imageBlank = np.zeros((height, width, 3), np.uint8)
-        hor = [imageBlank]*rows
-        hor_con = [imageBlank]*rows
+        hor = [imageBlank] * rows
+        hor_con = [imageBlank] * rows
         for x in range(0, rows):
             hor[x] = np.hstack(imgArray[x])
         ver = np.vstack(hor)
     else:
         for x in range(0, rows):
             if imgArray[x].shape[:2] == imgArray[0].shape[:2]:
-                imgArray[x] = cv2.resize(
-                    imgArray[x], (0, 0), None, scale, scale)
+                imgArray[x] = cv2.resize(imgArray[x], (0, 0), None, scale, scale)
             else:
                 imgArray[x] = cv2.resize(
-                    imgArray[x], (imgArray[0].shape[1], imgArray[0].shape[0]), None, scale, scale)
+                    imgArray[x],
+                    (imgArray[0].shape[1], imgArray[0].shape[0]),
+                    None,
+                    scale,
+                    scale,
+                )
             if len(imgArray[x].shape) == 2:
                 imgArray[x] = cv2.cvtColor(imgArray[x], cv2.COLOR_GRAY2BGR)
         hor = np.hstack(imgArray)
@@ -69,7 +78,8 @@ def stackImages(scale, imgArray):
 
 def getContours(img, imgContour):
     contours, hierarchy = cv2.findContours(
-        img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE
+    )
 
     # detect the area of each contour and based on the area we can remove all the contours that we are not interested in
     # so in order to do that we will need a for loop
@@ -93,10 +103,24 @@ def getContours(img, imgContour):
             cv2.rectangle(imgContour, (x, y), (x + w, y + h), (0, 255, 0), 5)
 
             # to display values so that we can easily see the number of points and the area detected
-            cv2.putText(imgContour, "Points: " + str(len(approx)), (x +
-                        w + 20, y + 20), cv2.FONT_HERSHEY_COMPLEX, .7, (0, 255, 0), 2)
-            cv2.putText(imgContour, "Area: " + str(int(area)), (x + w +
-                        20, y + 45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0, 255, 0), 2)
+            cv2.putText(
+                imgContour,
+                "Points: " + str(len(approx)),
+                (x + w + 20, y + 20),
+                cv2.FONT_HERSHEY_COMPLEX,
+                0.7,
+                (0, 255, 0),
+                2,
+            )
+            cv2.putText(
+                imgContour,
+                "Area: " + str(int(area)),
+                (x + w + 20, y + 45),
+                cv2.FONT_HERSHEY_COMPLEX,
+                0.7,
+                (0, 255, 0),
+                2,
+            )
 
 
 # reading each frame
@@ -125,12 +149,11 @@ while True:
     getContours(imgDil, imgContour)
 
     # stacking images together as we want images side by side instead of different window
-    imgStack = stackImages(0.8, ([img, imgCanny],
-                                 [imgDil, imgContour]))
+    imgStack = stackImages(0.8, ([img, imgCanny], [imgDil, imgContour]))
 
     # displaying it
     cv2.imshow("Result", imgStack)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord("q"):
         break
 
 cap.release()

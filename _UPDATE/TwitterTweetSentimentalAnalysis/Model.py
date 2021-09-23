@@ -5,7 +5,6 @@ import tweepy
 
 
 class model(object):
-
     def __init__(self, candidate_key, candidate_sec, access_key, access_sec):
         super().__init__()
         self.candidate_key = candidate_key
@@ -23,7 +22,7 @@ class model(object):
 
         api = self.get_authenticated_api()
 
-        tweet_live = api.search(text, tweet_mode='extended')
+        tweet_live = api.search(text, tweet_mode="extended")
         return tweet_live
 
     def analysis_live_tweet_data(self, text):
@@ -46,11 +45,17 @@ class model(object):
             subjectivity = TextBlob(tweet.full_text).sentiment.subjectivity
             score = SentimentIntensityAnalyzer().polarity_scores(tweet.full_text)
 
-            if polarity < 0 or subjectivity < 0 and score['neg'] > score['pos']:
-                result.append([tweet.full_text, polarity, subjectivity, score, "negative"])
-            elif polarity > 0 and subjectivity > 0 and score['neg'] < score['pos']:
-                result.append([tweet.full_text, polarity, subjectivity, score, "positive"])
+            if polarity < 0 or subjectivity < 0 and score["neg"] > score["pos"]:
+                result.append(
+                    [tweet.full_text, polarity, subjectivity, score, "negative"]
+                )
+            elif polarity > 0 and subjectivity > 0 and score["neg"] < score["pos"]:
+                result.append(
+                    [tweet.full_text, polarity, subjectivity, score, "positive"]
+                )
             else:
-                result.append([tweet.full_text, polarity, subjectivity, score, "neutral"])
+                result.append(
+                    [tweet.full_text, polarity, subjectivity, score, "neutral"]
+                )
 
         return result

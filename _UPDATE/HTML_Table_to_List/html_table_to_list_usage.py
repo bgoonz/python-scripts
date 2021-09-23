@@ -30,6 +30,6 @@ html_table_string = """<table class="table table-condensed">
                         </tr>
                     </table>"""
 
-htmltabletolist = HTMLTableToList(html_table_string) ## args : HTML table as string
+htmltabletolist = HTMLTableToList(html_table_string)  ## args : HTML table as string
 list_of_list = htmltabletolist.get_list()
 pprint(list_of_list)

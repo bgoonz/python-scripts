@@ -6,8 +6,8 @@ Tells the current price of bitcoin using Python's TKinter library and using luno
 
 > python bitcoin-price.py
 
-or 
+or
 
 > python3 bitcoin-price.py
 
-* the default pair is Bitcoin to Malaysian Ringgit, to change that, click [here](https://api.mybitx.com/api/1/tickers) to find out what tickers are available and change `XBTMYR` in line 9.
+- the default pair is Bitcoin to Malaysian Ringgit, to change that, click [here](https://api.mybitx.com/api/1/tickers) to find out what tickers are available and change `XBTMYR` in line 9.

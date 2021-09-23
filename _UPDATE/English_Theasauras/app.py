@@ -3,14 +3,18 @@ import difflib
 
 from difflib import get_close_matches
 
-data = json.load(open("data.json"))     # Importing data from data.json
+data = json.load(open("data.json"))  # Importing data from data.json
+
 
 def show_def(word):
     word = word.lower()
     if word in data:
         return data[word]
     elif len(get_close_matches(word, data.keys())) > 0:
-        choice = input("Did you mean %s instead ? Enter Y for yes or N for no: " % get_close_matches(word, data.keys())[0])
+        choice = input(
+            "Did you mean %s instead ? Enter Y for yes or N for no: "
+            % get_close_matches(word, data.keys())[0]
+        )
         if choice == "Y":
             return data[get_close_matches(word, data.keys())[0]]
         elif choice == "N":
@@ -30,4 +34,3 @@ if type(output) == list:
         print(item)
 else:
     print(output)
-

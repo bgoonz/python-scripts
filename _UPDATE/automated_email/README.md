@@ -8,6 +8,6 @@ pip install json
 ```
 
 Can be run easily using commmand prompt (python automated_email.py)
- -> login as you would for your gmail account( same email and password)
- -> find your way with the intuitive user friendly menu
- (!!!Your passwords and emails are only stored on your local device and no one has access to your information otherwise!!!)
+-> login as you would for your gmail account( same email and password)
+-> find your way with the intuitive user friendly menu
+(!!!Your passwords and emails are only stored on your local device and no one has access to your information otherwise!!!)

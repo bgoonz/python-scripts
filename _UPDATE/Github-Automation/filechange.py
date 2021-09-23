@@ -5,6 +5,7 @@ from ignore import getIgnoreFiles
 import logger
 from utils import getNestedFiles, read_file, commitAndUpdate
 from colors import logcolors
+
 mypath = os.getcwd()
 
 ignoredirs = getIgnoreFiles()
@@ -18,23 +19,23 @@ def ischanged(url, branch, *args, **kwargs):
     changedfile = []
     diffarr = []
     # if uncommited data found perform git commands on them
-    initbuffer = kwargs.get('initbuffer', -1)
-    if (initbuffer != -1):
+    initbuffer = kwargs.get("initbuffer", -1)
+    if initbuffer != -1:
         for obj in initbuffer:
-            file = obj['path']
-            diff = obj['changes']
+            file = obj["path"]
+            diff = obj["changes"]
             diffarr.append(diff)
             changedfile.append(file)
 
         # Performing Git Commands for changed files
         commitAndUpdate(changedfile, diffarr, url, branch)
-    print('Listening for changes....')
+    print("Listening for changes....")
     initial = list(read_file(onlyfiles))
     while True:
         current = list(read_file(onlyfiles))
         changeditem = []
         previtem = []
-        if (current != initial):
+        if current != initial:
             # Calculating Previous Version of File
             for ele in initial:
                 if ele not in current:
@@ -46,11 +47,9 @@ def ischanged(url, branch, *args, **kwargs):
                     changeditem.append(ele)
             # calculating changed file's name
             for i in range(0, len(changeditem)):
-                print('loop :-', i)
+                print("loop :-", i)
                 changedfile.append(onlyfiles[current.index(changeditem[i])])
-            print(
-                f"Changed file is {logcolors.BOLD}{changedfile}{logcolors.ENDC}\n"
-            )
+            print(f"Changed file is {logcolors.BOLD}{changedfile}{logcolors.ENDC}\n")
 
             # Calculating Diff for previous and changed version of file
             diff = diffcalc.calcDiff(previtem, changeditem[0])

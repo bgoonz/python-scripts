@@ -1,6 +1,6 @@
 # Network Troubleshooter
 
-A CLI tool to fix corrupt IP configuaration and other network socket related issue of your Windows PC. 
+A CLI tool to fix corrupt IP configuaration and other network socket related issue of your Windows PC.
 
 ## Utility
 
@@ -10,6 +10,7 @@ A CLI tool to fix corrupt IP configuaration and other network socket related iss
 ## How to use
 
 <em>View help documentation:</em>
+
 ```powershell
 py ipreset.py -h
 ```

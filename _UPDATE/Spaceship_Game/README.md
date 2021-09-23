@@ -7,11 +7,10 @@
 
 All the packages essential for running the script can be installed as follows:
 
-``` sh
+```sh
 $ pip install -r requirements.txt
 ```
 
 ## Working:
 
 ![GIF](https://media.giphy.com/media/gRjmH1VPUBZrfYV0RH/giphy.gif)
-

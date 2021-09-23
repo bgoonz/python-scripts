@@ -4,8 +4,10 @@ import time
 
 scr = t.Screen()
 scr.setup(width=500, height=500)
-UserInput = scr.textinput(title="Play luck",
-                          prompt="Who would win in your opinion??Enter your lucky color from rainbow")
+UserInput = scr.textinput(
+    title="Play luck",
+    prompt="Who would win in your opinion??Enter your lucky color from rainbow",
+)
 # declaring a list of colors
 ColorList = ["Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet"]
 RaceRunning = False
@@ -23,7 +25,7 @@ for i in range(0, 7):
 if UserInput:
     RaceRunning = True
     # till the game is running
-while RaceRunning :
+while RaceRunning:
     for runner in Runners:
         if runner.xcor() > 230:
             winner = runner.pencolor()

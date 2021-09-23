@@ -1,8 +1,9 @@
 # Pandas library is used for importing and reading the data
 import pandas as pd
+
 # datetime module is used for fetching the dates
 import datetime
-import smtplib															# smtp library used for sending mail
+import smtplib  # smtp library used for sending mail
 import os
 
 current_path = os.getcwd()
@@ -19,7 +20,7 @@ GMAIL_PSWD = input("Enter password for your email mentioned above: ")
 def sendEmail(to, sub, msg):
     print(f"Email to {to} sent: \nSubject: {sub} ,\nMessage: {msg}")
     # creating server to send mail
-    s = smtplib.SMTP('smtp.gmail.com', 587)
+    s = smtplib.SMTP("smtp.gmail.com", 587)
     # start a TLS session
     s.starttls()
     # the function will login with your Gmail credentials
@@ -37,17 +38,17 @@ if __name__ == "__main__":
 
     writeInd = []
     for index, item in df.iterrows():
-        bday = item['Birthday']
+        bday = item["Birthday"]
         bday = datetime.datetime.strptime(bday, "%d-%m-%Y")
         bday = bday.strftime("%d-%m")
-        if(today == bday) and yearNow not in str(item['LastWishedYear']):
+        if (today == bday) and yearNow not in str(item["LastWishedYear"]):
             # calling the sendmail function
-            sendEmail(item['Email'], "Happy Birthday", item['Dialogue'])
+            sendEmail(item["Email"], "Happy Birthday", item["Dialogue"])
             writeInd.append(index)
 
     if writeInd != None:
         for i in writeInd:
-            oldYear = df.loc[i, 'LastWishedYear']
-            df.loc[i, 'LastWishedYear'] = str(oldYear) + ", " + str(yearNow)
+            oldYear = df.loc[i, "LastWishedYear"]
+            df.loc[i, "LastWishedYear"] = str(oldYear) + ", " + str(yearNow)
 
-    df.to_excel('data.xlsx', index=False)
+    df.to_excel("data.xlsx", index=False)

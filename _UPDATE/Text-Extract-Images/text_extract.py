@@ -3,7 +3,7 @@ import pytesseract as pt
 import os
 from pathlib import Path
 
-current_location = (os.getcwd() + '\\')
+current_location = os.getcwd() + "\\"
 
 
 def extract():
@@ -21,8 +21,8 @@ def extract():
     # Path to Tesseract
     tesseract_path = input("Enter the Path to Tesseract: ")
     print(
-        '\nNOTE: '
-        'It is preferable to setup the PATH variable to Tesseract, see README. \n'
+        "\nNOTE: "
+        "It is preferable to setup the PATH variable to Tesseract, see README. \n"
     )
 
     #  = r'C:\Program Files\Tesseract-OCR\tesseract'
@@ -51,5 +51,5 @@ def extract():
             file.write(text)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     extract()

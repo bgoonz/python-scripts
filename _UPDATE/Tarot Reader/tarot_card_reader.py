@@ -18,7 +18,7 @@ def fin():
     input(">> press enter")
     print()
     print("\x1B[3mFin\x1B[23m".center(72))
-    print("*"*72)
+    print("*" * 72)
 
 
 # Display when 'Y' or 'y' is entered
@@ -39,14 +39,20 @@ def youve_chosen_yes():
     print()
     print("Your second card is...")
     pick_card2 = random.randint(0, 78)
-    print(tarot_deck[pick_card2] if pick_card2 !=
-          pick_card1 else tarot_deck[random.randint(0, 78)])
+    print(
+        tarot_deck[pick_card2]
+        if pick_card2 != pick_card1
+        else tarot_deck[random.randint(0, 78)]
+    )
     input(">> press enter")
     print()
     print("And your third and final card is...")
     pick_card3 = random.randint(0, 78)
-    print(tarot_deck[pick_card3] if pick_card3 != pick_card1 and pick_card3 !=
-          pick_card2 else tarot_deck[random.randint(0,      78)])
+    print(
+        tarot_deck[pick_card3]
+        if pick_card3 != pick_card1 and pick_card3 != pick_card2
+        else tarot_deck[random.randint(0, 78)]
+    )
     input(">> press enter")
     print()
     fin()
@@ -75,7 +81,9 @@ def youve_chosen_neither():
     input(">> press enter")
     print("Is yourself.")
     input(">> press enter")
-    print("\nNever gonna give you up,\nNever gonna let you down,\nNever gonna run around and desert you.\nNever gonna make you cry,\nNever gonna say goodbye,\nNever gonna tell a lie and hurt you.\n")
+    print(
+        "\nNever gonna give you up,\nNever gonna let you down,\nNever gonna run around and desert you.\nNever gonna make you cry,\nNever gonna say goodbye,\nNever gonna tell a lie and hurt you.\n"
+    )
     fin()
 
 
@@ -98,11 +106,11 @@ print("\nInteresting...")
 
 
 # Driver code
-if ch.lower() == 'y':
+if ch.lower() == "y":
     print()
     youve_chosen_yes()
 
-elif ch.lower() == 'n':
+elif ch.lower() == "n":
     print()
     youve_chosen_no()
 

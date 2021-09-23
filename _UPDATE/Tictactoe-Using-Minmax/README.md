@@ -3,7 +3,7 @@
 ## Description
 
 Adversarial algorithm-Min-Max for Tic-Tac-Toe Game.
-An agent (Robot) will play Tic Tac Toe Game with Human. 
+An agent (Robot) will play Tic Tac Toe Game with Human.
 
 Min-Max Algorithm: this algorithm also uses the game tree where each level has the additional information as:
 
@@ -15,7 +15,7 @@ Game require two players, 1. Ai Player and 2. Human Player [AI and Human player]
 
 ## Setup instructions
 
-No package needs to install 
+No package needs to install
 
 ## Output
 
@@ -23,5 +23,4 @@ No package needs to install
 
 ## Author(s)
 
-[Hritik Jaiswal](https://github.com/hritik5102) 
-
+[Hritik Jaiswal](https://github.com/hritik5102)

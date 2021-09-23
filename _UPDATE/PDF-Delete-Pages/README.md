@@ -5,10 +5,9 @@
 
 ## Setup instructions
 
-- We use **pdfrw** library for this script. 
+- We use **pdfrw** library for this script.
 - To install this library, type `pip install pdfrw` in your terminal.
-- To run the script run  `python3 script.py` and then enter the information as prompted by the program.
-
+- To run the script run `python3 script.py` and then enter the information as prompted by the program.
 
 ## Output
 

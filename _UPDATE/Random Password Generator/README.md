@@ -1,9 +1,11 @@
 # RANDOM PASSWORD GENERATOR
 
 ## Description
+
 This is a random password generator.
 
 The password is generated based on two parameters :
+
 - Password length
 - Strength of password
 
@@ -17,6 +19,7 @@ Both these parameters are selected by the user.
 - Pyperclip
 
 ## Output
+
 <p align="center">
   <img src="https://imgur.com/DsnodoR.png">
   <br>
@@ -37,4 +40,5 @@ Both these parameters are selected by the user.
 </p>
 
 ## Author
+
 [Tanvi Bugdani](https://github.com/tanvi355)

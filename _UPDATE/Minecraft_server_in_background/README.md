@@ -14,9 +14,11 @@ A sample invocation could look like this:
 ```bash
 nohup ./run.py &
 ```
+
 Now the specified script, e.g. a Minecraft server, is running in the background.
 
 ```bash
 echo stop > command.txt
 ```
+
 After a short delay, the script in the background will be stopped.

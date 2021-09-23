@@ -2,25 +2,24 @@
 
 ## Utility
 
-* Find and write all your saved wifi passwords in a txt file
+- Find and write all your saved wifi passwords in a txt file
 
 ## How to use
 
-* ### Run the script
+- ### Run the script
 
-    Windows:
+  Windows:
 
-    > py wifiPassword.py
+  > py wifiPassword.py
 
-    Linux:
+  Linux:
 
-    > python3 wifiPassword.py
+  > python3 wifiPassword.py
 
-* ### Select Path
+- ### Select Path
 
-    Browse to the path where you want to store the passwords
+  Browse to the path where you want to store the passwords
 
-* ### Generate 
+- ### Generate
 
-    Click on Generate button to save the txt file in the specified location.
-
+  Click on Generate button to save the txt file in the specified location.

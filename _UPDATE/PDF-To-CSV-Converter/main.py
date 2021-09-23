@@ -1,5 +1,6 @@
 import tabula  # simple wrapper for tabula-java, read tables from PDF into csv
 import os
+
 print("[-+-] starting pdf_csv.py...")
 print("[-+-] import a pdf and convert it to a csv")
 # -----------------------------------------------------------------------------
@@ -37,8 +38,7 @@ def pdf_csv():  # convert pdf to csv
     else:
         print("[-+-] looking for another pdf...")
         arr_pdf = [
-            defaultdir for defaultdir in os.listdir()
-            if defaultdir.endswith(".pdf")
+            defaultdir for defaultdir in os.listdir() if defaultdir.endswith(".pdf")
         ]
         if len(arr_pdf) == 1:  # there has to be only 1 pdf in the directory
             print("[-+-] pdf found: " + arr_pdf[0] + "\n")
@@ -67,10 +67,7 @@ def pdf_csv():  # convert pdf to csv
         print("[-+-] converting pdf to csv...")
         #    print("[-+-] pdf to csv conversion suppressed! \n")
         try:
-            tabula.convert_into(pdf_path,
-                                csv_path,
-                                output_format="csv",
-                                pages="all")
+            tabula.convert_into(pdf_path, csv_path, output_format="csv", pages="all")
             print("[-+-] pdf to csv conversion complete!\n")
         except IOError:
             print("[-+-] pdf to csv conversion failed!")

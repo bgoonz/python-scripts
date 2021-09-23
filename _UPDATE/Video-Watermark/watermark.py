@@ -1,7 +1,7 @@
 from cv2 import cv2
 
 # take the input video
-cap = cv2.VideoCapture('videos/input.mp4')
+cap = cv2.VideoCapture("videos/input.mp4")
 
 # We need to set resolutions.
 # so, convert them from float to integer.
@@ -17,13 +17,14 @@ print("Frames per second using video.get(cv2.CAP_PROP_FPS) : {0}".format(fps))
 # Below VideoWriter object will create
 # a frame of above defined The output
 # is stored in 'videos/output' file.
-result = cv2.VideoWriter('videos/output.avi', cv2.VideoWriter_fourcc(*'MJPG'),
-                         fps, size)
+result = cv2.VideoWriter(
+    "videos/output.avi", cv2.VideoWriter_fourcc(*"MJPG"), fps, size
+)
 
 print("processing started...")
 
 # continue till the video is not over...
-while (cap.isOpened()):
+while cap.isOpened():
 
     # Capture frame-by-frame from the video
     ret, frame = cap.read()
@@ -41,16 +42,17 @@ while (cap.isOpened()):
         # color: the colour of the font.
         # thickness: the thickness of the font
 
-        cv2.putText(frame, 'HELLO WORLD', (50, 50), font, 1, (0, 255, 255), 2,
-                    cv2.LINE_4)
+        cv2.putText(
+            frame, "HELLO WORLD", (50, 50), font, 1, (0, 255, 255), 2, cv2.LINE_4
+        )
         # write in the output file
         result.write(frame)
 
         # Display the resulting frame
-        cv2.imshow('video', frame)
+        cv2.imshow("video", frame)
 
         # creating 'q' as the quit button for the video
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        if cv2.waitKey(1) & 0xFF == ord("q"):
             break
     else:
         break

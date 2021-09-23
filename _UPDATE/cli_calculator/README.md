@@ -1,7 +1,9 @@
 # calc_argparser
+
 Calculadora via CLI
 
 # Instructions
+
 To run CLI_Calculator execute:
 
 - `python args.py -h` - For help

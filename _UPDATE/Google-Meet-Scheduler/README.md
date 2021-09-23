@@ -20,10 +20,12 @@ The script [here](script.py) allows you to schedule a [google meeting](https://m
 - Move this file to the folder where your `script.py` resides.
 
 #### Step 2. Install all the dependencies listed in the [`requirements.txt`](requirements.txt)
+
 - Just Run `pip install -r requirements.txt`
 - If facing any issue installing any package, just google it :)
 
 #### Step 3. Now if you run the script for the first time then you'll be requested to grant some permissions.
+
 - First of all you'll need to choose the google acount you want to use.
 <p align="center"><img height="300px" src="images/5.PNG"></p>
 
@@ -43,6 +45,7 @@ The script [here](script.py) allows you to schedule a [google meeting](https://m
 <p align="center"><img height="300px" src="images/9.PNG"></p>
 
 #### Step 4. You are all set now, just run the script. Hurray!!
+
 - If still facing any issue, then contact [here](https://github.com/Tarun-Kamboj).
 
 ## Output
@@ -54,11 +57,13 @@ The script [here](script.py) allows you to schedule a [google meeting](https://m
 - The script also sets the event in your google calender.
 
 | <img height="200px" src="images/11.jpg"> | <img height="300px" src="images/12.jpg"> |
-|--|--|
+| ---------------------------------------- | ---------------------------------------- |
 
 - The script also sends the emails to the guests.
-<img height="200px" src="images/13.jpg">
+  <img height="200px" src="images/13.jpg">
 
 ## Author
+
 ### Contributed by [Tarun Kamboj](https://github.com/Tarun-Kamboj)
+
 ### Thanks for reading :)

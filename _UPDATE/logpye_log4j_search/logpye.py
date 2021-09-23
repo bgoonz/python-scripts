@@ -33,10 +33,10 @@ def parse(xmlelement):
     logging.debug("parse")
     root = ET.fromstring(xmlelement)
     message = root[0].text
-    logger = root.attrib['logger']
-    timestamp = root.attrib['timestamp']
-    error_level = root.attrib['level']
-    thread = root.attrib['thread']
+    logger = root.attrib["logger"]
+    timestamp = root.attrib["timestamp"]
+    error_level = root.attrib["level"]
+    thread = root.attrib["thread"]
 
     return message, logger, timestamp, error_level, thread
 
@@ -78,7 +78,9 @@ def main(logfile, itir_file, ruleset, frontend):
     string = ""
     for i in range(len(elementarray)):
         xmlelement = "".join(elementarray[i])
-        message, logger, timestamp, error_level, thread = parse(xmlelement.replace("log4j:", "").rstrip('\n'))
+        message, logger, timestamp, error_level, thread = parse(
+            xmlelement.replace("log4j:", "").rstrip("\n")
+        )
         ruleset(rule, message, logger, timestamp, error_level, thread)
         if error_level == "ERROR":
             errors += 1
@@ -86,7 +88,7 @@ def main(logfile, itir_file, ruleset, frontend):
             warns += 1
 
 
-if __name__ in '__main__':
+if __name__ in "__main__":
     import xml.etree.ElementTree as ET
     import logging
     import sys
@@ -94,11 +96,34 @@ if __name__ in '__main__':
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f','--file', help='log4j file to parse', type=str, required=True)
-    parser.add_argument('-as','--asciisearch', help='ascii search pattern', type=str, required=False, default="")
-    parser.add_argument('-rs','--regexsearch', help='regex search pattern', type=str, required=False, default="")
-    parser.add_argument('-fe', '--frontend', help='customize output: message, logger, timestamp, error_level, thread', type=str, required=False, default="error_level, logger, timestamp")
+    parser.add_argument(
+        "-f", "--file", help="log4j file to parse", type=str, required=True
+    )
+    parser.add_argument(
+        "-as",
+        "--asciisearch",
+        help="ascii search pattern",
+        type=str,
+        required=False,
+        default="",
+    )
+    parser.add_argument(
+        "-rs",
+        "--regexsearch",
+        help="regex search pattern",
+        type=str,
+        required=False,
+        default="",
+    )
+    parser.add_argument(
+        "-fe",
+        "--frontend",
+        help="customize output: message, logger, timestamp, error_level, thread",
+        type=str,
+        required=False,
+        default="error_level, logger, timestamp",
+    )
     args = parser.parse_args()
 
-    logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
+    logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.INFO)
     main(args.file, itirate_of, ruleset, frontend)

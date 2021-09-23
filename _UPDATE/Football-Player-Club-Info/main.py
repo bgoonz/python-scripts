@@ -11,7 +11,8 @@ class myScraper:
     def __init__(self, player):
 
         self.wiki_lang = wikipediaapi.Wikipedia(
-            'en', extract_format=wikipediaapi.ExtractFormat.HTML)
+            "en", extract_format=wikipediaapi.ExtractFormat.HTML
+        )
         self.wiki_page = self.wiki_lang.page(player)
         self.page_html_text = self.wiki_page.text
         self.soup = BeautifulSoup(self.page_html_text, "lxml")
@@ -19,12 +20,12 @@ class myScraper:
 
     def get_club_details(self, sections, level=0):
         for s in sections:
-            if 'Club career' in s.title:
+            if "Club career" in s.title:
                 print(s.title)
             for s in s.sections:
                 level = level + 1
                 print(s.title)
-                if (s.sections is None):
+                if s.sections is None:
                     return
                 else:
                     for s in s.sections:
@@ -60,5 +61,5 @@ def main():
     my_scraper_obj.execute()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

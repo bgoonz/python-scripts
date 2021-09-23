@@ -21,7 +21,6 @@ You will be able to see the status of the file being downloaded.
 
 ![output_2_mp4](https://user-images.githubusercontent.com/72334601/119267771-9c6e4080-bc0d-11eb-93c6-4e21a2976a1a.PNG)
 
-
 The file will be stored locally after being downloaded.
 
 ## Author(s)

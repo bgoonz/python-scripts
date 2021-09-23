@@ -19,4 +19,3 @@ Downloaded video you desired in the same directory of the script.
 Written by [XZANATOL](https://www.github.com/XZANATOL).
 
 The project was built as a contribution during [GSSOC'21](https://gssoc.girlscript.tech/).
-

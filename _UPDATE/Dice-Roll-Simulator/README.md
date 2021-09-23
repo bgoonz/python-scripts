@@ -1,14 +1,17 @@
 # Dice Rolling Simulator
 
 ## Description
+
 We all know about dice. It’s a simple cube with numbers from 1 to 6 written on its face. But what is simulation? It is making a computer model. Thus, a dice simulator is a simple computer model that can roll a dice for us.
 
 </br>
 
 ### Step 1: Importing the required modules
+
 </br>
 
 We will import the following modules:
+
 - Tkinter: Imported to use Tkinter and make GUI applications.
 - Image, Imagetk: Imported from PIL, i.e. Python Imaging Library. We use it to perform operations involving images in our UI.
 - Random: Imported to generate random numbers.
@@ -16,6 +19,7 @@ We will import the following modules:
 </br>
 
 ### Step 2: Building a top-level widget to make the main window for our application
+
 </br>
 
 In this step, we will build the main window of our application, where the buttons, labels, and images will reside. We also give it a title by title() function.
@@ -23,6 +27,7 @@ In this step, we will build the main window of our application, where the button
 </br>
 
 ### Step 3: Designing the buttons
+
 </br>
 
 Now, just think, what we need to roll a die? Just our hands!
@@ -39,6 +44,7 @@ Here, we use **pack()** to arrange our widgets in row and column form. The ‘Bl
 </br>
 
 ### Step 4: Forming a list of images to be randomly displayed
+
 </br>
 
 ‘dice’ is the list of names of images kept in same folder, which are chosen randomly according to the random number generated.
@@ -49,6 +55,7 @@ Here, we use **pack()** to arrange our widgets in row and column form. The ‘Bl
 </br>
 
 ### Step 5: Constructing a label for image, adding a button and assigning functionality
+
 </br>
 
 ‘ImageLabel’ is to place an image in the window. The parameter expands declared as True so that even if we resize the window, image remains in the center.
@@ -61,6 +68,7 @@ Major function:
 </br>
 
 ### Step 6: Forming a list of images to be randomly displayed
+
 </br>
 
 ‘root.mainloop()’ is used to open the main window. It acts as the main function of our program.

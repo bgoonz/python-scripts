@@ -33,5 +33,5 @@
     - sqlite3
 
 ## Author
-   
-   Amit Kumar Mishra
+
+Amit Kumar Mishra

@@ -6,8 +6,8 @@ glossary:
         Acronym: SGML
         GlossDef:
           GlossSeeAlso:
-          - GML
-          - XML
+            - GML
+            - XML
           para: A meta-markup language, used to create markup languages such as DocBook.
         GlossSee: markup
         GlossTerm: Standard Generalized Markup Language

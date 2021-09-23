@@ -11,7 +11,7 @@ root.title("Distance Unit Converter")
 # disabling resizing of window
 root.resizable(0, 0)
 # background colour of window
-root['bg'] = 'skyblue'
+root["bg"] = "skyblue"
 
 # conversion factors
 conv_factors = {
@@ -21,7 +21,7 @@ conv_factors = {
     "feet": 0.3048,
     "miles": 1609.344,
     "inches": 0.0254,
-    "yards": 0.9144
+    "yards": 0.9144,
 }
 
 # function to convert from one unit to other
@@ -32,12 +32,12 @@ def convert():
     ip_unit = ip_opt.get()
     op_unit = op_opt.get()
     # if user chooses same input & output unit then display warning
-    if(ip_unit == op_unit):
+    if ip_unit == op_unit:
         messagebox.showwarning("Warning", "Select different units")
     # else perform conversion
     else:
         output.delete(0, END)
-        ans = ip*(conv_factors[ip_unit]/conv_factors[op_unit])
+        ans = ip * (conv_factors[ip_unit] / conv_factors[op_unit])
         output.insert(0, round(ans, 4))
 
 
@@ -48,8 +48,15 @@ op_opt = StringVar()
 op_opt.set("Select Unit")
 
 # Adding Widgets
-greeting = Label(text="Welcome to Distance Unit Converter !!", bg="lavender",
-                 width=40, height=2, bd=2, relief="ridge", font=("Lucida Console", 10, "italic"))
+greeting = Label(
+    text="Welcome to Distance Unit Converter !!",
+    bg="lavender",
+    width=40,
+    height=2,
+    bd=2,
+    relief="ridge",
+    font=("Lucida Console", 10, "italic"),
+)
 greeting.grid(row=0, column=1, pady=20, padx=12)
 
 # ---input row---
@@ -60,8 +67,7 @@ input = Entry(root, justify="center")
 input.grid(row=2, column=1, ipady=8)
 input.config(font=8)
 
-ipmenu = OptionMenu(root, ip_opt, "cm", "m", "km",
-                    "feet", "miles", "inches", "yards")
+ipmenu = OptionMenu(root, ip_opt, "cm", "m", "km", "feet", "miles", "inches", "yards")
 ipmenu.grid(row=2, column=2)
 
 # ---output row---
@@ -72,13 +78,20 @@ output = Entry(root, justify="center")
 output.grid(row=4, column=1, ipady=8)
 output.config(font=8)
 
-opmenu = OptionMenu(root, op_opt, "cm", "m", "km",
-                    "feet", "miles", "inches", "yards")
+opmenu = OptionMenu(root, op_opt, "cm", "m", "km", "feet", "miles", "inches", "yards")
 opmenu.grid(row=4, column=2)
 
 # ---convert Button---
-convertbtn = Button(root, text="Convert", justify="center", width=10,
-                    height=2, command=convert, bg="lavender", font=("bold", 12))
+convertbtn = Button(
+    root,
+    text="Convert",
+    justify="center",
+    width=10,
+    height=2,
+    command=convert,
+    bg="lavender",
+    font=("bold", 12),
+)
 convertbtn.grid(row=6, column=1)
 
 root.mainloop()

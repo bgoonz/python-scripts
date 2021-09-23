@@ -3,9 +3,10 @@ An invisibility cloak is a magical garment which renders whomever or whatever it
 <br>
 In this project we create an invisibility cloak using python
 
----------------------------------------------------------------------
+---
 
 ## Modules Used
+
 - time
 - OpenCv
 - numpy

@@ -49,8 +49,8 @@ def main():
         """
         Left Shift Operation
         """
-        A = A[1:len(A)] + Q[0]
-        Q = Q[1:len(Q)]
+        A = A[1 : len(A)] + Q[0]
+        Q = Q[1 : len(Q)]
         printer = A + "\t\t" + Q + "\t\t" + str(size) + "\t\tLeft Shift"
         print(printer)
         """
@@ -62,7 +62,7 @@ def main():
         """
         Bit Checking and AAddition if required
         """
-        if A[0] == '0':
+        if A[0] == "0":
             Q = Q + "1"
         else:
             Q = Q + "0"
@@ -84,7 +84,7 @@ def twos_complement(n):
     Performing 1's Complement by changing all zeroes to one
     """
     for i in range(0, len(n)):
-        if n[i] == '1':
+        if n[i] == "1":
             a = a + "0"
         else:
             a = a + "1"
@@ -111,31 +111,31 @@ def add(x, y):
         b = x[i]
         c = y[i]
 
-        if a == b and b == c and c == '0':
+        if a == b and b == c and c == "0":
             result = "0" + result
             carry = "0"
-        elif a == b and b == c and c == '1':
+        elif a == b and b == c and c == "1":
             result = "1" + result
             carry = "1"
         else:
-            if a == '1' and b == c and c == '0':
+            if a == "1" and b == c and c == "0":
                 result = "1" + result
                 carry = "0"
-            elif a == '0' and b == '1' and c == '0':
+            elif a == "0" and b == "1" and c == "0":
                 result = "1" + result
                 carry = "0"
-            elif a == '0' and b == '0' and c == '1':
+            elif a == "0" and b == "0" and c == "1":
                 result = "1" + result
                 carry = "0"
-            elif a == '0' and b == '1' and c == '1':
+            elif a == "0" and b == "1" and c == "1":
                 result = "0" + result
                 carry = "1"
-            elif a == '1' and b == '0' and c == '1':
+            elif a == "1" and b == "0" and c == "1":
                 result = "0" + result
                 carry = "1"
-            elif a == '1' and b == '1' and c == '0':
+            elif a == "1" and b == "1" and c == "0":
                 result = "0" + result
-                carry = '1'
+                carry = "1"
     return result
 
 

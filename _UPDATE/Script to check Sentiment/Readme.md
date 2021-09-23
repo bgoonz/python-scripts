@@ -5,7 +5,7 @@
 ## Sentiment Detector Functionalities : 🚀
 
 - In the input field write the sentence whose sentiment is to be checked
-- On clicking on ```check sentiment``` button it displays the percentage of neutral, positive and negative sentiments
+- On clicking on `check sentiment` button it displays the percentage of neutral, positive and negative sentiments
 - It also displays the overall sentiment
 
 ## Sentiment Detector Instructions: 👨🏻‍💻
@@ -32,9 +32,9 @@
     - tkinter
 
 ## DEMO
+
 ![Screenshot (211)](https://user-images.githubusercontent.com/60662775/115137592-9ac8c000-a044-11eb-83fe-84eaeb549283.png)
 
 ## Author
-   
-   Amit Kumar Mishra
 
+Amit Kumar Mishra

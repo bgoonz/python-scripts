@@ -19,13 +19,13 @@ def reader(file):
 
 
 # You can replace these with your own headers for the table
-headers = ['Nume', 'Prenume', 'Titlu', 'Editura', 'Cota', 'Pret', 'An']
+headers = ["Nume", "Prenume", "Titlu", "Editura", "Cota", "Pret", "An"]
 # Unified excel name
-workbook_name = input('Unified Workbook name ')
+workbook_name = input("Unified Workbook name ")
 book = Workbook()
 sheet = book.active
 # Specify path
-path = input('Path: ')
+path = input("Path: ")
 # Get all files from folder
 files = os.listdir(path)
 for file in files:

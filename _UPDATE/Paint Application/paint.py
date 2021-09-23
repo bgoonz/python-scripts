@@ -146,8 +146,15 @@ class Window(QMainWindow):
             # creating painter object
             painter = QPainter(self.image)
             # set the pen of the painter
-            painter.setPen(QPen(self.brushColor, self.brushSize,
-                                self.brushStyle, Qt.RoundCap, Qt.RoundJoin))
+            painter.setPen(
+                QPen(
+                    self.brushColor,
+                    self.brushSize,
+                    self.brushStyle,
+                    Qt.RoundCap,
+                    Qt.RoundJoin,
+                )
+            )
             # draw line from the last point
             # of cursor to the current point
             painter.drawLine(self.lastPoint, event.pos())
@@ -169,8 +176,9 @@ class Window(QMainWindow):
 
     # method for saving canvas
     def save(self):
-        filePath, _ = QFileDialog.getSaveFileName(self, "Save Image", "",
-                                                  "PNG(*.png);;JPEG(*.jpg *.jpeg);;All Files(*.*) ")
+        filePath, _ = QFileDialog.getSaveFileName(
+            self, "Save Image", "", "PNG(*.png);;JPEG(*.jpg *.jpeg);;All Files(*.*) "
+        )
         if filePath == "":
             return
         self.image.save(filePath)

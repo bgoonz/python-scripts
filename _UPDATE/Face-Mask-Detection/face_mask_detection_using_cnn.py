@@ -12,7 +12,8 @@ import os
 from sklearn.metrics import classification_report
 import sklearn.metrics as metrics
 import itertools
-for dirname, _, filenames in os.walk('/kaggle/input'):
+
+for dirname, _, filenames in os.walk("/kaggle/input"):
     for filename in filenames:
         print(os.path.join(dirname, filename))
 
@@ -20,24 +21,21 @@ for dirname, _, filenames in os.walk('/kaggle/input'):
 def data_set(dir_data):
     data = []
     target = []
-    data_map = {
-        'with_mask': 1,
-        'without_mask': 0
-    }
+    data_map = {"with_mask": 1, "without_mask": 0}
     skipped = 0
-    root = dir_data+'_annotations.csv'
+    root = dir_data + "_annotations.csv"
     df1 = pd.read_csv(root)
-    df1.dataframeName = '_annotations.csv'
+    df1.dataframeName = "_annotations.csv"
     nRow, nCol = df1.shape
     for i in range(len(df1)):
-        without_mask = 'without_mask'
-        k = dir_data+df1['filename'][i]
+        without_mask = "without_mask"
+        k = dir_data + df1["filename"][i]
         image = cv2.imread(k)
-        xmin = int(df1['xmin'][i])
-        ymin = int(df1['ymin'][i])
-        xmax = int(df1['xmax'][i])
-        ymax = int(df1['ymax'][i])
-        #image=image[ymin:ymax,  xmin:xmax]
+        xmin = int(df1["xmin"][i])
+        ymin = int(df1["ymin"][i])
+        xmax = int(df1["xmax"][i])
+        ymax = int(df1["ymax"][i])
+        # image=image[ymin:ymax,  xmin:xmax]
         try:
             # resizing to (70 x 70)
             image = cv2.resize(image, (70, 70))
@@ -45,8 +43,8 @@ def data_set(dir_data):
             skipped += 1
             print(E)
             continue
-        if(df1['class'][i] == 'mask'):
-            without_mask = 'with_mask'
+        if df1["class"][i] == "mask":
+            without_mask = "with_mask"
         image = img_to_array(image)
         data.append(image)
         target.append(data_map[without_mask])
@@ -56,11 +54,14 @@ def data_set(dir_data):
 
 
 training_data, training_target = data_set(
-    './Face-Mask-Detection/kaggle/input/face-mask-detection/train/')
+    "./Face-Mask-Detection/kaggle/input/face-mask-detection/train/"
+)
 testing_data, testing_target = data_set(
-    './Face-Mask-Detection/kaggle/input/face-mask-detection/test/')
+    "./Face-Mask-Detection/kaggle/input/face-mask-detection/test/"
+)
 valid_data, valid_target = data_set(
-    './Face-Mask-Detection/kaggle/input/face-mask-detection/valid/')
+    "./Face-Mask-Detection/kaggle/input/face-mask-detection/valid/"
+)
 plt.figure(0, figsize=(100, 100))
 for i in range(1, 10):
     plt.subplot(10, 5, i)
@@ -77,43 +78,50 @@ model = Sequential()
 model.add(layers.Conv2D(32, (3, 3), input_shape=img_shape))
 model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 model.add(layers.Conv2D(64, (3, 3)))
-model.add(layers.Activation('relu'))
+model.add(layers.Activation("relu"))
 model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 model.add(layers.Conv2D(128, (3, 3)))
-model.add(layers.Activation('relu'))
+model.add(layers.Activation("relu"))
 model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 model.add(layers.Conv2D(256, (3, 3)))
-model.add(layers.Activation('relu'))
+model.add(layers.Activation("relu"))
 model.add(layers.MaxPooling2D(pool_size=(2, 2)))
 model.add(layers.Flatten())
 model.add(layers.Dropout(0.5))
-model.add(layers.Dense(64, activation='relu'))
+model.add(layers.Dense(64, activation="relu"))
 model.add(layers.Dropout(0.4))
-model.add(layers.Dense(2, activation='softmax'))
+model.add(layers.Dense(2, activation="softmax"))
 adam = tf.keras.optimizers.Adam(0.001)
-model.compile(loss='categorical_crossentropy',
-              optimizer=adam, metrics=['accuracy'])
+model.compile(loss="categorical_crossentropy", optimizer=adam, metrics=["accuracy"])
 model.summary()
-aug = ImageDataGenerator(rotation_range=25, width_shift_range=0.1,
-                         height_shift_range=0.1, shear_range=0.2, zoom_range=0.2,
-                         horizontal_flip=True, fill_mode="nearest")
-history = model.fit(aug.flow(training_data, training_target, batch_size=10),
-                    epochs=70,
-                    validation_data=(valid_data, valid_target),
-                    verbose=2,
-                    shuffle=True)
-plt.plot(history.history['accuracy'])
-plt.plot(history.history['val_accuracy'])
-plt.ylabel(['accuracy'])
-plt.xlabel(['epoch'])
-plt.legend(['accuracy', 'val_accuracy'])
-plt.plot(history.history['loss'])
-plt.plot(history.history['val_loss'])
-plt.ylabel(['loss'])
-plt.xlabel(['epoch'])
-plt.legend(['loss', 'val_loss'])
+aug = ImageDataGenerator(
+    rotation_range=25,
+    width_shift_range=0.1,
+    height_shift_range=0.1,
+    shear_range=0.2,
+    zoom_range=0.2,
+    horizontal_flip=True,
+    fill_mode="nearest",
+)
+history = model.fit(
+    aug.flow(training_data, training_target, batch_size=10),
+    epochs=70,
+    validation_data=(valid_data, valid_target),
+    verbose=2,
+    shuffle=True,
+)
+plt.plot(history.history["accuracy"])
+plt.plot(history.history["val_accuracy"])
+plt.ylabel(["accuracy"])
+plt.xlabel(["epoch"])
+plt.legend(["accuracy", "val_accuracy"])
+plt.plot(history.history["loss"])
+plt.plot(history.history["val_loss"])
+plt.ylabel(["loss"])
+plt.xlabel(["epoch"])
+plt.legend(["loss", "val_loss"])
 loss, accuracy = model.evaluate(testing_data, testing_target)
-print('accuracy= ', loss, " loss= ", loss)
+print("accuracy= ", loss, " loss= ", loss)
 yhat = model.predict(testing_data)
 test_pred = np.argmax(yhat, axis=1)
 testing_target = np.argmax(testing_target, axis=1)
@@ -121,29 +129,33 @@ report = classification_report(testing_target, test_pred)
 print(report)
 
 
-def plot_confusion_matrix(cm, classes,
-                          normalize=False,
-                          title='Confusion matrix',
-                          cmap=plt.cm.RdYlGn):
-    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+def plot_confusion_matrix(
+    cm, classes, normalize=False, title="Confusion matrix", cmap=plt.cm.RdYlGn
+):
+    plt.imshow(cm, interpolation="nearest", cmap=cmap)
     plt.title(title)
     plt.colorbar()
     tick_marks = np.arange(len(classes))
     plt.xticks(tick_marks, classes, rotation=45)
     plt.yticks(tick_marks, classes)
 
-    thresh = cm.max() / 2.
+    thresh = cm.max() / 2.0
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-        plt.text(j, i, cm[i, j],
-                 horizontalalignment="center",
-                 color="white" if cm[i, j] > thresh else "black")
+        plt.text(
+            j,
+            i,
+            cm[i, j],
+            horizontalalignment="center",
+            color="white" if cm[i, j] > thresh else "black",
+        )
 
     plt.tight_layout()
-    plt.ylabel('True label')
-    plt.xlabel('Predicted label')
+    plt.ylabel("True label")
+    plt.xlabel("Predicted label")
 
 
 confusion = metrics.confusion_matrix(testing_target, test_pred)
 plt.figure()
-plot_confusion_matrix(confusion, classes=[
-                      'without_mask', 'with_mask'], title='Confusion matrix')
+plot_confusion_matrix(
+    confusion, classes=["without_mask", "with_mask"], title="Confusion matrix"
+)

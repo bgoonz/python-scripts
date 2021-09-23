@@ -13,14 +13,14 @@ src2 = cv2.resize(src2, src1.shape[1::-1])
 # Applying Bitwise AND operation
 andop = cv2.bitwise_and(src1, src2, mask=None)
 andop = cv2.resize(andop, (640, 640))
-cv2.imshow('Bitwise AND', andop)
+cv2.imshow("Bitwise AND", andop)
 
 orop = cv2.bitwise_or(src1, src2, mask=None)  # Applying Bitwise OR operation
 orop = cv2.resize(orop, (640, 640))
-cv2.imshow('Bitwise OR', orop)
+cv2.imshow("Bitwise OR", orop)
 
 xorop = cv2.bitwise_xor(src1, src2, mask=None)  # Applying Bitwise OR operation
 xorop = cv2.resize(xorop, (640, 640))
-cv2.imshow('Bitwise XOR', xorop)
+cv2.imshow("Bitwise XOR", xorop)
 cv2.waitKey(0)
 cv2.destroyAllWindows()

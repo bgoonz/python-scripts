@@ -12,10 +12,12 @@ Want to know how much amount of alcohol you drank? Well, the Blood alcohol conte
 
 - Open the **Blood_Alcohol_Content.py** file i.e run it.
 - To run it, you can open command prompt/shell/terminal in the containing folder and type the following command:
-    ```
-    python Blood_Alcohol_Content.py
-    ```
+  ```
+  python Blood_Alcohol_Content.py
+  ```
+
 ## Output:
+
 ```
 As a woman who have had 50 cl. of 4.6% vol, 1 hour ago.
 You've had 1.56 drinks,which gives you a 0.14% BAC

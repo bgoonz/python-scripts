@@ -18,7 +18,7 @@ CELL_COLORS = {
     256: "#fce130",
     512: "#ffdb4a",
     1024: "#f0b922",
-    2048: "#fad74d"
+    2048: "#fad74d",
 }
 
 CELL_NUMBER_COLORS = {
@@ -32,7 +32,7 @@ CELL_NUMBER_COLORS = {
     256: "#ffffff",
     512: "#ffffff",
     1024: "#ffffff",
-    2048: "#ffffff"
+    2048: "#ffffff",
 }
 
 CELL_NUMBER_FONTS = {
@@ -46,5 +46,5 @@ CELL_NUMBER_FONTS = {
     256: ("Helvetica", 45, "bold"),
     512: ("Helvetica", 45, "bold"),
     1024: ("Helvetica", 40, "bold"),
-    2048: ("Helvetica", 40, "bold")
+    2048: ("Helvetica", 40, "bold"),
 }

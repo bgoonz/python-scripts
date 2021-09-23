@@ -1,6 +1,7 @@
 # Convert Text to Speech
 
 ## Description
+
 Text to speech is a process to convert any text into voice. Text to speech project takes words on digital devices and convert them into audio with a button click or finger touch. Text to speech python project is very helpful for people who are struggling with reading.
 
 ## Project Prerequisites
@@ -32,11 +33,11 @@ In this project, we add a message which we want to convert into voice and click 
 So these are the basic steps that we will do in this Python project.
 
 1. Import Libraries
-</br>
-Let’s start by importing the libraries: tkinter, gTTS, and playsound
+   </br>
+   Let’s start by importing the libraries: tkinter, gTTS, and playsound
 
 2. Initializing window
-</br>
+   </br>
 
 - **Tk()** to initialized tkinter which will be used for GUI
 - **geometry()** used to set the width and height of the window
@@ -56,7 +57,7 @@ Let’s start by importing the libraries: tkinter, gTTS, and playsound
 - **place()** organizes widgets by placing them in a specific position in the parent widget
 
 3. Function to Convert Text to Speech in Python
-</br>
+   </br>
 
 - **Message** variable will stores the value of entry_field
 - **text** is the sentences or text to be read.
@@ -69,17 +70,17 @@ As we want the default value of lang, so no need to give that to gTTS.
 - **playsound()** used to play the sound
 
 4. Function to Exit
-</br>
+   </br>
 
 **root.destroy()** will quit the program by stopping the mainloop()
 
 5. Function to Reset
-</br>
+   </br>
 
 **Reset** function set Msg variable to empty strings.
 
 6. Define Buttons
-</br>
+   </br>
 
 **Button()** widget used to display button on the window.
 **root.mainloop()** is a method that executes when we want to run our program.

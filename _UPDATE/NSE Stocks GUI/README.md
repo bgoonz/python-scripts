@@ -32,7 +32,6 @@ The user can select different categories from the GUI as shown in the sample scr
 
 ![Screenshot of the GUI](https://i.postimg.cc/FRnNzQMP/nse.png)
 
-
 ## Author
 
 [Ayush Jain](https://github.com/Ayushjain2205)

@@ -1,6 +1,5 @@
 # url_shortener
 
-
 Some urls are really long, you should short them with this script!
 This script uses `requests` for sending HTTP requests and
 uses `BeautifulSoup` from `bs4` for web scraping.
@@ -21,6 +20,7 @@ uses `BeautifulSoup` from `bs4` for web scraping.
 ```
 
 ### Other
+
 By Sam Ebison
 
 If you have found any important bug or vulnerability,

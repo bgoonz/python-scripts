@@ -4,7 +4,7 @@ A python script that will take a file with a lot of messages to be sent to sqs a
 <br>
 This is especially useful for batch processing requests.
 <br>
-Works when ```aws configure``` is done correctly or iam role is attached to the machine
+Works when `aws configure` is done correctly or iam role is attached to the machine
 
 ## Requirement
 
@@ -12,8 +12,9 @@ Works when ```aws configure``` is done correctly or iam role is attached to the 
 pip3 install boto3
 ```
 
-#Usage 
+#Usage
 Go to Upload_files_to_s3 directory and add your folder's name you want to upload to s3 and then run upload_files_to_s3.py as below:
+
 ```bash
 $ python3 send_to_sqs.py
 ```

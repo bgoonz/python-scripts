@@ -16,10 +16,10 @@
 ```
 
 ## Working:
+
 ![Image](https://i.imgur.com/w2CHYuM.png)
 ![Image](https://i.imgur.com/scVnBPX.png)
 
-
 ## Author:
-[Rohini Rao](https://github.com/RohiniRG)
 
+[Rohini Rao](https://github.com/RohiniRG)

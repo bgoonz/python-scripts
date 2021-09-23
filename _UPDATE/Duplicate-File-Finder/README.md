@@ -3,7 +3,7 @@
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 Many a time, we find duplicate files residing in our Directories, especially documents and downloads, there are various
-reasons: 
+reasons:
 
 - downloading the same file from various sources.
 - auto backup on the cloud,
@@ -19,7 +19,7 @@ directory, find the duplicate, list them out, and then even allows you to delete
 
 - Setup a `python 3.x` virtual environment.
 - `Activate` the environment
-- Install the dependencies using ```pip3 install -r requiremnts.txt```
+- Install the dependencies using `pip3 install -r requiremnts.txt`
 - You are all set and the [script](file_finder.py) is Ready to run.
 - Clearly Follow the Instructions provided in the comments.
 
@@ -27,19 +27,19 @@ directory, find the duplicate, list them out, and then even allows you to delete
 
 In Command Line Interface, Run the script using -
 
-`python image_finder.py <path of folder1, path  of folder2, .....>`
+`python image_finder.py <path of folder1, path of folder2, .....>`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. folder1 - *Parent Folder*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. folder1 - _Parent Folder_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. folder2, folder3 .... - *Subsequent Folders*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. folder2, folder3 .... - _Subsequent Folders_
 
->- This acts as a reference for duplicate files, i.e. this contains the original copy, hence no file is deleted from this folder.      
->- Comparisons are done with in the folder, and from Parent to Subsequent Folders.
+> - This acts as a reference for duplicate files, i.e. this contains the original copy, hence no file is deleted from this folder.
+> - Comparisons are done with in the folder, and from Parent to Subsequent Folders.
 
 ## Dependencies
 
- 1. python3
- 2. keyboard
+1.  python3
+2.  keyboard
 
 ## Detailed explanation
 
@@ -72,7 +72,7 @@ have similar contents. So in the script all we aim to do is determine the checks
 
 - Final Result, Notice that all the files in `Parent` Folder remain as it is.
 
->Also notice that similar files but wth different extensions are not deleted, cause technically they aren't same.
+> Also notice that similar files but wth different extensions are not deleted, cause technically they aren't same.
 
 ![Pasting the Magnet Link](https://i.imgur.com/d8VXy5m.png)
 

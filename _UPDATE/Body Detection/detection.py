@@ -22,12 +22,12 @@ while True:
 
     # display rectangle
     for (x, y, w, h) in faces:
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
         # display video
-        cv2.imshow('img', frame)
+        cv2.imshow("img", frame)
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):  # Enter q to quit
+    if cv2.waitKey(1) & 0xFF == ord("q"):  # Enter q to quit
         break
 
 # Release the VideoCapture object

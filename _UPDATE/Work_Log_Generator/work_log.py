@@ -26,11 +26,11 @@ from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtWidgets import QWidget
 
 sys.settrace
-APP_NAME = 'Work Log Generator'
-RESOURCES_FOLDER = 'resources/'
-ICON_PATH = RESOURCES_FOLDER + 'icone.ico'
-LOADER_PATH = RESOURCES_FOLDER + 'loader.gif'
-SAVE_ICON_PATH = RESOURCES_FOLDER + 'save.png'
+APP_NAME = "Work Log Generator"
+RESOURCES_FOLDER = "resources/"
+ICON_PATH = RESOURCES_FOLDER + "icone.ico"
+LOADER_PATH = RESOURCES_FOLDER + "loader.gif"
+SAVE_ICON_PATH = RESOURCES_FOLDER + "save.png"
 
 
 class WorkLogPreviewer(QMainWindow):
@@ -40,19 +40,19 @@ class WorkLogPreviewer(QMainWindow):
     Extends QMainWindow
     """
 
-    sig = pyqtSignal(str, name='update')
+    sig = pyqtSignal(str, name="update")
 
     def __init__(self, parent=None, repository=None, systemtray_icon=None):
         """Init window."""
         super(WorkLogPreviewer, self).__init__(parent)
 
-        saveAct = QAction(QIcon(SAVE_ICON_PATH), '&Save', self)
-        saveAct.setShortcut('Ctrl+S')
-        saveAct.setStatusTip('Save work log')
+        saveAct = QAction(QIcon(SAVE_ICON_PATH), "&Save", self)
+        saveAct.setShortcut("Ctrl+S")
+        saveAct.setStatusTip("Save work log")
         saveAct.triggered.connect(self.save)
 
         menubar = self.menuBar()
-        fileMenu = menubar.addMenu('&File')
+        fileMenu = menubar.addMenu("&File")
         fileMenu.addAction(saveAct)
 
         self.repository = repository
@@ -81,7 +81,7 @@ class WorkLogPreviewer(QMainWindow):
         widget.setFixedSize(500, 500)
         self.setCentralWidget(widget)
 
-        self.setWindowTitle(f'Work log for {repository.full_name}')
+        self.setWindowTitle(f"Work log for {repository.full_name}")
         self.setWindowIcon(QIcon(ICON_PATH))
         self.setLocale(QtCore.QLocale())
         self.adjustSize()
@@ -102,28 +102,25 @@ class WorkLogPreviewer(QMainWindow):
         self.movie.stop()
         self.te.setPlainText(log)
         btMessage = "Log generation successfull!"
-        self.systemtray_icon.showMessage(
-            APP_NAME, btMessage, QIcon(ICON_PATH), 5000)
+        self.systemtray_icon.showMessage(APP_NAME, btMessage, QIcon(ICON_PATH), 5000)
         self.statusBar().showMessage(btMessage)
 
     def save(self):
         """Save log to file."""
         home = str(Path.home())
         self.output = ""
-        self.output = QFileDialog.getSaveFileName(self,
-                                                  'Save file',
-                                                  home,
-                                                  "ReST files (*.rst)")
+        self.output = QFileDialog.getSaveFileName(
+            self, "Save file", home, "ReST files (*.rst)"
+        )
 
         if self.output[0] is not "":
-            with open(self.output[0], 'w') as f:
+            with open(self.output[0], "w") as f:
                 f.write(self.te.toPlainText())
 
-            btMessage = f'File saved as {self.output[0]}.'
+            btMessage = f"File saved as {self.output[0]}."
         else:
             btMessage = "Can't save. No file specified."
-        self.systemtray_icon.showMessage(
-            APP_NAME, btMessage, QIcon(ICON_PATH), 5000)
+        self.systemtray_icon.showMessage(APP_NAME, btMessage, QIcon(ICON_PATH), 5000)
         self.statusBar().showMessage(btMessage)
 
 
@@ -134,7 +131,7 @@ class MainWidget(QWidget):
     Extends QWidget
     """
 
-    sig = pyqtSignal(list, name='update')
+    sig = pyqtSignal(list, name="update")
 
     def __init__(self, parent=None):
         """Init widget."""
@@ -182,8 +179,7 @@ class MainWidget(QWidget):
 
     def line_keyPressEvent(self, event):
         """Detect enter or return key pressed."""
-        if (event.key() == QtCore.Qt.Key_Enter
-                or event.key() == QtCore.Qt.Key_Return):
+        if event.key() == QtCore.Qt.Key_Enter or event.key() == QtCore.Qt.Key_Return:
             self.getRepos()
         else:
             self.ght_keyPressEvent(event)
@@ -191,22 +187,21 @@ class MainWidget(QWidget):
     def open_log(self):
         """Build rst file from repository commits and opens it."""
         if self.parent is not None:
-            self.parent.statusBar().showMessage('Opening preview.')
+            self.parent.statusBar().showMessage("Opening preview.")
 
         repo = self.combo.itemData(self.combo.currentIndex())
 
-        self.preview = WorkLogPreviewer(None,
-                                        repo, self.parent.systemtray_icon)
+        self.preview = WorkLogPreviewer(None, repo, self.parent.systemtray_icon)
         self.preview.show()
 
         if self.parent is not None:
-            self.parent.statusBar().showMessage('Done.')
+            self.parent.statusBar().showMessage("Done.")
 
     def getRepos(self):
         """Get repos for user and add them in a combobox."""
         if self.ght.text() is not "":
             if self.parent is not None:
-                self.parent.statusBar().showMessage('Fetching repos...')
+                self.parent.statusBar().showMessage("Fetching repos...")
 
             self.lbl.show()
             self.movie.start()
@@ -252,12 +247,12 @@ class WorkLogThread(QtCore.QThread):
         """Run thread."""
         message = "Journal de travail"
         restTructuredText = message + os.linesep
-        restTructuredText += '=' * len(message) + os.linesep * 2
+        restTructuredText += "=" * len(message) + os.linesep * 2
         for commit in self.repository.get_commits():
             com = commit.commit
             date = com.author.date
             restTructuredText += str(date) + os.linesep
-            restTructuredText += '-' * len(str(date)) + os.linesep * 2
+            restTructuredText += "-" * len(str(date)) + os.linesep * 2
             restTructuredText += self.format_message_for_rst(com.message)
         self.sig.emit(restTructuredText)
 
@@ -291,10 +286,11 @@ class ConnectionThread(QtCore.QThread):
                 repo_list.append(repo)
 
             if self.parent is not None:
-                self.parent.parent.statusBar().showMessage('Done.')
+                self.parent.parent.statusBar().showMessage("Done.")
                 sys_tray = self.parent.parent.systemtray_icon
                 sys_tray.showMessage(
-                    APP_NAME, 'Connected to github', QIcon(ICON_PATH), 5000)
+                    APP_NAME, "Connected to github", QIcon(ICON_PATH), 5000
+                )
         except BadCredentialsException as e:
             if self.parent is not None:
                 self.parent.parent.statusBar().showMessage(str(e))
@@ -320,13 +316,13 @@ class Window(QMainWindow):
 
         self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
-        helpAct = QAction('&Help', self)
-        helpAct.setShortcut('Ctrl+H')
-        helpAct.setStatusTip('Help')
+        helpAct = QAction("&Help", self)
+        helpAct.setShortcut("Ctrl+H")
+        helpAct.setStatusTip("Help")
         helpAct.triggered.connect(self.helper)
 
         menubar = self.menuBar()
-        fileMenu = menubar.addMenu('&About')
+        fileMenu = menubar.addMenu("&About")
         fileMenu.addAction(helpAct)
 
     def helper(self):
@@ -334,17 +330,21 @@ class Window(QMainWindow):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
 
-        msg.setText("This simple python script allows you to generate a "
-                    "worklog in rst format based on your repo commits.")
+        msg.setText(
+            "This simple python script allows you to generate a "
+            "worklog in rst format based on your repo commits."
+        )
         msg.setInformativeText("You need to generated a token first.")
         msg.setWindowTitle("Help")
         msg.setWindowIcon(QIcon(ICON_PATH))
-        msg.setDetailedText("Simply generate a personnal access token and "
-                            "enter it in the first field of the window."
-                            "\r\n"
-                            "In order to generate this token, go to "
-                            "https://github.com/settings/tokens "
-                            "under \"Personal access tokens\".")
+        msg.setDetailedText(
+            "Simply generate a personnal access token and "
+            "enter it in the first field of the window."
+            "\r\n"
+            "In order to generate this token, go to "
+            "https://github.com/settings/tokens "
+            'under "Personal access tokens".'
+        )
         msg.exec_()
 
 

@@ -11,14 +11,20 @@ def load_assests():
     :return: YELLOW_SPACESHIP, RED_SPACESHIP, SPACE, BORDER
     """
     # Loading spaceship images into our file known as surfaces as we use this above background
-    spaceshipImageYellow = pygame.image.load(os.path.join("Assets", "Yellow_Spaceship.png"))
+    spaceshipImageYellow = pygame.image.load(
+        os.path.join("Assets", "Yellow_Spaceship.png")
+    )
     spaceshipImageRed = pygame.image.load(os.path.join("Assets", "Red_Spaceship.png"))
     SPACE = pygame.image.load(os.path.join("Assets", "space.jpg"))
 
     # SCALING down the images
     SPACESHIP_WIDTH, SPACESHIP_HEIGHT = (50, 40)
-    YELLOW_SPACESHIP = pygame.transform.scale(spaceshipImageYellow, (SPACESHIP_WIDTH, SPACESHIP_HEIGHT))
-    RED_SPACESHIP = pygame.transform.scale(spaceshipImageRed, (SPACESHIP_WIDTH, SPACESHIP_HEIGHT))
+    YELLOW_SPACESHIP = pygame.transform.scale(
+        spaceshipImageYellow, (SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
+    )
+    RED_SPACESHIP = pygame.transform.scale(
+        spaceshipImageRed, (SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
+    )
     SPACE = pygame.transform.scale(SPACE, (900, 500))
 
     # ROTATING the images
@@ -54,11 +60,15 @@ def yellow_handle_movement(keys_pressed, yellow, VELOCITY, BORDER):
     # and checking that it remains in the screen and dont cross the border
     if keys_pressed[pygame.K_a] and yellow.x - VELOCITY > 0:  # LEFT
         yellow.x -= VELOCITY
-    elif keys_pressed[pygame.K_d] and yellow.x + VELOCITY + yellow.width < BORDER.x:  # RIGHT
+    elif (
+        keys_pressed[pygame.K_d] and yellow.x + VELOCITY + yellow.width < BORDER.x
+    ):  # RIGHT
         yellow.x += VELOCITY
     elif keys_pressed[pygame.K_w] and yellow.y - VELOCITY > 0:  # UP
         yellow.y -= VELOCITY
-    elif keys_pressed[pygame.K_s] and yellow.y + VELOCITY + yellow.height < height - 15:  # DOWN
+    elif (
+        keys_pressed[pygame.K_s] and yellow.y + VELOCITY + yellow.height < height - 15
+    ):  # DOWN
         yellow.y += VELOCITY
 
 
@@ -81,13 +91,17 @@ def red_handle_movement(keys_pressed, red, VELOCITY, BORDER):
     :param VELOCITY: Spaceship Velocity.
     :param BORDER: Center Border.
     """
-    if keys_pressed[pygame.K_LEFT] and red.x - VELOCITY > BORDER.x + BORDER.width + 8:  # LEFT
+    if (
+        keys_pressed[pygame.K_LEFT] and red.x - VELOCITY > BORDER.x + BORDER.width + 8
+    ):  # LEFT
         red.x -= VELOCITY
     elif keys_pressed[pygame.K_RIGHT] and red.x + VELOCITY + red.width < width:  # RIGHT
         red.x += VELOCITY
     elif keys_pressed[pygame.K_UP] and red.y - VELOCITY > 0:  # UP
         red.y -= VELOCITY
-    elif keys_pressed[pygame.K_DOWN] and red.y + VELOCITY + red.height < height - 15:  # DOWN
+    elif (
+        keys_pressed[pygame.K_DOWN] and red.y + VELOCITY + red.height < height - 15
+    ):  # DOWN
         red.y += VELOCITY
 
 
@@ -98,10 +112,16 @@ def winner(text, WIN):
     :param WIN: GUI Window to display text on
     """
     # Font
-    FONT = pygame.font.SysFont('comicsans', 100)
+    FONT = pygame.font.SysFont("comicsans", 100)
     # Displaying the winner font on the screen.
     draw_text = FONT.render(text, 1, (255, 255, 255))
-    WIN.blit(draw_text, (width / 2 - draw_text.get_width() / 2, height / 2 - draw_text.get_height() / 2))
+    WIN.blit(
+        draw_text,
+        (
+            width / 2 - draw_text.get_width() / 2,
+            height / 2 - draw_text.get_height() / 2,
+        ),
+    )
     # Updating the display
     pygame.display.update()
     pygame.time.delay(5000)

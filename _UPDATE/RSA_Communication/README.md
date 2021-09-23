@@ -1,6 +1,7 @@
 # RSA Communication Script
 
 ## How to use
+
 To use this script you may first open the script :p
 It will take some time, it will generate two BIG prime numbers, and that takes some time.
 

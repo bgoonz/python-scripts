@@ -9,6 +9,7 @@
 ## Output
 
 <img src="./input.jpg" width=500/> <img src="./Output.png" width=500/>
+
 ## Author
 
 [Shubham Gupta](https://github.com/ShubhamGupta577)

@@ -13,22 +13,22 @@ for that reason, a [`.env`](.env.example) file has been used, for more info, see
 - Setup a Virtual Environment.
 - Download dependencies using `pip install -r requirements.txt`.
 - Set up an account at [`Twilio`](https://www.twilio.com/). It's Free.
-- Follow 
+- Follow
   [this guide](https://medium.com/hackernoon/how-to-send-whatsapp-message-using-python-and-twilio-api-fc63f62154ca)
-  for Setting up WhatsApp API.  
+  for Setting up WhatsApp API.
 - Make a `.env` file similar to `.env.example` file.
 - Paste the required information:
 
-    ```text
-    SID="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" <ACCOUNT SID goes here>
-    TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" <AUTH TOKEN>
-    NUM="+91XXXXXXXXXX" <TARGET PHONE NUMBER GOES HERE>
-    ```
+  ```text
+  SID="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" <ACCOUNT SID goes here>
+  TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" <AUTH TOKEN>
+  NUM="+91XXXXXXXXXX" <TARGET PHONE NUMBER GOES HERE>
+  ```
 
 - The bot script is now ready.
 - For scheduling, [`apscheduler`](https://apscheduler.readthedocs.io/en/stable/)
   has been used for cron-style scheduling.
-- The script is coded to run the bot once every day.  
+- The script is coded to run the bot once every day.
 - For making your own cron schedule, use this [website](https://crontab.guru/).
 - After setting up the Cron Job, run the scheduler script using `python3 schedule.py`.
 
@@ -48,7 +48,7 @@ Top 3 Indian States sorted by Newly registered cases of COVID-19.
     |   New Recovery = 4936
     |   Total Deaths = 52041
     |   New Deaths = 48
-    
+
     [Punjab]
     |   Total Infected = 4222
     |   New Infections =  352
@@ -56,7 +56,7 @@ Top 3 Indian States sorted by Newly registered cases of COVID-19.
     |   New Recovery = 255
     |   Total Deaths = 5814
     |   New Deaths = 15
-    
+
     [Gujarat]
     |   Total Infected = 2136
     |   New Infections =  145
@@ -66,7 +66,7 @@ Top 3 Indian States sorted by Newly registered cases of COVID-19.
     |   New Deaths = 0
 ```
 
-## Author(s)  
+## Author(s)
 
 Made by [Vybhav Chaturvedi](https://www.linkedin.com/in/vybhav-chaturvedi-0ba82614a/)
 

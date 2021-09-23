@@ -32,12 +32,12 @@ class Notepad:
         # Set window size (the default is 300x300)
 
         try:
-            self.__thisWidth = kwargs['width']
+            self.__thisWidth = kwargs["width"]
         except KeyError:
             pass
 
         try:
-            self.__thisHeight = kwargs['height']
+            self.__thisHeight = kwargs["height"]
         except KeyError:
             pass
 
@@ -55,8 +55,9 @@ class Notepad:
         top = (screenHeight / 2) - (self.__thisHeight / 2)
 
         # For top and bottom
-        self.__root.geometry('%dx%d+%d+%d' %
-                             (self.__thisWidth, self.__thisHeight, left, top))
+        self.__root.geometry(
+            "%dx%d+%d+%d" % (self.__thisWidth, self.__thisHeight, left, top)
+        )
 
         # To make the textarea auto resizable
         self.__root.grid_rowconfigure(0, weight=1)
@@ -76,8 +77,7 @@ class Notepad:
 
         # To create a line in the dialog
         self.__thisFileMenu.add_separator()
-        self.__thisFileMenu.add_command(label="Exit",
-                                        command=self.__quitApplication)
+        self.__thisFileMenu.add_command(label="Exit", command=self.__quitApplication)
         self.__thisMenuBar.add_cascade(label="File", menu=self.__thisFileMenu)
 
         # To give a feature of cut
@@ -93,8 +93,7 @@ class Notepad:
         self.__thisMenuBar.add_cascade(label="Edit", menu=self.__thisEditMenu)
 
         # To create a feature of description of the notepad
-        self.__thisHelpMenu.add_command(label="About Notepad",
-                                        command=self.__showAbout)
+        self.__thisHelpMenu.add_command(label="About Notepad", command=self.__showAbout)
         self.__thisMenuBar.add_cascade(label="Help", menu=self.__thisHelpMenu)
 
         self.__root.config(menu=self.__thisMenuBar)
@@ -115,9 +114,10 @@ class Notepad:
 
     def __openFile(self):
 
-        self.__file = askopenfilename(defaultextension=".txt",
-                                      filetypes=[("All Files", "*.*"),
-                                                 ("Text Documents", "*.txt")])
+        self.__file = askopenfilename(
+            defaultextension=".txt",
+            filetypes=[("All Files", "*.*"), ("Text Documents", "*.txt")],
+        )
 
         if self.__file == "":
 
@@ -145,11 +145,11 @@ class Notepad:
 
         if self.__file == None:
             # Save as new file
-            self.__file = asksaveasfilename(initialfile='Untitled.txt',
-                                            defaultextension=".txt",
-                                            filetypes=[("All Files", "*.*"),
-                                                       ("Text Documents",
-                                                        "*.txt")])
+            self.__file = asksaveasfilename(
+                initialfile="Untitled.txt",
+                defaultextension=".txt",
+                filetypes=[("All Files", "*.*"), ("Text Documents", "*.txt")],
+            )
 
             if self.__file == "":
                 self.__file = None

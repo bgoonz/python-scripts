@@ -5,7 +5,7 @@ A music search application, using a few named technologies that allows users to 
 Getting Started
 
 Install spotipy using pip
- 
+
 $ pip install spotipy
 
 After installation

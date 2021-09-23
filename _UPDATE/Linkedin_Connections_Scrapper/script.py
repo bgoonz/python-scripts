@@ -9,7 +9,7 @@ import sys
 import re
 
 pattern_name = "\\n(.+)\\n"  # Used to extract names
-pattern_headline = 'occupation\\n(.+)\\n'  # Used to extract headlines
+pattern_headline = "occupation\\n(.+)\\n"  # Used to extract headlines
 
 # Help menu
 usage = """
@@ -32,10 +32,14 @@ Operation Modes:
 # Load args
 parser = OptionParser()
 parser.add_option("-e", "--email", dest="email", help="Enter login email")
-parser.add_option("-p", "--password", dest="password",
-                  help="Enter login password")
-parser.add_option("-s", "--skills", action="store_true", dest="skills",
-                  help="Flag to scrap each profile, and look at its skill set")
+parser.add_option("-p", "--password", dest="password", help="Enter login password")
+parser.add_option(
+    "-s",
+    "--skills",
+    action="store_true",
+    dest="skills",
+    help="Flag to scrap each profile, and look at its skill set",
+)
 
 
 def login(email, password):
@@ -66,12 +70,13 @@ def scrap_basic(driver):
     driver.get("https://www.linkedin.com/mynetwork/invite-connect/connections/")
     # Bypassing Ajax Call through scrolling the page up and down multiple times
     # Base case is when the height of the scroll bar is constant after 2 complete scrolls
-    time_to_wait = 3  # Best interval for a 512KB/Sec download speed - Change it according to your internet speed
+    time_to_wait = (
+        3
+    )  # Best interval for a 512KB/Sec download speed - Change it according to your internet speed
     last_height = driver.execute_script("return document.body.scrollHeight")
     while True:
         # Scroll down to bottom
-        driver.execute_script(
-            "window.scrollTo(0, document.body.scrollHeight);")
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
         # This loop is for bypassing a small bug upon scrolling that causes the Ajax call to be cancelled
         for i in range(2):
@@ -79,18 +84,17 @@ def scrap_basic(driver):
             driver.execute_script("window.scrollTo(0, 0);")  # Scroll up to top
             time.sleep(time_to_wait)
             # Scroll down to bottom
-            driver.execute_script(
-                "window.scrollTo(0, document.body.scrollHeight);")
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
         new_height = driver.execute_script(
-            "return document.body.scrollHeight")  # Update scroll bar height
+            "return document.body.scrollHeight"
+        )  # Update scroll bar height
         if new_height == last_height:
             break
         last_height = new_height
 
     # Extract card without links
-    extracted_scrap = driver.find_elements_by_class_name(
-        "mn-connection-card__details")
+    extracted_scrap = driver.find_elements_by_class_name("mn-connection-card__details")
     extracted_scrap = [_.text for _ in extracted_scrap]
     # Append data to a seperate list
     names = []
@@ -108,7 +112,7 @@ def scrap_basic(driver):
             headlines.append(" ")
 
     # Extract links
-    extracted_scrap = driver.find_elements_by_tag_name('a')
+    extracted_scrap = driver.find_elements_by_tag_name("a")
     links = []
     for i in extracted_scrap:
         link = i.get_attribute("href")
@@ -127,37 +131,39 @@ def scrap_skills(driver, links):
 
         # Bypassing Ajax Call through scrolling through profile multiple sections
         time_to_wait = 3
-        last_height = driver.execute_script(
-            "return document.body.scrollHeight")
+        last_height = driver.execute_script("return document.body.scrollHeight")
         while True:
             # Scroll down to bottom
-            driver.execute_script(
-                "window.scrollTo(0, document.body.scrollHeight);")
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
             # This loop is for bypassing a small bug upon scrolling that causes the Ajax call to be cancelled
             for i in range(2):
                 time.sleep(time_to_wait)
                 driver.execute_script(
-                    "window.scrollTo(0, document.body.scrollHeight/4);")
+                    "window.scrollTo(0, document.body.scrollHeight/4);"
+                )
                 driver.execute_script(
-                    "window.scrollTo(0, document.body.scrollHeight/3);")
+                    "window.scrollTo(0, document.body.scrollHeight/3);"
+                )
                 driver.execute_script(
-                    "window.scrollTo(0, document.body.scrollHeight/2);")
+                    "window.scrollTo(0, document.body.scrollHeight/2);"
+                )
                 driver.execute_script(
-                    "window.scrollTo(0, document.body.scrollHeight*3/4);")
+                    "window.scrollTo(0, document.body.scrollHeight*3/4);"
+                )
                 time.sleep(time_to_wait)
                 # Scroll down to bottom
-                driver.execute_script(
-                    "window.scrollTo(0, document.body.scrollHeight);")
+                driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
             new_height = driver.execute_script(
-                "return document.body.scrollHeight")  # Update scroll bar height
+                "return document.body.scrollHeight"
+            )  # Update scroll bar height
             if new_height == last_height:
                 break
             last_height = new_height
 
         # Locate button
-        buttons = driver.find_elements_by_tag_name('button')
+        buttons = driver.find_elements_by_tag_name("button")
         length = len(buttons)
         for button_num in range(length):
             i = buttons[button_num].get_attribute("data-control-name")
@@ -169,7 +175,8 @@ def scrap_skills(driver, links):
         actions.move_to_element(button).click().perform()
         # Finally extract the skills
         skills = driver.find_elements_by_xpath(
-            "//*[starts-with(@class,'pv-skill-category-entity__name-text')]")
+            "//*[starts-with(@class,'pv-skill-category-entity__name-text')]"
+        )
         skill_set_list = []
         for skill in skills:
             skill_set_list.append(skill.text)
@@ -183,15 +190,21 @@ def scrap_skills(driver, links):
 def save_to_csv(names, headlines, links, skills):
     # If skills argument was false
     if skills is None:
-        skills = [None]*len(names)
+        skills = [None] * len(names)
     # Make a dataframe and append data to it
     df = pd.DataFrame()
     for i in range(len(names)):
-        df = df.append({"Name": names[i], "Headline": headlines[i],
-                       "Link": links[i], "Skills": skills[i]}, ignore_index=True)
+        df = df.append(
+            {
+                "Name": names[i],
+                "Headline": headlines[i],
+                "Link": links[i],
+                "Skills": skills[i],
+            },
+            ignore_index=True,
+        )
     # Save to CSV
-    df.to_csv("scrap.csv", index=False, columns=[
-              "Name", "Headline", "Link", "Skills"])
+    df.to_csv("scrap.csv", index=False, columns=["Name", "Headline", "Link", "Skills"])
 
 
 # Start checkpoint

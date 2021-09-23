@@ -2,7 +2,6 @@ import sqlite3
 
 
 class DBHelper:
-
     def __init__(self, dbname="todo.sqlite"):
         self.dbname = dbname
         self.conn = sqlite3.connect(dbname)
@@ -18,18 +17,17 @@ class DBHelper:
 
     def add_item(self, item_text, due_date, owner):
         stmt = "INSERT INTO items (description, due_date ,owner) VALUES (?, ? ,?)"
-        args = (item_text, due_date ,owner)
+        args = (item_text, due_date, owner)
         self.conn.execute(stmt, args)
         self.conn.commit()
 
     def delete_item(self, item_text, owner):
         stmt = "DELETE FROM items WHERE description = (?) AND owner = (?)"
-        args = (item_text, owner )
+        args = (item_text, owner)
         self.conn.execute(stmt, args)
         self.conn.commit()
 
     def get_items(self, owner):
         stmt = "SELECT description,due_date FROM items WHERE owner = (?)"
-        args = (owner, )
+        args = (owner,)
         return [x for x in self.conn.execute(stmt, args)]
-

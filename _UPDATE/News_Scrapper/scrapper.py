@@ -10,8 +10,7 @@ def writeToCSV(topTenNews, category):
         writer = csv.writer(file)
         writer.writerow(["Date", "Link", "Headline"])
         for news in topTenNews:
-            writer.writerow(
-                [news[2], "https://www.indiatoday.in/" + news[1], news[0]])
+            writer.writerow([news[2], "https://www.indiatoday.in/" + news[1], news[0]])
 
 
 def getTopTenFromDivTag(category):
@@ -63,8 +62,17 @@ def getTopTenFromLiTag(category):
 
 def main():
 
-    categories = ["india", "world", "cities", "business", "health", "technology", "sports",
-                  "education", "lifestyle"]
+    categories = [
+        "india",
+        "world",
+        "cities",
+        "business",
+        "health",
+        "technology",
+        "sports",
+        "education",
+        "lifestyle",
+    ]
 
     print("Please Choose a Category from the following list")
 

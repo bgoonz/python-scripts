@@ -1,6 +1,7 @@
 import asyncio
 from random import SystemRandom
 
+
 def run(tasks, *, loop=None):
     """Run Asynchronous Tasks"""
     if loop is None:
@@ -8,17 +9,21 @@ def run(tasks, *, loop=None):
     # waiting for all tasks
     return loop.run_until_complete(asyncio.wait(tasks))
 
+
 async def scanner(ip, port, loop=None):
     fut = asyncio.open_connection(ip, port, loop=loop)
 
     try:
-        reader, writer = await asyncio.wait_for(fut, timeout=0.5) # This is where it is blocking?
+        reader, writer = await asyncio.wait_for(
+            fut, timeout=0.5
+        )  # This is where it is blocking?
         print("{}:{} Connected".format(ip, port))
     except asyncio.TimeoutError:
         pass
     # handle connection refused and bunch of others
     except Exception as exc:
-        print('Error {}:{} {}'.format(ip, port, exc))
+        print("Error {}:{} {}".format(ip, port, exc))
+
 
 def scan(ips, ports, randomize=False):
     """Scan the ports"""
@@ -34,7 +39,7 @@ def scan(ips, ports, randomize=False):
 
 ips = [input("IP to scan: ")]
 STEP = 256
-for r in range(STEP+1, 65536, STEP):
+for r in range(STEP + 1, 65536, STEP):
     # print(r)
-    ports = [str(r) for r in list(range(r-STEP, r))]
+    ports = [str(r) for r in list(range(r - STEP, r))]
     scan(ips, ports)

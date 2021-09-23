@@ -8,12 +8,14 @@ im = Image.open(path)
 width, height = im.size
 
 # Taking input for the text
-text = input('Enter the text for the watermark: ')
-font = ImageFont.truetype('arial.ttf', 20)
+text = input("Enter the text for the watermark: ")
+font = ImageFont.truetype("arial.ttf", 20)
 
 # Taking Input For the Position of the text
 print("To Specify the position of the text , enter a number between 1 to 5.\n")
-print("Enter\n 1 for Top Left \n 2 for Top Right \n 3 for Bottom Left \n 4 for Bottom Right \n 5 for Center")
+print(
+    "Enter\n 1 for Top Left \n 2 for Top Right \n 3 for Bottom Left \n 4 for Bottom Right \n 5 for Center"
+)
 pos = int(input())
 
 
@@ -40,11 +42,11 @@ def text_wrap(text, font, max_width):
 
     else:
         # split the line on the basis of spaces to get words
-        words = text.split(' ')
+        words = text.split(" ")
         i = 0
         # append every word to a line while its width is shorter than the image width
         while i < len(words):
-            line = ''
+            line = ""
             while i < len(words) and font.getsize(line + words[i])[0] <= max_width:
                 line = line + words[i] + " "
                 i += 1
@@ -58,7 +60,7 @@ def text_wrap(text, font, max_width):
 max_x = 250
 lines = text_wrap(text, font, max_x)
 # calculating the max height that a text can have
-line_height = font.getsize('hg')[1]
+line_height = font.getsize("hg")[1]
 
 # setting the x,y values for different positions
 x_min = (r_img.size[0] * 5) // 100
@@ -73,7 +75,7 @@ else:
 y_min = (r_img.size[1] * 4) // 100
 # For Image at Bottom
 y_max = (r_img.size[1] * 97) // 100
-y_max -= (len(lines)*line_height)
+y_max -= len(lines) * line_height
 
 
 if pos == 1:
@@ -105,11 +107,11 @@ y = y_start
 
 for line in lines:
 
-    draw.text((x, y), line, fill='rgb(255,255,255)', font=font)
+    draw.text((x, y), line, fill="rgb(255,255,255)", font=font)
 
     y = y + line_height
 
 r_img.show()
 
 # Save watermarked image
-r_img.save('Test_Image.png')
+r_img.save("Test_Image.png")

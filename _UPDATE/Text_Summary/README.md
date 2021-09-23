@@ -29,8 +29,8 @@ In this script we will use Text Rank approach for text summarization.
 
 - Setup a `python 3.x` virtual environment.
 - `Activate` the environment
-- Install the dependencies using 
-  
+- Install the dependencies using
+
 ```bash
 pip3 install -r requiremnts.txt
 ```
@@ -46,7 +46,7 @@ $ python -m nltk.downloader stopwords
 
 ## Results
 
-The code generates the tokens (same as weights) of set of words, it shows the relative importance of words according to 
+The code generates the tokens (same as weights) of set of words, it shows the relative importance of words according to
 the summarizer, just uncomment the _l-112_
 
 Results can be found [here](assets).

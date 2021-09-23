@@ -8,11 +8,15 @@
 \f0\fs24 \cf0 # Description\
 Code for Face recognition build by using OpenCv-Python. It uses cascade classifier as the database for the recognition which is an xml file.\
 \
+
 # Requirements\
+
 Python version 3 and above can be used\
 pip install cv2\
 \
+
 # Usage \
+
 Can be run easily using terminal or command prompt ( I used Jupyter Notebook for the code)\
 Run `python3 image_recognition.ipynb` \
 }

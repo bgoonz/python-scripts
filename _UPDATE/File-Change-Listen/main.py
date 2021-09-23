@@ -5,5 +5,5 @@ def init():
     filechange.ischanged()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     init()

@@ -1,6 +1,6 @@
 ## Repo of Python scripts
 
-1. **01_remove_all_pyc.md**: remove all *.pyc* files from a git repo
+1. **01_remove_all_pyc.md**: remove all _.pyc_ files from a git repo
 1. **02_find_all_links.py**: get all links from a webpage
 1. **03_simple_twitter_manager.py**: accessing the Twitter API, example functions
 1. **04_rename_with_slice.py**: rename group of files, within a single directory, using slice
@@ -24,7 +24,7 @@
 1. **22_git_tag.py**: Create Git Tag based on a commit
 1. **23_flask_session_test.py**: Just a simple app to see if the sessions are working
 1. **24_sql2csv.py**: SQL to CSV.
-1. **25_ip2geolocation.py**: Given a CSV file with an ip address (see sample - *25_sample_csv.csv*), return the geolocation based on the ip.
+1. **25_ip2geolocation.py**: Given a CSV file with an ip address (see sample - _25_sample_csv.csv_), return the geolocation based on the ip.
 1. **26_stock_scraper.py**: Scrape the S&P 500 Companies list from Wikipedia, then output the data.
 1. **27_send_sms.py**: Send SMS message via [TextBelt](http://textbelt.com/)
 1. **28_income_tax_calculator.py**: Income tax calculator via [Taxee](http://taxee.io/)

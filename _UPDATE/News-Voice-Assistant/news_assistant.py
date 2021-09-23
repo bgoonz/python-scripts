@@ -20,13 +20,13 @@ def fetch_news() -> dict:
 # To play audio text-to-speech during execution
 def speak(text: str):
     with io.BytesIO() as f:
-        gTTS(text=text, lang='en').write_to_fp(f)
+        gTTS(text=text, lang="en").write_to_fp(f)
         f.seek(0)
         audio = AudioSegment.from_file(f, format="mp3")
         play(audio)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     with open("api_key.txt", "r") as file:
         api_key = file.readline()
     newsapi = newsapi.NewsApiClient(api_key=api_key)

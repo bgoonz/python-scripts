@@ -27,10 +27,10 @@ def generatePassword(length):
     # we then shuffle this list to create a random sequence
     # and choose a sequence of given length
 
-    printable = f'{letters}{numbers}{punctuations}'
+    printable = f"{letters}{numbers}{punctuations}"
     printable = list(printable)
     random.shuffle(printable)
-    temp_password = ''.join(random.choices(printable, k=length))
+    temp_password = "".join(random.choices(printable, k=length))
     return temp_password
 
 
@@ -38,17 +38,16 @@ def generateEmailIdAndLink():
 
     # providing header for beautiful soup
     headers = {
-        'user-agent':
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0'
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0"
     }
 
     # using request.get on https://10minutemail.net/ site, and pass header as extra data
-    response = requests.get('https://10minutemail.net/', headers=headers)
+    response = requests.get("https://10minutemail.net/", headers=headers)
     # the response has session Id required to retrieve email and link
     ses = str(response.cookies).split(",")[2].split(" ")[2]
 
     # we then pass this session id to get JSON data for the email
-    response = requests.get('https://10minutemail.net/address.api.php?' + ses)
+    response = requests.get("https://10minutemail.net/address.api.php?" + ses)
     page_soup = soup(response.content, "html.parser")  # saving the json
 
     # selecting the needed data from the json, cleaning the data
@@ -56,8 +55,9 @@ def generateEmailIdAndLink():
     # url for the given email
     permalink = cookies[cookies.index("url") + 2]
     # to access the mail page an extra key data is required [mentioned in json object]
-    permalink = permalink.replace(
-        '\/', "/") + "?key=" + cookies[cookies.index("key") + 2]
+    permalink = (
+        permalink.replace("\/", "/") + "?key=" + cookies[cookies.index("key") + 2]
+    )
 
     temp_email_id = cookies[cookies.index("mail_get_mail") + 2]
     return temp_email_id, permalink
@@ -84,10 +84,10 @@ def getResultInChromeTab(name, password, email, link):
     out_filename = "tempRegistration.html"
     f = open(out_filename, "w")
 
-    f.write('<p> Username: ' + name + "</p>")
-    f.write('<p> Password: ' + password + "</p>")
-    f.write('<p> Email Id: ' + email + "</p>")
-    f.write(f'<a href = {link}> Link: ' + link + "</a>")
+    f.write("<p> Username: " + name + "</p>")
+    f.write("<p> Password: " + password + "</p>")
+    f.write("<p> Email Id: " + email + "</p>")
+    f.write(f"<a href = {link}> Link: " + link + "</a>")
     f.close()
     webbrowser.open("tempRegistration.html")
 
@@ -100,9 +100,9 @@ def getResultInNotepad(name, password, email, link):
     out_filename = "tempRegistration.txt"
     f = open(out_filename, "w")
 
-    f.write('Name: ' + name + '\n')
-    f.write("Password: " + password + '\n')
-    f.write("Email Id: " + email + '\n' + '\n')
+    f.write("Name: " + name + "\n")
+    f.write("Password: " + password + "\n")
+    f.write("Email Id: " + email + "\n" + "\n")
     f.write("Link: " + link)
 
     f.close()

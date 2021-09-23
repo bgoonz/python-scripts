@@ -28,13 +28,13 @@ def result_flame(x, y):
     count = len(x) + len(y)
     result = ["Friends", "Love", "Affection", "Marriage", "Enemy", "Siblings"]
     while len(result) > 1:
-        split_index = (count % len(result) - 1)
-        if (split_index >= 0):
-            right = result[split_index + 1:]
+        split_index = count % len(result) - 1
+        if split_index >= 0:
+            right = result[split_index + 1 :]
             left = result[:split_index]
             result = right + left
         else:
-            result = result[:len(result) - 1]
+            result = result[: len(result) - 1]
     return result
 
 
@@ -42,17 +42,17 @@ if __name__ == "__main__":
     # Create a GUI window
     root = Tk()
     # Set the background colour of GUI window
-    root.configure(background='light pink')
+    root.configure(background="light pink")
     # Set the configuration of GUI window
     root.geometry("350x125")
     # set the name of tkinter GUI window
     root.title("Flames Game")
     # Create a Player 1 Name: label
-    label1 = Label(root, text="Name 1 ", fg='black', bg='light green')
+    label1 = Label(root, text="Name 1 ", fg="black", bg="light green")
     # Create a Player 2 Name: label
-    label2 = Label(root, text="Name 2 ", fg='black', bg='light blue')
+    label2 = Label(root, text="Name 2 ", fg="black", bg="light blue")
     # Create a Relation Status: label
-    label3 = Label(root, text="Relationship Status", fg='black', bg='#FFE4C4')
+    label3 = Label(root, text="Relationship Status", fg="black", bg="#FFE4C4")
     # grid method is used for placing
     # the widgets at respective positions
     # in table like structure.
@@ -73,19 +73,11 @@ if __name__ == "__main__":
     Status_field.grid(row=4, column=1, ipadx="50")
     # Create a Submit Button and attached
     # to tell_status function
-    button1 = Button(root,
-                     text="Flame",
-                     bg="#FF7F50",
-                     fg="black",
-                     command=tell_status)
+    button1 = Button(root, text="Flame", bg="#FF7F50", fg="black", command=tell_status)
 
     # Create a Clear Button and attached
     # to clear_all function
-    button2 = Button(root,
-                     text="Clear",
-                     bg="#CD5C5C",
-                     fg="black",
-                     command=clear_all)
+    button2 = Button(root, text="Clear", bg="#CD5C5C", fg="black", command=clear_all)
 
     # grid method is used for placing
     # the widgets at respective positions

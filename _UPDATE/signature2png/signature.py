@@ -14,8 +14,8 @@
 from PIL import Image, ImageOps
 import argparse
 
-inFile = ''
-outFile = ''
+inFile = ""
+outFile = ""
 
 
 def binarize(img, threshold=127):
@@ -51,7 +51,7 @@ def make_transparent(img):
 def main(inFile, outFile, threshold=190):
     """Main function to process image."""
 
-    img = Image.open(inFile).convert('L')
+    img = Image.open(inFile).convert("L")
     img = binarize(img, threshold=threshold)
     img = make_transparent(img)
     img.save(outFile)
@@ -65,24 +65,24 @@ def parser():
     # Construct the argument parser:
     ap = argparse.ArgumentParser()
 
-    ap.add_argument("-i", "--input",
-                    required=True,
-                    type=str,
-                    default="result.png",
-                    help="Input image.")
+    ap.add_argument(
+        "-i",
+        "--input",
+        required=True,
+        type=str,
+        default="result.png",
+        help="Input image.",
+    )
 
-    ap.add_argument("-o", "--output",
-                    type=str,
-                    default="result.png",
-                    help="Output image.")
+    ap.add_argument(
+        "-o", "--output", type=str, default="result.png", help="Output image."
+    )
 
-    ap.add_argument("-th", "--threshold",
-                    type=int,
-                    default=127)
+    ap.add_argument("-th", "--threshold", type=int, default=127)
 
     args = vars(ap.parse_args())
 
-    return args['input'], args['output'], args['threshold']
+    return args["input"], args["output"], args["threshold"]
 
 
 if __name__ == "__main__":

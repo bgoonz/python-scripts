@@ -5,14 +5,14 @@ from datetime import datetime
 import csv
 
 config = ConfigParser()
-config.read('config.ini')
-username = config.get('AUTH', 'USERNAME')
-password = config.get('AUTH', 'PASSWORD')
+config.read("config.ini")
+username = config.get("AUTH", "USERNAME")
+password = config.get("AUTH", "PASSWORD")
 
 classTime = ["09:20", "11:40", "14:25"]
 
 
-class ClassAutomation():
+class ClassAutomation:
     def __init__(self):
         self.count = 0
         self.findCount()
@@ -31,10 +31,12 @@ class ClassAutomation():
         print("Initiating...")
         self.login()
         self.driver.find_element_by_xpath(
-            "//div[text()='{}']".format(className)).click()
+            "//div[text()='{}']".format(className)
+        ).click()
         sleep(10)
         link = self.driver.find_element_by_partial_link_text(
-            "https://meet.google.com/lookup/").text
+            "https://meet.google.com/lookup/"
+        ).text
         self.driver.get(link)
         sleep(10)
         self.driver.find_element_by_xpath("//span[text()='Join now']").click()
@@ -67,8 +69,9 @@ class ClassAutomation():
         currentHour = int(currentTime.split(":")[0])
         currentMin = int(currentTime.split(":")[1])
         for i in classTime:
-            if currentHour == int(
-                    i.split(":")[0]) and currentMin < int(i.split(":")[1]):
+            if currentHour == int(i.split(":")[0]) and currentMin < int(
+                i.split(":")[1]
+            ):
                 self.count = classTime.index(i)
                 print("Next Class at", classTime[self.count], "Today")
                 break
@@ -85,7 +88,7 @@ class ClassAutomation():
 
     # Logs into the google classroom with the account credentials
     def login(self):
-        profile = webdriver.FirefoxProfile('/path/to/the/created/profile')
+        profile = webdriver.FirefoxProfile("/path/to/the/created/profile")
         self.driver = webdriver.Firefox(profile)
         self.driver.get("https://accounts.google.com/")
         sleep(2)

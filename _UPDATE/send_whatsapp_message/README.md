@@ -3,14 +3,15 @@
 One can easily send a whatsapp message using this script.
 **Pre-requisite:** Scan QR code manually.
 
-
 ## Requirements
 
 - Python3
 - Selenium
+
 ```console
 $ pip install -U selenium
 ```
+
 - Chromedriver (Needs to be in PATH)
 
 ## Instructions

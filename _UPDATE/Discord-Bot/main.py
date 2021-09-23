@@ -21,8 +21,7 @@ async def on_ready():
 
 @bot.event
 async def on_member_join(member):
-    welcome_channel = discord.utils.get(member.guild.channels,
-                                        name=WELCOME_CHANNEL)
+    welcome_channel = discord.utils.get(member.guild.channels, name=WELCOME_CHANNEL)
     # feel free to change this message!
     await welcome_channel.send(
         f"welcome {member.mention}, please read our rules and have a great time!"

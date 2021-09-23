@@ -1,7 +1,7 @@
 from turtle import *
 import random
 
-speed(speed='fastest')
+speed(speed="fastest")
 
 
 def draw(n, x, angle):

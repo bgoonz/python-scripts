@@ -13,5 +13,3 @@ In my work i used requests and tkinter. In most of the python installation tkint
 ```bash
 pip install requests
 ```
-
-

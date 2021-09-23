@@ -3,7 +3,7 @@ import re
 
 # get url
 # url = input('Enter a URL (include `https://lambda-w-1-notes.netlify.app/`): ')
-url =  ('https://lambda-w-1-notes.netlify.app/')
+url = "https://lambda-w-1-notes.netlify.app/"
 
 # connect to the url
 website = requests.get(url)

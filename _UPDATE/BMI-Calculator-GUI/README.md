@@ -1,13 +1,15 @@
 <h1 align="center">BMI GUI Calculator</h1>
-Calculates Your Body Mass Index for your health fitness. 
+Calculates Your Body Mass Index for your health fitness.
 
----------------------------------------------------------------------
+---
 
 ## Modules Used
+
 - tkinter
 
 ## How it works
-- It takes the given your Weight (kg) and Height (mts) as input. 
+
+- It takes the given your Weight (kg) and Height (mts) as input.
 
 - It calculates the given input.
 

@@ -23,16 +23,18 @@ See, there are three arguments in `cv.findContours()` function, first one is sou
 
 ## How to draw the contours?
 
-To draw the contours, `cv.drawContours` function is used. It can also be used to draw any shape provided you have its boundary points. 
+To draw the contours, `cv.drawContours` function is used. It can also be used to draw any shape provided you have its boundary points.
 
 Its first argument is source image, second argument is the contours which should be passed as a Python list, third argument is index of contours (useful when drawing individual contour. To draw all contours, pass -1) and remaining arguments are color, thickness etc.
 
 - To draw all the contours in an image:
+
 ```
 cv.drawContours(img, contours, -1, (0,255,0), 3)
 ```
 
 - To draw an individual contour, say 4th contour:
+
 ```
 cv.drawContours(img, contours, 3, (0,255,0), 3)
 ```

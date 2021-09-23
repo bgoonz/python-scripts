@@ -9,7 +9,7 @@ x = re.findall(r"[a-zA-Z]+@{1}[a-zA-Z]+[.]{1}[a-zA-Z]+", text)
 
 val = ""
 for i in x:
-    val += i+"\n"  # this adds all the email data found in val variable
+    val += i + "\n"  # this adds all the email data found in val variable
 
 if val == "":
     print("No emails found in the website")

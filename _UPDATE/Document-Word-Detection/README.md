@@ -5,8 +5,8 @@ Detect a word present in the document (pages) using OpenCV
 ## Package
 
 1. **OpenCV :** `$ pip install opencv-python`
-2. **Numpy  :** `$ pip install numpy`
-3. **Imutils :** `$ pip install imutils` 
+2. **Numpy :** `$ pip install numpy`
+3. **Imutils :** `$ pip install imutils`
 
 <table>
   <tr>

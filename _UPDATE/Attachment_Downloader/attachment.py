@@ -12,7 +12,8 @@ def attachmentdownload(resulthreads):
             if len(resulthreads[i].messages) > 1:
                 for j in range(len(resulthreads[i].messages)):
                     resulthreads[i].messages[
-                        j].downloadAllAttachments()  # downloads attachment(s) for individual messages
+                        j
+                    ].downloadAllAttachments()  # downloads attachment(s) for individual messages
             else:
                 # downloads attachment(s) for single message
                 resulthreads[i].messages[0].downloadAllAttachments()
@@ -21,7 +22,7 @@ def attachmentdownload(resulthreads):
         raise Exception("Error occured while downloading attachment(s).")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     query = input("Enter search query: ")
     # appending to make sure the result threads always has an attachment
     newquery = query + " + has:attachment"
@@ -38,7 +39,8 @@ if __name__ == '__main__':
             print(f"Email Subject: {threads.messages[0].subject}")
         try:
             ask = input(
-                "Do you want to download attachment(s) in result(s) (Yes/No)? ")  # Allows user to decide whether they want to download attachment(s) or not
+                "Do you want to download attachment(s) in result(s) (Yes/No)? "
+            )  # Allows user to decide whether they want to download attachment(s) or not
             if ask == "Yes":
                 # calls the function that downloads attachment(s)
                 attachmentdownload(resulthreads)

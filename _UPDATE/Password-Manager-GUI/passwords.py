@@ -12,10 +12,11 @@ master_password = sys.argv[1]
 
 def sql_connection():
     try:
-        con = sqlite3.connect('passwordManager.db')
+        con = sqlite3.connect("passwordManager.db")
         return con
     except Error:
         print(Error)
+
 
 # Function to create table
 
@@ -23,7 +24,8 @@ def sql_connection():
 def sql_table(con):
     cursorObj = con.cursor()
     cursorObj.execute(
-        "CREATE TABLE IF NOT EXISTS passwords(website text, username text, pass text)")
+        "CREATE TABLE IF NOT EXISTS passwords(website text, username text, pass text)"
+    )
     con.commit()
 
 
@@ -38,13 +40,14 @@ def submit(con):
     cursor = con.cursor()
     # Insert Into Table
     if website.get() != "" and username.get() != "" and password.get() != "":
-        cursor.execute("INSERT INTO passwords VALUES (:website, :username, :password)",
-                       {
-                           'website': website.get(),
-                           'username': username.get(),
-                           'password': password.get()
-                       }
-                       )
+        cursor.execute(
+            "INSERT INTO passwords VALUES (:website, :username, :password)",
+            {
+                "website": website.get(),
+                "username": username.get(),
+                "password": password.get(),
+            },
+        )
         con.commit()
         # Message box
         messagebox.showinfo("Info", "Record Added in Database!")
@@ -57,13 +60,14 @@ def submit(con):
     else:
         messagebox.showinfo("Alert", "Please fill all details!")
 
+
 # Create Query Function
 
 
 def query(con):
 
     password = simpledialog.askstring("Password", "Enter Master Password")
-    if(password == master_password):
+    if password == master_password:
         # set button text
         query_btn.configure(text="Hide Records", command=hide)
         cursor = con.cursor()
@@ -71,17 +75,26 @@ def query(con):
         cursor.execute("SELECT *, oid FROM passwords")
         records = cursor.fetchall()
 
-        p_records = 'ID'.ljust(10) + 'Website'.ljust(40) + \
-            'Username'.ljust(70)+'Password'.ljust(100)+'\n'
+        p_records = (
+            "ID".ljust(10)
+            + "Website".ljust(40)
+            + "Username".ljust(70)
+            + "Password".ljust(100)
+            + "\n"
+        )
 
         for record in records:
             single_record = ""
-            single_record += (str(record[3]).ljust(10) +
-                              str(record[0]).ljust(40)+str(record[1]).ljust(70)+str(record[2]).ljust(100))
-            single_record += '\n'
+            single_record += (
+                str(record[3]).ljust(10)
+                + str(record[0]).ljust(40)
+                + str(record[1]).ljust(70)
+                + str(record[2]).ljust(100)
+            )
+            single_record += "\n"
             # print(single_record)
             p_records += single_record
-        query_label['text'] = p_records
+        query_label["text"] = p_records
         # Commit changes
         con.commit()
         p_records = ""
@@ -89,11 +102,12 @@ def query(con):
     else:
         messagebox.showinfo("Failed!", "Authentication failed!")
 
+
 # Create Function to Hide Records
 
 
 def hide():
-    query_label['text'] = ""
+    query_label["text"] = ""
     query_btn.configure(text="Show Records", command=lambda: query(con))
 
 
@@ -139,5 +153,5 @@ def main():
     root.mainloop()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

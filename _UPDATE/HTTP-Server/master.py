@@ -12,13 +12,13 @@ while True:
     print("Starting the server ...")
     # cmd = '''gnome-terminal -e "zsh -c \"python3 httpServer.py 5561; exec zsh\""'''
     # os.system(cmd)
-    os.system(f'python3 httpServer.py {sys.argv[1]}')
+    os.system(f"python3 httpServer.py {sys.argv[1]}")
     while True:
         print("q for quit\nr for restart.")
         key = input()
-        if key == 'q':
+        if key == "q":
             exit()
-        elif key == 'r':
+        elif key == "r":
             print("restarting the server ...")
             break
         else:

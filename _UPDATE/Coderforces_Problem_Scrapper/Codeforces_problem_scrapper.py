@@ -33,7 +33,9 @@ def extracting_problem_links(diff_level):
     options.headless = True
     driver = webdriver.Chrome(DRIVER_PATH, options=options)
     print("\nRequesting URL ...")
-    driver.get(f"https://codeforces.com/problemset/?tags={diff_level[0]}-{diff_level[1]}")
+    driver.get(
+        f"https://codeforces.com/problemset/?tags={diff_level[0]}-{diff_level[1]}"
+    )
 
     # ===================Getting no. of Pages to Scrape=============================
 
@@ -54,7 +56,9 @@ def extracting_problem_links(diff_level):
     # ***************************** SCRAPING PAGE 1 *************************************
     print(f"\nScraping Page {page}")
 
-    elements = driver.find_elements_by_css_selector("td.id.dark.left a" and "td.id.left a")
+    elements = driver.find_elements_by_css_selector(
+        "td.id.dark.left a" and "td.id.left a"
+    )
     for element in elements:
         # Saving the link in pblms_links
         pblms_links.append(element.get_attribute("href"))
@@ -63,7 +67,9 @@ def extracting_problem_links(diff_level):
         # If we scraped required no. of questions then return
         if pblms_link_scraped == no_of_questions:
             print(f"URLs of Question Scraped till now: {pblms_link_scraped}")
-            print(f"\nURLs Scrapped Successfully {pblms_link_scraped} out of {no_of_questions}")
+            print(
+                f"\nURLs Scrapped Successfully {pblms_link_scraped} out of {no_of_questions}"
+            )
             return pblms_links
     page += 1
     print(f"URLs of Question Scraped till now: {pblms_link_scraped}")
@@ -75,7 +81,9 @@ def extracting_problem_links(diff_level):
 
         # Going to next Page
         driver.get(link)
-        elements = driver.find_elements_by_css_selector("td.id.dark.left a" and "td.id.left a")
+        elements = driver.find_elements_by_css_selector(
+            "td.id.dark.left a" and "td.id.left a"
+        )
         for element in elements:
             # Saving the link in pblms_links
             pblms_links.append(element.get_attribute("href"))
@@ -84,7 +92,9 @@ def extracting_problem_links(diff_level):
             # If we scraped required no. of questions then return
             if pblms_link_scraped == no_of_questions:
                 print(f"URLs of Question Scraped till now: {pblms_link_scraped}")
-                print(f"\nURLs Scrapped Successfully {pblms_link_scraped} out of {no_of_questions}")
+                print(
+                    f"\nURLs Scrapped Successfully {pblms_link_scraped} out of {no_of_questions}"
+                )
                 return pblms_links
 
         print(f"URLs of Question Scraped till now: {pblms_link_scraped}")
@@ -105,10 +115,10 @@ def getproblem(URLs):
     Then saving the image.png as pdf file by using fdf library.
     """
 
-    path = 'image.png'
+    path = "image.png"
 
     # Creating a Target Output Folder
-    target_folder = './Coderforces_Problem_Scrapper/problems_pdf'
+    target_folder = "./Coderforces_Problem_Scrapper/problems_pdf"
     if not os.path.exists(target_folder):
         os.makedirs(target_folder)
 
@@ -122,32 +132,39 @@ def getproblem(URLs):
         driver.get(url)
         # Deciding height by tag
         required_height = driver.execute_script(
-            'return document.body.parentNode.scrollHeight')
+            "return document.body.parentNode.scrollHeight"
+        )
         driver.set_window_size(1366, required_height)
 
         title = driver.find_element_by_class_name("title").text
-        filename = title[3:] + '.pdf'
+        filename = title[3:] + ".pdf"
 
         # Taking SS of everything within the ttypography class
-        driver.find_element_by_class_name('ttypography').screenshot(path)
+        driver.find_element_by_class_name("ttypography").screenshot(path)
 
         # Opening image with pillow so based to capture its height and width
         cover = Image.open(path)
         WIDTH, HEIGHT = cover.size
         MARGIN = 10
         # based on image's height and width we are adjusting the pdf margin and borders
-        pdf = FPDF(unit='pt', format=[WIDTH + 2 * MARGIN, HEIGHT + 2 * MARGIN])
+        pdf = FPDF(unit="pt", format=[WIDTH + 2 * MARGIN, HEIGHT + 2 * MARGIN])
         pdf.add_page()  # Adding new page to the pdf
         pdf.image(path, MARGIN, MARGIN)
 
-        pdf.output(os.path.join(target_folder, filename), "F")  # saving the pdf with the specified filename
-        print(f'File saved in your directory ./problems_pdf/{filename}   ({file_counter}/{len(URLs)}) !')
+        pdf.output(
+            os.path.join(target_folder, filename), "F"
+        )  # saving the pdf with the specified filename
+        print(
+            f"File saved in your directory ./problems_pdf/{filename}   ({file_counter}/{len(URLs)}) !"
+        )
         file_counter += 1
 
 
 if __name__ == "__main__":
     DRIVER_PATH = input("Enter DRIVER PATH location: ")
-    diff = select_difficulty()   # Accepting difficulty level from user
-    problems_link = extracting_problem_links(diff)  # scraping the required the no. of links
+    diff = select_difficulty()  # Accepting difficulty level from user
+    problems_link = extracting_problem_links(
+        diff
+    )  # scraping the required the no. of links
     getproblem(problems_link)  # saving the Questions in PDF file.
-    os.remove('image.png')
+    os.remove("image.png")

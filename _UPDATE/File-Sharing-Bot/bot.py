@@ -3,14 +3,16 @@ import logging
 import os
 import telegram
 import shutil
+
 # Enable logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+)
 
 logger = logging.getLogger(__name__)
 
-#list of authorized users
-#create a list of telegram usernames to authorise them, 0th username is admin.
+# list of authorized users
+# create a list of telegram usernames to authorise them, 0th username is admin.
 username_list = []
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
@@ -24,7 +26,7 @@ def help(bot, update):
     """Send a message when the command /help is issued."""
     admin = update.message.from_user.username
     if admin == username_list[0]:
-        reply = '''Send /get folder_name/file_name.extension to receive a file. 
+        reply = """Send /get folder_name/file_name.extension to receive a file. 
                 \nSend /ls folder_name to show list of files.
                 \nSend /put folder_name/file_name.extension to upload last sent file.
                 \nSend /mkdir folder_name to create a Folder.
@@ -32,54 +34,58 @@ def help(bot, update):
                 \nSend /adduser username to give access.
                 \nSend /removeuser username to revoke access.
                 \nSend /showuser to show list of users
-                '''    
+                """
     else:
-        reply = '''Send /get folder_name/file_name.extension to receive a file. 
+        reply = """Send /get folder_name/file_name.extension to receive a file. 
                 \nSend /ls folder_name to show list of files.
                 \nSend /put folder_name/file_name.extension to upload last sent file.
                 \nSend /mkdir folder_name to create a Folder.
-                '''
+                """
     update.message.reply_text(reply)
 
 
 def get(bot, update):
     """Send requested file."""
     username = update.message.from_user.username
-    if(username not in username_list):
+    if username not in username_list:
         update.message.reply_text("You are not Authorized.")
         return
     file = update.message.text.split(" ")[-1]
-    if(file == "/send"):
+    if file == "/send":
         update.message.reply_text("Invalid File name.")
     else:
         reply = "Findind and Sending a requested file to you. Hold on..."
         update.message.reply_text(reply)
-        path = os.getcwd()+'/'+file
-        if (os.path.exists(path)):
-            bot.send_document(chat_id=update.message.chat_id,document=open(path, 'rb'), timeout = 100)
+        path = os.getcwd() + "/" + file
+        if os.path.exists(path):
+            bot.send_document(
+                chat_id=update.message.chat_id, document=open(path, "rb"), timeout=100
+            )
         else:
             update.message.reply_text("File not Found.")
+
 
 def ls(bot, update):
     """Show files in requested directory."""
     username = update.message.from_user.username
-    if(username not in username_list):
+    if username not in username_list:
         update.message.reply_text("You are not Authorized.")
         return
     file = update.message.text.split(" ")[-1]
-    if(file == "/show"):
+    if file == "/show":
         update.message.reply_text("Invalid Directory name.")
     else:
         reply = "Findind and Sending a list of files to you. Hold on..."
         update.message.reply_text(reply)
-        path = os.getcwd()+'/'+file
-        if (os.path.exists(path)):
+        path = os.getcwd() + "/" + file
+        if os.path.exists(path):
             update.message.reply_text(os.listdir(path))
         else:
             update.message.reply_text("Directory not Found.")
 
+
 def put(bot, update):
-    f = open(str(os.getcwd())+"/file", "r")
+    f = open(str(os.getcwd()) + "/file", "r")
     file_id = f.read()
     f.close
     if file_id == "":
@@ -91,7 +97,7 @@ def put(bot, update):
         if len(path) < 1:
             update.message.reply_text("Enter Path correctly.")
         else:
-            new_file.download(os.getcwd()+'/'+path)
+            new_file.download(os.getcwd() + "/" + path)
             update.message.reply_text("File Stored.")
 
 
@@ -109,17 +115,21 @@ def echo(bot, update):
     """Echo the user message."""
     if update.message.document:
         file_id = update.message.document.file_id
-        f = open(str(os.getcwd())+"/file", "w")
+        f = open(str(os.getcwd()) + "/file", "w")
         f.write(file_id)
         f.close
-        update.message.reply_text("Received.Now send file name and location to store. using /put command")
+        update.message.reply_text(
+            "Received.Now send file name and location to store. using /put command"
+        )
     else:
         reply = "Invalid Input."
         update.message.reply_text(reply)
 
+
 def error(bot, update, error):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, error)
+
 
 def add_user(bot, update):
     admin = update.message.from_user.username
@@ -130,12 +140,14 @@ def add_user(bot, update):
     else:
         update.message.reply_text("You are not Authorized.")
 
+
 def show_user(bot, update):
     admin = update.message.from_user.username
     if admin == username_list[0]:
         update.message.reply_text(username_list)
     else:
         update.message.reply_text("You are not Authorized.")
+
 
 def remove_user(bot, update):
     admin = update.message.from_user.username
@@ -146,28 +158,31 @@ def remove_user(bot, update):
     else:
         update.message.reply_text("You are not Authorized.")
 
+
 def remove(bot, update):
     admin = update.message.from_user.username
     if admin == username_list[0]:
         filename = update.message.text.split(" ")[-1]
-        os.remove(os.getcwd()+ "/" + filename)
+        os.remove(os.getcwd() + "/" + filename)
         update.message.reply_text("File Removed.")
     else:
         update.message.reply_text("You are not Authorized.")
+
 
 def rmdir(bot, update):
     admin = update.message.from_user.username
     if admin == username_list[0]:
         filename = update.message.text.split(" ")[-1]
-        shutil.rmtree(os.getcwd()+ "/" + filename)
+        shutil.rmtree(os.getcwd() + "/" + filename)
         update.message.reply_text("Folder Removed.")
     else:
         update.message.reply_text("You are not Authorized.")
 
+
 def main():
     """Start the bot."""
     # Create the EventHandler and pass it your bot's token.
-    TOKEN = os.environ['TOKEN']
+    TOKEN = os.environ["TOKEN"]
     updater = Updater(TOKEN)
 
     # Get the dispatcher to register handlers
@@ -181,7 +196,7 @@ def main():
     dp.add_handler(CommandHandler("put", put))
     dp.add_handler(CommandHandler("mkdir", mkdir))
 
-    #admin functionalities
+    # admin functionalities
     dp.add_handler(CommandHandler("adduser", add_user))
     dp.add_handler(CommandHandler("showuser", show_user))
     dp.add_handler(CommandHandler("removeUser", remove_user))
@@ -203,5 +218,5 @@ def main():
     updater.idle()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

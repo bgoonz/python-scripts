@@ -8,7 +8,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/avinashkranjan/Amazing-Python-Scripts.svg)](https://github.com/avinashkranjan/Amazing-Python-Scripts/issues)
 [![GitHub issues closed](https://img.shields.io/github/issues-closed/avinashkranjan/Amazing-Python-Scripts.svg)](https://github.com/avinashkranjan/Amazing-Python-Scripts/issues?q=is%3Aissue+is%3Aclosed)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/avinashkranjan/Amazing-Python-Scripts.svg)](https://github.com/avinashkranjan/Amazing-Python-Scripts/pulls)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr-closed/avinashkranjan/Amazing-Python-Scripts.svg)](https://github.com/avinashkranjan/Amazing-Python-Scripts/pulls?q=is%3Apr+is%3Aclosed) ![GitHub repo size](https://img.shields.io/github/repo-size/avinashkranjan/Amazing-Python-Scripts?color=yellow) 
+[![GitHub pull requests](https://img.shields.io/github/issues-pr-closed/avinashkranjan/Amazing-Python-Scripts.svg)](https://github.com/avinashkranjan/Amazing-Python-Scripts/pulls?q=is%3Apr+is%3Aclosed) ![GitHub repo size](https://img.shields.io/github/repo-size/avinashkranjan/Amazing-Python-Scripts?color=yellow)
 ![Lines of Code](https://img.shields.io/tokei/lines/github/avinashkranjan/Amazing-Python-Scripts?color=red&label=Lines%20of%20Code)
 
 <h2 align=center> 📑 Introduction </h2>
@@ -22,7 +22,7 @@ that can make Life Easier for you, as a **_Developer_**, and find a utility of c
     <img src="https://forthebadge.com/images/badges/check-it-out.svg">
   </a>
 
-<h2 align=center> 👨🏻‍💻 How to get started? </h2> 
+<h2 align=center> 👨🏻‍💻 How to get started? </h2>
 
 You can refer to the following articles on **_basics of Git and Github and also contact the Project Mentors, in case you are stuck_**:
 
@@ -31,8 +31,7 @@ You can refer to the following articles on **_basics of Git and Github and also 
 - [How to create a Pull Request](https://opensource.com/article/19/7/create-pull-request-github)
 - [Getting started with Git and GitHub](https://towardsdatascience.com/getting-started-with-git-and-github-6fcd0f2d4ac6)
 
-
-<h2 align=center> 📝 How to Contribute? </h2>  
+<h2 align=center> 📝 How to Contribute? </h2>
 
 - Take a look at [Contributing Guide](https://github.com/avinashkranjan/Amazing-Python-Scripts/blob/master/CONTRIBUTING.md)
 - Take a look at the Existing Issues or create your own Issues!
@@ -43,7 +42,7 @@ You can refer to the following articles on **_basics of Git and Github and also 
 
 <h2 align=center> ✨ Contributors </h2>
 
-Thanks go to these **Wonderful People** 👨🏻‍💻:      🚀 **Contributions** of any kind are welcome! 
+Thanks go to these **Wonderful People** 👨🏻‍💻: 🚀 **Contributions** of any kind are welcome!
 
 <table>
 	<tr>

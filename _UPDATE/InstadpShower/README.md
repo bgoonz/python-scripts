@@ -9,6 +9,7 @@ To install bs4 and requests, use the following command
 ```
 pip install beautifulsoup4
 ```
+
 ```
 pip install requests
 ```

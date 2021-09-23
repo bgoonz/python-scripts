@@ -18,9 +18,9 @@ cv = CountVectorizer()
 features = cv.fit_transform(x_train)
 
 tuned_parameters = {
-    'kernel': ['rbf', 'linear'],
-    'gamma': [1e-3, 1e-4],
-    'C': [1, 10, 100, 1000]
+    "kernel": ["rbf", "linear"],
+    "gamma": [1e-3, 1e-4],
+    "C": [1, 10, 100, 1000],
 }
 
 model = GridSearchCV(svm.SVC(), tuned_parameters)
@@ -31,7 +31,7 @@ print(model.best_params_)
 
 print(model.score(cv.transform(x_test), y_test))
 
-joblib.dump(model.best_estimator_, 'filename.pkl', compress=1)
+joblib.dump(model.best_estimator_, "filename.pkl", compress=1)
 
 print(x)
 
@@ -41,11 +41,11 @@ y.count()
 
 y.unique()
 
-dataframe['Label'].value_counts()
+dataframe["Label"].value_counts()
 
-dataframe['Label'].value_counts().plot(kind='bar')
+dataframe["Label"].value_counts().plot(kind="bar")
 
-loaded_model = joblib.load('filename.pkl')
-a = input('Enter the text:- ')
+loaded_model = joblib.load("filename.pkl")
+a = input("Enter the text:- ")
 result = model.predict(cv.transform([a]))
 print(result[0])

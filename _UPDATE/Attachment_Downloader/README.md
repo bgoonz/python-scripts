@@ -2,7 +2,6 @@
 
 The script downloads gmail atttachment(s) in no time!
 
-
 # Setup Instructions
 
 The script uses ezgmail module (to know more visit https://pypi.org/project/EZGmail/). To install please type the following command in your bash.
