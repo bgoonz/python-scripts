@@ -16,7 +16,7 @@ pyperclip==1.8.0
 PyRect==0.1.4
 PyScreeze==0.1.26
 python3-xlib==0.15
-PyTweening==1.0.3
+PyTweening==1.0.4
 regex==2020.9.27
 selenium==3.141.0
 six==1.15.0
