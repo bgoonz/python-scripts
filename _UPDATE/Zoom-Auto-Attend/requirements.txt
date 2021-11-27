@@ -14,7 +14,7 @@ Pygments==2.7.4
 PyMsgBox==1.0.8
 pyperclip==1.8.0
 PyRect==0.1.4
-PyScreeze==0.1.26
+PyScreeze==0.1.28
 python3-xlib==0.15
 PyTweening==1.0.3
 regex==2020.9.27
