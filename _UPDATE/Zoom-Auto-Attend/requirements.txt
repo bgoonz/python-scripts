@@ -9,7 +9,7 @@ Pillow==8.3.2
 prompt-toolkit==1.0.14
 PyAutoGUI==0.9.50
 pyfiglet==0.8.post1
-PyGetWindow==0.0.8
+PyGetWindow==0.0.9
 Pygments==2.7.4
 PyMsgBox==1.0.8
 pyperclip==1.8.0
