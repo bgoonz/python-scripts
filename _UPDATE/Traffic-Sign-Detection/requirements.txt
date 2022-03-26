@@ -41,7 +41,7 @@ jupyter-console==6.2.0
 jupyter-core==4.7.0
 jupyter-http-over-ws==0.0.8
 jupyterlab-pygments==0.1.2
-jupyterlab-widgets==1.0.0
+jupyterlab-widgets==1.1.0
 Keras==2.4.3
 Keras-Preprocessing==1.1.2
 keyboard==0.13.5
